@@ -14,6 +14,7 @@
 		166F0BB31A08137200ABF976 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB21A08137200ABF976 /* Images.xcassets */; };
 		166F0BB61A08137200ABF976 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB41A08137200ABF976 /* LaunchScreen.xib */; };
 		166F0BC21A08137200ABF976 /* RideAlongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BC11A08137200ABF976 /* RideAlongTests.m */; };
+		166F0BCF1A0824A300ABF976 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166F0BCE1A0824A300ABF976 /* MapKit.framework */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -59,6 +60,7 @@
 		166F0BBB1A08137200ABF976 /* RideAlongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideAlongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		166F0BC01A08137200ABF976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		166F0BC11A08137200ABF976 /* RideAlongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RideAlongTests.m; sourceTree = "<group>"; };
+		166F0BCE1A0824A300ABF976 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166F0BCF1A0824A300ABF976 /* MapKit.framework in Frameworks */,
 				BC8D68301A08191300BBD653 /* libz.dylib in Frameworks */,
 				BC8D68241A08190000BBD653 /* Accounts.framework in Frameworks */,
 				BC8D68251A08190000BBD653 /* AdSupport.framework in Frameworks */,
@@ -120,6 +123,7 @@
 		166F0B991A08137200ABF976 = {
 			isa = PBXGroup;
 			children = (
+				166F0BCE1A0824A300ABF976 /* MapKit.framework */,
 				166F0BA41A08137200ABF976 /* RideAlong */,
 				166F0BBE1A08137200ABF976 /* RideAlongTests */,
 				166F0BA31A08137200ABF976 /* Products */,
@@ -138,11 +142,11 @@
 		166F0BA41A08137200ABF976 /* RideAlong */ = {
 			isa = PBXGroup;
 			children = (
+				166F0BCB1A0822F100ABF976 /* Storyboard in Here */,
 				166F0BA91A08137200ABF976 /* AppDelegate.h */,
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
 				166F0BAC1A08137200ABF976 /* ViewController.h */,
 				166F0BAD1A08137200ABF976 /* ViewController.m */,
-				166F0BAF1A08137200ABF976 /* Main.storyboard */,
 				166F0BB21A08137200ABF976 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -193,6 +197,30 @@
 				166F0BC01A08137200ABF976 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		166F0BCB1A0822F100ABF976 /* Storyboard in Here */ = {
+			isa = PBXGroup;
+			children = (
+				166F0BCC1A08230400ABF976 /* Is anyone else in storyboard? */,
+			);
+			name = "Storyboard in Here";
+			sourceTree = "<group>";
+		};
+		166F0BCC1A08230400ABF976 /* Is anyone else in storyboard? */ = {
+			isa = PBXGroup;
+			children = (
+				166F0BCD1A08231C00ABF976 /* Grab Storyboard ball! */,
+			);
+			name = "Is anyone else in storyboard?";
+			sourceTree = "<group>";
+		};
+		166F0BCD1A08231C00ABF976 /* Grab Storyboard ball! */ = {
+			isa = PBXGroup;
+			children = (
+				166F0BAF1A08137200ABF976 /* Main.storyboard */,
+			);
+			name = "Grab Storyboard ball!";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
