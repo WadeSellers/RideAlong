@@ -14,6 +14,8 @@
 @interface ViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property MKPointAnnotation *rideAnnotation;
+
 
 
 @end
@@ -30,6 +32,15 @@
         [self.locationManager requestWhenInUseAuthorization];
     }
     [self.locationManager startUpdatingLocation];
+
+    CLLocationCoordinate2D coord;
+    coord.latitude = 41.89373984;
+    coord.longitude = -87.63532979;
+
+    self.rideAnnotation =[[MKPointAnnotation alloc]init];
+    self.rideAnnotation.coordinate = coord;
+    self.rideAnnotation.title =@"RideAlong";
+    [self.mapView addAnnotation:self.rideAnnotation];
 }
 
 // Location Manager Delegate Methods
@@ -44,6 +55,7 @@
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.image = [UIImage imageNamed:@"PinImage"];
+    pin.annotation = annotation;
 
     return pin;
 }
