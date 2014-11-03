@@ -19,7 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [Parse setApplicationId:@"dtTbl6fifiIjyzz6kMxil0gZ3vk3gUP6L9Bk0WGH" clientKey:@"nEwiuWN1XV4BeJw8Qqu6a8CnvTp4tMSdwXjqqntq"];    return YES;
+    [Parse setApplicationId:@"hezbTJQTfKuStxmusd8H7646am7qbRtvrljYJgdO" clientKey:@"Q94xr4Sz3dFZ6oBeDw9ojsaD21DAcsUSS5zPpQq6"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
