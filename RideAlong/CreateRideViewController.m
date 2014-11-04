@@ -7,21 +7,107 @@
 //
 
 #import "CreateRideViewController.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+@interface CreateRideViewController ()<CLLocationManagerDelegate, MKAnnotation, UIGestureRecognizerDelegate>
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property MKPointAnnotation *dropPin;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property CLLocationCoordinate2D coordinate;
+@property NSString * title;
+@property NSString * subtitle;
 
-@interface CreateRideViewController ()
 
 @end
 
 @implementation CreateRideViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self.view addSubview:self.mapView];
+    [self.mapView setDelegate:self];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
+
+    CLLocationCoordinate2D coord;
+
+    self.dropPin =[[MKPointAnnotation alloc]init];
+    self.dropPin.coordinate = coord;
+    self.dropPin.title =@"PostARide";
+    [self.mapView addAnnotation:self.dropPin];
+
+    UITapGestureRecognizer *pinGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pinGesture:)];
+    pinGesture.delegate = self;
+    [self.mapView addGestureRecognizer:pinGesture];
+
+//    [longPressGesture release];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return true;
+}
+
+
+// Location Manager Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"%@", [locations lastObject]);
+}
+
+-(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
+    pin.canShowCallout = YES;
+    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    pin.image = [UIImage imageNamed:@"Flag"];
+    pin.annotation = annotation;
+    pin.animatesDrop = YES;
+    pin.calloutOffset = CGPointMake(-5, 5);
+    pin.animatesDrop = YES;
+
+    return pin;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    CLLocationCoordinate2D center = view.annotation.coordinate;
+
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.01;
+    span.longitudeDelta = 0.01;
+
+    MKCoordinateRegion region;
+    region.center = center;
+    region.span = span;
+
+    [self.mapView setRegion:region animated:YES];
+    
+}
+
+-(void)pinGesture:(UIGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        [self.mapView removeGestureRecognizer:sender];
+    }
+    else
+    {
+        // Here we get the CGPoint for the touch and convert it to latitude and longitude coordinates to display on the map
+        CGPoint point = [sender locationInView:self.mapView];
+        CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+        // Then all you have to do is create the annotation and add it to the map
+
+        self.dropPin = [[MKPointAnnotation alloc] init];
+        self.dropPin.coordinate = locCoord;
+        [self.mapView addAnnotation:self.dropPin];
+//        [self.dropPin release];
+    }
 }
 
 /*

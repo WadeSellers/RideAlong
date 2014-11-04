@@ -34,8 +34,8 @@
     [self.locationManager startUpdatingLocation];
 
     CLLocationCoordinate2D coord;
-    coord.latitude = 41.89373984;
-    coord.longitude = -87.63532979;
+//    coord.latitude = 41.89373984;
+//    coord.longitude = -87.63532979;
 
     self.rideAnnotation =[[MKPointAnnotation alloc]init];
     self.rideAnnotation.coordinate = coord;
