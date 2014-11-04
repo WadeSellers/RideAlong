@@ -15,6 +15,9 @@
 		166F0BB61A08137200ABF976 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB41A08137200ABF976 /* LaunchScreen.xib */; };
 		166F0BC21A08137200ABF976 /* RideAlongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BC11A08137200ABF976 /* RideAlongTests.m */; };
 		166F0BCF1A0824A300ABF976 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166F0BCE1A0824A300ABF976 /* MapKit.framework */; };
+		166F0BD21A09316600ABF976 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD11A09316600ABF976 /* ProfileViewController.m */; };
+		166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */; };
+		166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD71A09342500ABF976 /* CreateRideViewController.m */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -61,6 +64,12 @@
 		166F0BC01A08137200ABF976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		166F0BC11A08137200ABF976 /* RideAlongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RideAlongTests.m; sourceTree = "<group>"; };
 		166F0BCE1A0824A300ABF976 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		166F0BD01A09316600ABF976 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		166F0BD11A09316600ABF976 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		166F0BD31A09317F00ABF976 /* RideDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideDetailsViewController.h; sourceTree = "<group>"; };
+		166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideDetailsViewController.m; sourceTree = "<group>"; };
+		166F0BD61A09342500ABF976 /* CreateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideViewController.h; sourceTree = "<group>"; };
+		166F0BD71A09342500ABF976 /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -147,6 +156,12 @@
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
 				166F0BAC1A08137200ABF976 /* ViewController.h */,
 				166F0BAD1A08137200ABF976 /* ViewController.m */,
+				166F0BD61A09342500ABF976 /* CreateRideViewController.h */,
+				166F0BD71A09342500ABF976 /* CreateRideViewController.m */,
+				166F0BD31A09317F00ABF976 /* RideDetailsViewController.h */,
+				166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */,
+				166F0BD01A09316600ABF976 /* ProfileViewController.h */,
+				166F0BD11A09316600ABF976 /* ProfileViewController.m */,
 				166F0BB21A08137200ABF976 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -324,7 +339,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				166F0BAE1A08137200ABF976 /* ViewController.m in Sources */,
+				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
+				166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */,
 				166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */,
+				166F0BD21A09316600ABF976 /* ProfileViewController.m in Sources */,
 				166F0BA81A08137200ABF976 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
