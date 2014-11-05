@@ -10,11 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface RideDetailsViewController ()
-@property (weak, nonatomic) IBOutlet UIDatePicker *rideDatePicker;
-@property (weak, nonatomic) IBOutlet UITextField *startLocationTextField;
-@property (weak, nonatomic) IBOutlet UITextField *endLocationTextField;
-@property (weak, nonatomic) IBOutlet UITextField *availableSeatsTextField;
-@property (weak, nonatomic) IBOutlet UITextField *donationTextField;
+
 @property (weak, nonatomic) IBOutlet UITextView *rideDetailsTextView;
 
 @end
@@ -25,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-- (IBAction)onSaveButtonPressed:(id)sender
+- (IBAction)onBookLiftButtonPressed:(id)sender
 {
     PFObject *ride = [PFObject objectWithClassName:@"Ride"];
     ride[@"Date"] = self.rideDatePicker;
