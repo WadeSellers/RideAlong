@@ -7,17 +7,19 @@
 //
 
 #import "RidesMainViewController.h"
-#import "Ride.h"
+#import "Resort.h"
 #import <MapKit/MapKit.h>
 
 @interface RidesMainViewController ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *ridesTableView;
 @property (weak, nonatomic) IBOutlet MKMapView *ridesMapView;
-@property NSArray *rides;
-@property MKPointAnnotation *skiResortAnnotation;
+@property NSArray *resorts;
+//@property MKPointAnnotation *skiResortAnnotation;
 @property CLLocationManager *locationManager;
 @property NSArray *skiResorts;
+@property NSMutableArray *resortsNames;
 @property MKMapItem *skiResortMapItem ;
+
 
 @end
 
@@ -27,20 +29,19 @@
     [super viewDidLoad];
 //    [self addSkiResortLocation];
     [self findSkiLift];
-    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
-
-
+//    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.rides.count;
+    return self.resortsNames.count;
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    Ride  *ride = [self.rides objectAtIndex:indexPath.row];
+    Resort  *myResort = [self.resortsNames objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    cell.textLabel.text =ride.name;
+    cell.textLabel.text =myResort.name;
+    NSLog(@"number of resorts is %lu",(unsigned long)self.resortsNames.count);
     return cell;
 }
 
@@ -66,13 +67,28 @@
 //    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1, 1));
     MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+
+//        Resort *resort = [[Resort alloc]init];
+        self.resortsNames = [[NSMutableArray alloc]init];
+
         self.skiResorts = response.mapItems;
         for (MKMapItem *mapItem in self.skiResorts)
         {
 
-            self.skiResortAnnotation= mapItem.placemark;
-            [self.ridesMapView addAnnotation:self.skiResortAnnotation];
+
+            MKPointAnnotation *skiResortAnnotation = [[MKPointAnnotation alloc] init];
+            skiResortAnnotation.coordinate = mapItem.placemark.coordinate;
+            [self.ridesMapView addAnnotation:skiResortAnnotation];
 //            [self.ridesMapView addAnnotations:self.skiResorts];
+
+            Resort *resort = [[Resort alloc]init];
+
+//            resort.name =mapItem.name;
+
+            resort.name = skiResortAnnotation.title;
+            [self.resortsNames addObject:resort];
+            NSLog(@"resorts %@", self.resortsNames);
+
             NSLog(@" %@",mapItem.name);
         }
 
