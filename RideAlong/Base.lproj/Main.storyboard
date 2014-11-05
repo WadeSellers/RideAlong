@@ -1,59 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XPz-sj-9t1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XPz-sj-9t1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Create A Ride-->
-        <scene sceneID="RIz-MX-Sw4">
-            <objects>
-                <viewController id="hRI-fi-n9k" customClass="CreateRideViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nVh-46-dOS"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Fo-sm-Ffw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ezv-e0-2iS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-W7-9h2">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="q25-70-SdQ" appends="YES" id="CnY-2U-KuD"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="QzY-W7-9h2" secondAttribute="trailing" constant="-16" id="Dct-Oz-aT6"/>
-                            <constraint firstItem="QzY-W7-9h2" firstAttribute="leading" secondItem="Ezv-e0-2iS" secondAttribute="leadingMargin" constant="-16" id="S3f-VP-397"/>
-                            <constraint firstItem="QzY-W7-9h2" firstAttribute="bottom" secondItem="Ezv-e0-2iS" secondAttribute="bottomMargin" id="dPk-01-rxp"/>
-                            <constraint firstItem="QzY-W7-9h2" firstAttribute="top" secondItem="nVh-46-dOS" secondAttribute="bottom" id="xuK-EX-yhO"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Create A Ride" id="1rX-Db-u6K">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="tY6-T7-uFE"/>
-                        <barButtonItem key="rightBarButtonItem" title="Ride Details" id="ESn-VD-sv1">
-                            <connections>
-                                <segue destination="bhG-hO-RP0" kind="show" id="SZY-OZ-Tjd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="QzY-W7-9h2" id="rMi-Od-ItZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lUq-mT-Rh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="q25-70-SdQ">
-                    <connections>
-                        <outlet property="delegate" destination="hRI-fi-n9k" id="gRm-Bw-dMH"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3553" y="-345"/>
-        </scene>
         <!--Ride Details View Controller-->
         <scene sceneID="7JF-XJ-BEI">
             <objects>
@@ -194,6 +145,7 @@
                             <constraint firstItem="XDA-3U-su8" firstAttribute="top" secondItem="xRb-IQ-NRj" secondAttribute="bottom" constant="8" id="xIc-mL-8ud"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mCe-Jx-2XA"/>
                     <connections>
                         <outlet property="availableSeatsTextField" destination="3pb-tG-3Df" id="JnO-dl-DZC"/>
                         <outlet property="donationTextField" destination="aYb-DG-P3j" id="Bun-A2-fTy"/>
@@ -205,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4248" y="-345"/>
+            <point key="canvasLocation" x="3553" y="-345"/>
         </scene>
         <!--Available Rides-->
         <scene sceneID="ufC-wZ-h7g">
@@ -396,7 +348,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hRI-fi-n9k" kind="relationship" relationship="rootViewController" id="LcN-1k-j53"/>
+                        <segue destination="bhG-hO-RP0" kind="relationship" relationship="rootViewController" id="F6d-ed-PFr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJm-N9-0br" userLabel="First Responder" sceneMemberID="firstResponder"/>
