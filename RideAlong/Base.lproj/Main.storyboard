@@ -145,7 +145,13 @@
                             <constraint firstItem="XDA-3U-su8" firstAttribute="top" secondItem="xRb-IQ-NRj" secondAttribute="bottom" constant="8" id="xIc-mL-8ud"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mCe-Jx-2XA"/>
+                    <navigationItem key="navigationItem" id="mCe-Jx-2XA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Eif-0K-9yB">
+                            <connections>
+                                <action selector="onSaveButtonPressed:" destination="bhG-hO-RP0" id="uhz-1N-yYF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="availableSeatsTextField" destination="3pb-tG-3Df" id="JnO-dl-DZC"/>
                         <outlet property="donationTextField" destination="aYb-DG-P3j" id="Bun-A2-fTy"/>

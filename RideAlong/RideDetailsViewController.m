@@ -25,10 +25,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-- (void)setupRide
+- (IBAction)onSaveButtonPressed:(id)sender
 {
-    
+
 }
+
+
 
 @end
