@@ -27,7 +27,14 @@
 }
 - (IBAction)onSaveButtonPressed:(id)sender
 {
-
+    PFObject *ride = [PFObject objectWithClassName:@"Ride"];
+    ride[@"Date"] = self.rideDatePicker;
+    NSLog(@"date: %@", ride[@"Date"]);
+    ride[@"Driver"] = [[PFUser currentUser] objectForKey:@"objectId"];
+    NSLog(@"driver id: %@", ride[@"Driver"]);
+    ride[@"Description"] = self.rideDetailsTextView;
+    NSLog(@"description: %@", ride[@"Description"]);
+    
 }
 
 
