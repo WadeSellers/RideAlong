@@ -18,6 +18,8 @@
 		166F0BD21A09316600ABF976 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD11A09316600ABF976 /* ProfileViewController.m */; };
 		166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */; };
 		166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD71A09342500ABF976 /* CreateRideViewController.m */; };
+		16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */; };
+		16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B611A0AB18800EEF533 /* RideMapViewController.m */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -70,6 +72,10 @@
 		166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideDetailsViewController.m; sourceTree = "<group>"; };
 		166F0BD61A09342500ABF976 /* CreateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideViewController.h; sourceTree = "<group>"; };
 		166F0BD71A09342500ABF976 /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
+		16C21B5D1A0AB14000EEF533 /* RidesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RidesMainViewController.h; sourceTree = "<group>"; };
+		16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RidesMainViewController.m; sourceTree = "<group>"; };
+		16C21B601A0AB18800EEF533 /* RideMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideMapViewController.h; sourceTree = "<group>"; };
+		16C21B611A0AB18800EEF533 /* RideMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideMapViewController.m; sourceTree = "<group>"; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -156,6 +162,10 @@
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
 				166F0BAC1A08137200ABF976 /* ViewController.h */,
 				166F0BAD1A08137200ABF976 /* ViewController.m */,
+				16C21B5D1A0AB14000EEF533 /* RidesMainViewController.h */,
+				16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */,
+				16C21B601A0AB18800EEF533 /* RideMapViewController.h */,
+				16C21B611A0AB18800EEF533 /* RideMapViewController.m */,
 				166F0BD61A09342500ABF976 /* CreateRideViewController.h */,
 				166F0BD71A09342500ABF976 /* CreateRideViewController.m */,
 				166F0BD31A09317F00ABF976 /* RideDetailsViewController.h */,
@@ -340,6 +350,8 @@
 			files = (
 				166F0BAE1A08137200ABF976 /* ViewController.m in Sources */,
 				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
+				16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */,
+				16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */,
 				166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */,
 				166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */,
 				166F0BD21A09316600ABF976 /* ProfileViewController.m in Sources */,

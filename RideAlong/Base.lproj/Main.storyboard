@@ -68,7 +68,7 @@
         <!--Available Rides-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="RidesMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="2019" y="357"/>
         </scene>
-        <!--View Controller-->
+        <!--Ride Map View Controller-->
         <scene sceneID="sXG-RE-Dqx">
             <objects>
-                <viewController id="6cg-cN-dhY" sceneMemberID="viewController">
+                <viewController id="6cg-cN-dhY" customClass="RideMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddV-29-bsd"/>
                         <viewControllerLayoutGuide type="bottom" id="WE6-k2-hA8"/>
@@ -195,7 +195,7 @@
         <!--Setup Lift-->
         <scene sceneID="DgI-mT-JY7">
             <objects>
-                <viewController title="Setup Lift" id="9JT-jN-5WR" sceneMemberID="viewController">
+                <viewController title="Setup Lift" id="9JT-jN-5WR" customClass="CreateRideViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cu1-Nu-xVI"/>
                         <viewControllerLayoutGuide type="bottom" id="Wdm-Wg-7WE"/>
