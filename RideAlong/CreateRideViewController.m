@@ -13,9 +13,9 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property MKPointAnnotation *dropPin;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property CLLocationCoordinate2D coordinate;
-@property NSString * title;
-@property NSString * subtitle;
+//@property CLLocationCoordinate2D coordinate;
+//@property NSString * title;
+//@property NSString * subtitle;
 
 
 @end
@@ -64,11 +64,13 @@
 
 -(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
 
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
+    self.dropPin = annotation;
+
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:self.dropPin reuseIdentifier:@"MyPinID"];
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     pin.image = [UIImage imageNamed:@"Flag"];
-    pin.annotation = annotation;
+    pin.annotation = self.dropPin;
     pin.animatesDrop = YES;
     pin.calloutOffset = CGPointMake(-5, 5);
     pin.animatesDrop = YES;
