@@ -51,7 +51,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
+    NSLog(@"Pfobj %@",resort);
     cell.textLabel.text = resort[@"name"];
+
+    PFFile *resortImage = resort[@"logo"];
+    [resortImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            cell.imageView.image = image;
+        }
+    }];
+
     return cell;
 }
 
