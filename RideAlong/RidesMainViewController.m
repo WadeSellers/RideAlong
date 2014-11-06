@@ -77,17 +77,20 @@
         for (MKMapItem *mapItem in self.skiResorts)
         {
             MKPointAnnotation *skiResortAnnotation = [[MKPointAnnotation alloc] init];
-            skiResortAnnotation.coordinate = mapItem.placemark.coordinate;
+            skiResortAnnotation.coordinate = mapItem.placemark.location.coordinate;
+            skiResortAnnotation.title = mapItem.placemark.name;
             [self.ridesMapView addAnnotation:skiResortAnnotation];
 //            [self.ridesMapView addAnnotations:self.skiResorts];
 
             Resort *resort = [[Resort alloc]init];
 
-//            resort.name =mapItem.name;
+            resort.name =mapItem.name;
 
-            resort.name = skiResortAnnotation.title;
+//            resort.name = skiResortAnnotation.title;
+
             [self.resortsNames addObject:resort];
-            NSLog(@"resorts %@", mapItem.placemark.coordinate);
+//            NSLog(@"resorts %@", mapItem.placemark.location.coordinate);
+             [self.ridesMapView addAnnotation:skiResortAnnotation];
 
 //            NSLog(@" %@",mapItem.name);
             [self.ridesTableView reloadData];
@@ -105,8 +108,7 @@
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    pin.image = [UIImage imageNamed:@"PinImage"];
-
+    pin.image = [UIImage imageNamed:@"Flag"];
     return pin;
 }
 
