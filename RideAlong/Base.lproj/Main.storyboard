@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="4055" y="-351"/>
         </scene>
-        <!--Available Rides-->
+        <!--Rides Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RidesMainViewController" sceneMemberID="viewController">
@@ -84,17 +84,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-ZI-6NN">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="yGa-Lr-YZy"/>
-                                </connections>
-                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DHn-Lo-UTG">
-                                <rect key="frame" x="0.0" y="64" width="600" height="228"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="228" id="7qA-Sd-Al7"/>
+                                    <constraint firstAttribute="height" constant="600" id="7qA-Sd-Al7"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myCell" textLabel="UEi-1l-Fkw" imageView="q2H-cG-fwj" style="IBUITableViewCellStyleDefault" id="KKp-hH-crK">
@@ -124,22 +118,46 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Icx-Wa-QzM"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-eU-ZSs">
+                                <rect key="frame" x="0.0" y="557" width="600" height="43"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="BbK-6m-DuX"/>
+                                </constraints>
+                                <state key="normal" title="My Rides">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onMyRidesButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="n12-3f-jK4"/>
+                                    <segue destination="KmT-nw-Lr6" kind="show" id="ZnB-kd-4e1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eCD-ZI-6NN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="90R-GT-1gG"/>
-                            <constraint firstItem="eCD-ZI-6NN" firstAttribute="top" secondItem="DHn-Lo-UTG" secondAttribute="bottom" constant="8" id="CAW-Gw-lOl"/>
-                            <constraint firstAttribute="trailing" secondItem="eCD-ZI-6NN" secondAttribute="trailing" id="DSv-RY-tER"/>
-                            <constraint firstAttribute="trailing" secondItem="DHn-Lo-UTG" secondAttribute="trailing" id="DYR-hF-TfO"/>
-                            <constraint firstItem="DHn-Lo-UTG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Yao-jz-MgZ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eCD-ZI-6NN" secondAttribute="bottom" id="app-NF-uE1"/>
-                            <constraint firstItem="DHn-Lo-UTG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="w1p-Qt-oo1"/>
+                            <constraint firstAttribute="trailing" secondItem="DHn-Lo-UTG" secondAttribute="trailing" constant="16" id="DYR-hF-TfO"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8U6-eU-ZSs" secondAttribute="bottom" id="FJB-3a-FYs"/>
+                            <constraint firstItem="DHn-Lo-UTG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="Yao-jz-MgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="8U6-eU-ZSs" secondAttribute="trailing" id="ceP-bp-7At"/>
+                            <constraint firstItem="8U6-eU-ZSs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="pGE-fh-Hph"/>
+                            <constraint firstItem="DHn-Lo-UTG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-64" id="w1p-Qt-oo1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Available Rides" id="dht-o2-ULz"/>
+                    <navigationItem key="navigationItem" id="dht-o2-ULz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="9wZ-Xa-f7n">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Find A Ride"/>
+                                <segment title="Create A Ride"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
-                        <outlet property="ridesMapView" destination="eCD-ZI-6NN" id="4hd-z9-TpY"/>
-                        <outlet property="ridesTableView" destination="DHn-Lo-UTG" id="Srg-WB-s9c"/>
+                        <outlet property="flowSegmentedControl" destination="9wZ-Xa-f7n" id="xPV-ME-Eyv"/>
+                        <outlet property="resortsTableView" destination="DHn-Lo-UTG" id="bN3-F2-vyk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -271,7 +289,7 @@
             </objects>
             <point key="canvasLocation" x="4055" y="357"/>
         </scene>
-        <!--Profile-->
+        <!--My Hub-->
         <scene sceneID="HY9-tN-iG3">
             <objects>
                 <viewController id="KmT-nw-Lr6" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -283,19 +301,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dd-dc-ojI">
-                                <rect key="frame" x="16" y="208" width="88" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="88" id="IQ9-s3-Z6c"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="Lhr-0v-hX6"/>
-                                    <constraint firstAttribute="height" constant="21" id="TXx-s2-fRA"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="leo-Hz-z7M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-ig-9DX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-ig-9DX">
                                 <rect key="frame" x="16" y="72" width="143" height="128"/>
                                 <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -303,14 +309,7 @@
                                     <constraint firstAttribute="height" constant="128" id="mQQ-7r-CpQ"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="akT-BP-Jjd">
-                                <rect key="frame" x="16" y="236" width="568" height="190"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">This is where your user's description will be displayed.  Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username / FB Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aol-nc-qFa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username / FB Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aol-nc-qFa">
                                 <rect key="frame" x="217" y="84" width="166" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0y3-PA-ZyC"/>
@@ -319,33 +318,41 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="91V-Qz-asb">
+                                <rect key="frame" x="16" y="208" width="568" height="392"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="uV8-zT-nN7">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uV8-zT-nN7" id="nRB-Vf-RKW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ee3-BJ-pwz" firstAttribute="top" secondItem="91V-Qz-asb" secondAttribute="bottom" id="5qg-kR-P2V"/>
                             <constraint firstItem="Aol-nc-qFa" firstAttribute="top" secondItem="7Nv-W1-XS8" secondAttribute="bottom" constant="20" id="77G-JU-D38"/>
-                            <constraint firstItem="5Dd-dc-ojI" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leadingMargin" id="9Xt-Bu-VXs"/>
+                            <constraint firstItem="91V-Qz-asb" firstAttribute="top" secondItem="eEl-ig-9DX" secondAttribute="bottom" constant="8" id="9kb-p1-QMk"/>
                             <constraint firstItem="eEl-ig-9DX" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leadingMargin" id="D9h-1R-zxh"/>
-                            <constraint firstItem="5Dd-dc-ojI" firstAttribute="top" secondItem="eEl-ig-9DX" secondAttribute="bottom" constant="8" id="EFc-FK-r4t"/>
-                            <constraint firstItem="5Dd-dc-ojI" firstAttribute="top" secondItem="eEl-ig-9DX" secondAttribute="bottom" constant="8" id="MeR-VA-3C5"/>
+                            <constraint firstItem="91V-Qz-asb" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leadingMargin" id="Hbr-qB-aPF"/>
+                            <constraint firstItem="91V-Qz-asb" firstAttribute="trailing" secondItem="4wM-1h-pd3" secondAttribute="trailingMargin" id="Qc6-aj-oVT"/>
                             <constraint firstItem="eEl-ig-9DX" firstAttribute="top" secondItem="7Nv-W1-XS8" secondAttribute="bottom" constant="8" id="Unz-HR-zAR"/>
                             <constraint firstAttribute="centerX" secondItem="Aol-nc-qFa" secondAttribute="centerX" id="a74-Dp-pDN"/>
-                            <constraint firstItem="akT-BP-Jjd" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leadingMargin" id="ibk-0M-HRw"/>
-                            <constraint firstItem="akT-BP-Jjd" firstAttribute="trailing" secondItem="4wM-1h-pd3" secondAttribute="trailingMargin" id="lcU-as-NOS"/>
-                            <constraint firstItem="Ee3-BJ-pwz" firstAttribute="top" secondItem="akT-BP-Jjd" secondAttribute="bottom" constant="125" id="pSX-Oy-g7G"/>
-                            <constraint firstItem="akT-BP-Jjd" firstAttribute="top" secondItem="5Dd-dc-ojI" secondAttribute="bottom" constant="7" id="uIb-Ya-eZo"/>
-                            <constraint firstItem="5Dd-dc-ojI" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leadingMargin" id="wUa-2u-ROO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="DyG-LB-Q5E"/>
+                    <navigationItem key="navigationItem" title="My Hub" id="DyG-LB-Q5E"/>
                     <connections>
                         <outlet property="profileImage" destination="eEl-ig-9DX" id="n7n-pa-q9G"/>
-                        <outlet property="userDescriptionTextView" destination="akT-BP-Jjd" id="eT8-HA-BTi"/>
                         <outlet property="usernameTitle" destination="Aol-nc-qFa" id="dFD-g6-MCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRK-Nw-BbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="1075"/>
+            <point key="canvasLocation" x="2707" y="1071"/>
         </scene>
     </scenes>
     <resources>

@@ -7,19 +7,18 @@
 //
 
 #import "RidesMainViewController.h"
-#import "Resort.h"
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 @interface RidesMainViewController ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *ridesTableView;
-@property (weak, nonatomic) IBOutlet MKMapView *ridesMapView;
-@property NSArray *resorts;
+@property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
+
+@property MKMapItem *skiResortMapItem ;
 //@property MKPointAnnotation *skiResortAnnotation;
 @property CLLocationManager *locationManager;
-@property NSArray *skiResorts;
-@property NSMutableArray *resortsNames;
-@property MKMapItem *skiResortMapItem ;
 
+@property NSArray *resorts;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *flowSegmentedControl;
 
 @end
 
@@ -28,30 +27,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self addSkiResortLocation];
-    [self findSkiLift];
+//    [self findSkiLift];
 //    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
 
-      self.resortsNames = [[NSMutableArray alloc]init];
-}
 
--(void)viewWillAppear:(BOOL)animated{
-    [self findSkiLift];
+    [self.resortsTableView reloadData];
+    [self refreshDisplay];
 
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.resortsNames.count;
+-(void)viewWillAppear:(BOOL)animated
+{
+//    [self findSkiLift];
+
 }
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.resorts.count;
+}
 
-    Resort  *myResort = [self.resortsNames objectAtIndex:indexPath.row];
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-
-
-    cell.textLabel.text =myResort.name;
-//    NSLog(@"name %@",[self.resortsNames objectAtIndex:indexPath.row]);
+    PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
+    cell.textLabel.text = resort[@"name"];
     return cell;
+}
+
+- (void)refreshDisplay
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Resort"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", error.userInfo);
+        }
+        else
+        {
+            self.resorts = [[NSArray alloc] initWithArray:objects];
+            [self.resortsTableView reloadData];
+        }
+    }];
+}
+- (IBAction)onMyRidesButtonPressed:(id)sender
+{
+
 }
 
 /*
@@ -68,52 +89,52 @@
     }];
 }
 */
-- (void) findSkiLift
-//:(CLLocation *)location
-{
-    MKLocalSearchRequest *request = [MKLocalSearchRequest new];
-    request.naturalLanguageQuery =@"Colorado Ski Resort";
-//    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1, 1));
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-
-//        Resort *resort = [[Resort alloc]init];
-        self.skiResorts = response.mapItems;
-        for (MKMapItem *mapItem in self.skiResorts)
-        {
-            MKPointAnnotation *skiResortAnnotation = [[MKPointAnnotation alloc] init];
-            skiResortAnnotation.coordinate = mapItem.placemark.location.coordinate;
-            skiResortAnnotation.title = mapItem.placemark.name;
-            [self.ridesMapView addAnnotation:skiResortAnnotation];
-//            [self.ridesMapView addAnnotations:self.skiResorts];
-
-            Resort *resort = [[Resort alloc]init];
-
-            resort.name =mapItem.name;
-
-//            resort.name = skiResortAnnotation.title;
-
-            [self.resortsNames addObject:resort];
-//            NSLog(@"resorts %@", mapItem.placemark.location.coordinate);
-             [self.ridesMapView addAnnotation:skiResortAnnotation];
-
-//            NSLog(@" %@",mapItem.name);
-            [self.ridesTableView reloadData];
-
-
+//- (void) findSkiLift
+////:(CLLocation *)location
+//{
+//    MKLocalSearchRequest *request = [MKLocalSearchRequest new];
+//    request.naturalLanguageQuery =@"Colorado Ski Resort";
+////    request.region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1, 1));
+//    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
+//    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+//
+////        Resort *resort = [[Resort alloc]init];
+//        self.skiResorts = response.mapItems;
+//        for (MKMapItem *mapItem in self.skiResorts)
+//        {
+//            MKPointAnnotation *skiResortAnnotation = [[MKPointAnnotation alloc] init];
+//            skiResortAnnotation.coordinate = mapItem.placemark.location.coordinate;
+//            skiResortAnnotation.title = mapItem.placemark.name;
+//            [self.ridesMapView addAnnotation:skiResortAnnotation];
+////            [self.ridesMapView addAnnotations:self.skiResorts];
+//
+//            Resort *resort = [[Resort alloc]init];
+//
+//            resort.name =mapItem.name;
+//
+////            resort.name = skiResortAnnotation.title;
+//
+//            [self.resortsNames addObject:resort];
+////            NSLog(@"resorts %@", mapItem.placemark.location.coordinate);
+//             [self.ridesMapView addAnnotation:skiResortAnnotation];
+//
+////            NSLog(@" %@",mapItem.name);
+//            [self.ridesTableView reloadData];
 
 
-            CLLocationCoordinate2D center = skiResortAnnotation.coordinate;
 
-            MKCoordinateSpan span;
-            span.latitudeDelta = 5;
-            span.longitudeDelta = 5;
-
-            MKCoordinateRegion region;
-            region.center = center;
-            region.span = span;
-            
-            [self.ridesMapView setRegion:region animated:YES];
+//
+//            CLLocationCoordinate2D center = skiResortAnnotation.coordinate;
+//
+//            MKCoordinateSpan span;
+//            span.latitudeDelta = 5;
+//            span.longitudeDelta = 5;
+//
+//            MKCoordinateRegion region;
+//            region.center = center;
+//            region.span = span;
+//            
+//            [self.ridesMapView setRegion:region animated:YES];
 
 
 
@@ -128,38 +149,38 @@
 //                zoomRect = MKMapRectUnion(zoomRect, pointRect);
 //            }
 //            [self.ridesMapView setVisibleMapRect:zoomRect animated:YES];
-        }
+//        }
 
 //        self.skiResortMapItem = self.skiResorts.firstObject;
 
 //        self.myTextView.text =[NSString stringWithFormat:@" %@", mapItem.name];
-    }];
-}
-
-
--(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
-    pin.canShowCallout = YES;
-    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    pin.image = [UIImage imageNamed:@"Flag"];
-    return pin;
-}
-
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    CLLocationCoordinate2D center = view.annotation.coordinate;
-
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.05;
-    span.longitudeDelta = 0.05;
-
-    MKCoordinateRegion region;
-    region.center = center;
-    region.span = span;
-
-    [self.ridesMapView setRegion:region animated:YES];
-    
-}
+//    }];
+//}
+//
+//
+//-(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+//
+//    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
+//    pin.canShowCallout = YES;
+//    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    pin.image = [UIImage imageNamed:@"Flag"];
+//    return pin;
+//}
+//
+//-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+//    CLLocationCoordinate2D center = view.annotation.coordinate;
+//
+//    MKCoordinateSpan span;
+//    span.latitudeDelta = 0.05;
+//    span.longitudeDelta = 0.05;
+//
+//    MKCoordinateRegion region;
+//    region.center = center;
+//    region.span = span;
+//
+//    [self.ridesMapView setRegion:region animated:YES];
+//    
+//}
 
 /*
 #pragma mark - Navigation
