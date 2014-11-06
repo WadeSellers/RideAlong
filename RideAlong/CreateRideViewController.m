@@ -9,6 +9,8 @@
 #import "CreateRideViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
+
 @interface CreateRideViewController ()<CLLocationManagerDelegate, MKAnnotation, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property MKPointAnnotation *dropPin;
@@ -16,6 +18,7 @@
 //@property CLLocationCoordinate2D coordinate;
 //@property NSString * title;
 //@property NSString * subtitle;
+@property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
 
 
 @end
@@ -110,6 +113,26 @@
         [self.mapView addAnnotation:self.dropPin];
 //        [self.dropPin release];
     }
+}
+
+- (IBAction)onCompleteRideButtonPressed:(id)sender
+{
+    PFObject *ride = [PFObject objectWithClassName:@"Ride"];
+
+    ride[@"Description"] = self.detailsTextView;
+
+
+    [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error userInfo]);
+        }
+        else
+        {
+
+        }
+    }];
+
 }
 
 

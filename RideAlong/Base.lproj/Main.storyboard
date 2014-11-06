@@ -230,7 +230,11 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Setup Your Lift!" id="hus-Ax-cGo">
-                                        <barButtonItem key="rightBarButtonItem" title="Complete Ride!" id="bId-Ki-QPv"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Complete Ride!" id="bId-Ki-QPv">
+                                            <connections>
+                                                <action selector="onCompleteRideButtonPressed:" destination="9JT-jN-5WR" id="qN9-8S-tJE"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -257,6 +261,10 @@
                             <constraint firstAttribute="trailing" secondItem="1LE-rj-mN9" secondAttribute="trailing" id="mfL-1u-nUD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailsTextView" destination="1LE-rj-mN9" id="o3x-il-Lfh"/>
+                        <outlet property="mapView" destination="5yl-g6-hQC" id="h1Q-yl-Tgl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POI-aH-Xgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
