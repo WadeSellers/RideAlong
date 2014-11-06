@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wdf-w5-KQh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wdf-w5-KQh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -21,7 +21,11 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Lift Details" id="bvH-oP-TH3">
-                                        <barButtonItem key="rightBarButtonItem" title="Book Lift!" id="A69-9Q-N1T"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Book Lift!" id="A69-9Q-N1T">
+                                            <connections>
+                                                <action selector="onBookLiftButtonPressed:" destination="bhG-hO-RP0" id="oSp-TM-Lf3"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -60,6 +64,9 @@
                     <navigationItem key="navigationItem" id="mCe-Jx-2XA">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Eif-0K-9yB"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="rideDetailsTextView" destination="mKD-mu-MlS" id="tUt-mX-Pel"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
