@@ -108,8 +108,7 @@
     MKPinAnnotationView *pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    pin.image = [UIImage imageNamed:@"PinImage"];
-
+    pin.image = [UIImage imageNamed:@"Flag"];
     return pin;
 }
 
