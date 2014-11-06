@@ -34,6 +34,11 @@
       self.resortsNames = [[NSMutableArray alloc]init];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self findSkiLift];
+
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.resortsNames.count;
 }
@@ -94,6 +99,35 @@
 
 //            NSLog(@" %@",mapItem.name);
             [self.ridesTableView reloadData];
+
+
+
+
+            CLLocationCoordinate2D center = skiResortAnnotation.coordinate;
+
+            MKCoordinateSpan span;
+            span.latitudeDelta = 5;
+            span.longitudeDelta = 5;
+
+            MKCoordinateRegion region;
+            region.center = center;
+            region.span = span;
+            
+            [self.ridesMapView setRegion:region animated:YES];
+
+
+
+
+//            MKMapPoint annotationPoint = MKMapPointForCoordinate(self.ridesMapView.userLocation.coordinate);
+//            MKMapRect zoomRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+//            //MKMapRect zoomRect = MKMapRectNull;
+//            for (id <MKAnnotation> annotation in self.ridesMapView.annotations)
+//            {
+//                MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+//                MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+//                zoomRect = MKMapRectUnion(zoomRect, pointRect);
+//            }
+//            [self.ridesMapView setVisibleMapRect:zoomRect animated:YES];
         }
 
 //        self.skiResortMapItem = self.skiResorts.firstObject;
@@ -116,8 +150,8 @@
     CLLocationCoordinate2D center = view.annotation.coordinate;
 
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.01;
-    span.longitudeDelta = 0.01;
+    span.latitudeDelta = 0.05;
+    span.longitudeDelta = 0.05;
 
     MKCoordinateRegion region;
     region.center = center;

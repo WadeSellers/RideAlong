@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wdf-w5-KQh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wdf-w5-KQh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -85,10 +85,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-ZI-6NN">
-                                <rect key="frame" x="0.0" y="300" width="592" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="592" id="aWs-xQ-JNq"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="yGa-Lr-YZy"/>
                                 </connections>
@@ -130,12 +127,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eCD-ZI-6NN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="90R-GT-1gG"/>
+                            <constraint firstItem="eCD-ZI-6NN" firstAttribute="top" secondItem="DHn-Lo-UTG" secondAttribute="bottom" constant="8" id="CAW-Gw-lOl"/>
+                            <constraint firstAttribute="trailing" secondItem="eCD-ZI-6NN" secondAttribute="trailing" id="DSv-RY-tER"/>
                             <constraint firstAttribute="trailing" secondItem="DHn-Lo-UTG" secondAttribute="trailing" id="DYR-hF-TfO"/>
-                            <constraint firstItem="eCD-ZI-6NN" firstAttribute="top" secondItem="DHn-Lo-UTG" secondAttribute="bottom" constant="8" symbolic="YES" id="Ph8-gl-7vm"/>
                             <constraint firstItem="DHn-Lo-UTG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Yao-jz-MgZ"/>
-                            <constraint firstItem="DHn-Lo-UTG" firstAttribute="leading" secondItem="eCD-ZI-6NN" secondAttribute="leading" id="jiu-yY-6dR"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eCD-ZI-6NN" secondAttribute="bottom" id="app-NF-uE1"/>
                             <constraint firstItem="DHn-Lo-UTG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="w1p-Qt-oo1"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eCD-ZI-6NN" secondAttribute="bottom" id="yG9-kJ-a5K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Available Rides" id="dht-o2-ULz"/>
