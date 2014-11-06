@@ -30,6 +30,8 @@
 //    [self addSkiResortLocation];
     [self findSkiLift];
 //    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
+
+      self.resortsNames = [[NSMutableArray alloc]init];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -40,8 +42,10 @@
 
     Resort  *myResort = [self.resortsNames objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+
+
     cell.textLabel.text =myResort.name;
-    NSLog(@"number of resorts is %lu",(unsigned long)self.resortsNames.count);
+//    NSLog(@"name %@",[self.resortsNames objectAtIndex:indexPath.row]);
     return cell;
 }
 
@@ -69,13 +73,9 @@
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
 
 //        Resort *resort = [[Resort alloc]init];
-        self.resortsNames = [[NSMutableArray alloc]init];
-
         self.skiResorts = response.mapItems;
         for (MKMapItem *mapItem in self.skiResorts)
         {
-
-
             MKPointAnnotation *skiResortAnnotation = [[MKPointAnnotation alloc] init];
             skiResortAnnotation.coordinate = mapItem.placemark.coordinate;
             [self.ridesMapView addAnnotation:skiResortAnnotation];
@@ -87,9 +87,10 @@
 
             resort.name = skiResortAnnotation.title;
             [self.resortsNames addObject:resort];
-            NSLog(@"resorts %@", self.resortsNames);
+            NSLog(@"resorts %@", mapItem.placemark.coordinate);
 
-            NSLog(@" %@",mapItem.name);
+//            NSLog(@" %@",mapItem.name);
+            [self.ridesTableView reloadData];
         }
 
 //        self.skiResortMapItem = self.skiResorts.firstObject;
