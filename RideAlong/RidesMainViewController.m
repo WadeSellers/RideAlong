@@ -30,16 +30,14 @@
 //    [self findSkiLift];
 //    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
 
-
-    [self.resortsTableView reloadData];
     [self refreshDisplay];
+    [self.resortsTableView reloadData];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    [self findSkiLift];
-
+    [self.resortsTableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -63,6 +61,18 @@
     }];
 
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.flowSegmentedControl == 0)
+    {
+        [self performSegueWithIdentifier:@"findAvailableRideSegue" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"createNewRideSegue" sender:self];
+    }
 }
 
 - (void)refreshDisplay
