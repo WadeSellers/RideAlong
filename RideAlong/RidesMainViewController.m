@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
 
 @property MKMapItem *skiResortMapItem ;
-//@property MKPointAnnotation *skiResortAnnotation;
 @property CLLocationManager *locationManager;
 
 @property NSArray *resorts;
@@ -26,18 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self addSkiResortLocation];
-//    [self findSkiLift];
-//    self.skiResortAnnotation = [[MKPointAnnotation alloc]init];
 
     [self refreshDisplay];
-    [self.resortsTableView reloadData];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.resortsTableView reloadData];
+    [self refreshDisplay];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -47,9 +41,9 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
-    NSLog(@"Pfobj %@",resort);
     cell.textLabel.text = resort[@"name"];
 
     PFFile *resortImage = resort[@"logo"];
@@ -57,15 +51,17 @@
         if (!error) {
             UIImage *image = [UIImage imageWithData:imageData];
             cell.imageView.image = image;
+            NSLog(@"%@", self.resorts);
+
         }
     }];
 
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.flowSegmentedControl == 0)
+    if (self.flowSegmentedControl.selectedSegmentIndex == 0)
     {
         [self performSegueWithIdentifier:@"findAvailableRideSegue" sender:self];
     }
@@ -74,6 +70,7 @@
         [self performSegueWithIdentifier:@"createNewRideSegue" sender:self];
     }
 }
+
 
 - (void)refreshDisplay
 {
@@ -90,10 +87,15 @@
         }
     }];
 }
-- (IBAction)onMyRidesButtonPressed:(id)sender
-{
 
-}
+
+
+
+
+
+
+
+
 
 /*
 -(void) addSkiResortLocation{
@@ -202,14 +204,5 @@
 //    
 //}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

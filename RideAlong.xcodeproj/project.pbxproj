@@ -11,7 +11,6 @@
 		166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BAA1A08137200ABF976 /* AppDelegate.m */; };
 		166F0BAE1A08137200ABF976 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BAD1A08137200ABF976 /* ViewController.m */; };
 		166F0BB11A08137200ABF976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BAF1A08137200ABF976 /* Main.storyboard */; };
-		166F0BB31A08137200ABF976 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB21A08137200ABF976 /* Images.xcassets */; };
 		166F0BB61A08137200ABF976 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB41A08137200ABF976 /* LaunchScreen.xib */; };
 		166F0BC21A08137200ABF976 /* RideAlongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BC11A08137200ABF976 /* RideAlongTests.m */; };
 		166F0BCF1A0824A300ABF976 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166F0BCE1A0824A300ABF976 /* MapKit.framework */; };
@@ -21,6 +20,9 @@
 		16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */; };
 		16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B611A0AB18800EEF533 /* RideMapViewController.m */; };
 		16C21B651A0AC42400EEF533 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B641A0AC42400EEF533 /* Resort.m */; };
+		16C21B9A1A0DFF4D00EEF533 /* RideOrDriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B991A0DFF4D00EEF533 /* RideOrDriveViewController.m */; };
+		16C21B9E1A0E059500EEF533 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C21B9D1A0E059500EEF533 /* Images.xcassets */; };
+		16C21BA11A0F04F400EEF533 /* CreateRideMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21BA01A0F04F400EEF533 /* CreateRideMapViewController.m */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -62,7 +64,6 @@
 		166F0BAC1A08137200ABF976 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		166F0BAD1A08137200ABF976 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		166F0BB01A08137200ABF976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		166F0BB21A08137200ABF976 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		166F0BB51A08137200ABF976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		166F0BBB1A08137200ABF976 /* RideAlongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideAlongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		166F0BC01A08137200ABF976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +81,11 @@
 		16C21B611A0AB18800EEF533 /* RideMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideMapViewController.m; sourceTree = "<group>"; };
 		16C21B631A0AC42400EEF533 /* Resort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resort.h; sourceTree = "<group>"; };
 		16C21B641A0AC42400EEF533 /* Resort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Resort.m; sourceTree = "<group>"; };
+		16C21B981A0DFF4D00EEF533 /* RideOrDriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideOrDriveViewController.h; sourceTree = "<group>"; };
+		16C21B991A0DFF4D00EEF533 /* RideOrDriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideOrDriveViewController.m; sourceTree = "<group>"; };
+		16C21B9D1A0E059500EEF533 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		16C21B9F1A0F04F400EEF533 /* CreateRideMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideMapViewController.h; sourceTree = "<group>"; };
+		16C21BA01A0F04F400EEF533 /* CreateRideMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideMapViewController.m; sourceTree = "<group>"; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -170,8 +176,12 @@
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
 				166F0BAC1A08137200ABF976 /* ViewController.h */,
 				166F0BAD1A08137200ABF976 /* ViewController.m */,
+				16C21B981A0DFF4D00EEF533 /* RideOrDriveViewController.h */,
+				16C21B991A0DFF4D00EEF533 /* RideOrDriveViewController.m */,
 				16C21B5D1A0AB14000EEF533 /* RidesMainViewController.h */,
 				16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */,
+				16C21B9F1A0F04F400EEF533 /* CreateRideMapViewController.h */,
+				16C21BA01A0F04F400EEF533 /* CreateRideMapViewController.m */,
 				BC8D686B1A0ABB0E00BBD653 /* Ride.h */,
 				BC8D686C1A0ABB0E00BBD653 /* Ride.m */,
 				16C21B601A0AB18800EEF533 /* RideMapViewController.h */,
@@ -182,7 +192,7 @@
 				166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */,
 				166F0BD01A09316600ABF976 /* ProfileViewController.h */,
 				166F0BD11A09316600ABF976 /* ProfileViewController.m */,
-				166F0BB21A08137200ABF976 /* Images.xcassets */,
+				16C21B9D1A0E059500EEF533 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
 			);
@@ -338,9 +348,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C21B9E1A0E059500EEF533 /* Images.xcassets in Resources */,
 				166F0BB11A08137200ABF976 /* Main.storyboard in Resources */,
 				166F0BB61A08137200ABF976 /* LaunchScreen.xib in Resources */,
-				166F0BB31A08137200ABF976 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,8 +369,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC8D686D1A0ABB0E00BBD653 /* Ride.m in Sources */,
+				16C21BA11A0F04F400EEF533 /* CreateRideMapViewController.m in Sources */,
 				166F0BAE1A08137200ABF976 /* ViewController.m in Sources */,
 				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
+				16C21B9A1A0DFF4D00EEF533 /* RideOrDriveViewController.m in Sources */,
 				16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */,
 				16C21B651A0AC42400EEF533 /* Resort.m in Sources */,
 				16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */,
