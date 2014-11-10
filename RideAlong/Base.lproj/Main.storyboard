@@ -41,6 +41,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bhG-hO-RP0" id="fhb-SQ-Z1V"/>
+                                    <outlet property="delegate" destination="bhG-hO-RP0" id="KMa-2J-ewY"/>
+                                </connections>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
                                 <rect key="frame" x="0.0" y="105" width="600" height="128"/>
