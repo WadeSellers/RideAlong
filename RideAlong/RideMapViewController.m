@@ -42,7 +42,8 @@
 - (void)refreshDisplay
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Ride"];
-    [query whereKey:@"endName" containsString:self.resortObject[@"endName"]];
+    //[query whereKey:@"endName" equalTo:@"Arapahoe Basin"];
+    [query whereKey:@"endName" equalTo:self.resortObject[@"name"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
