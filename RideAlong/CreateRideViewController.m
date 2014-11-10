@@ -41,11 +41,11 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
-    self.availableSeatsPickerArray = @[@"Available Seats", @"1", @"2", @"3", @"4", @"5+"];
+    self.availableSeatsPickerArray = @[@"Seats", @"1", @"2", @"3", @"4", @"5+"];
     self.availableSeatsPicker.delegate = self;
     self.availableSeatsPicker.dataSource = self;
 
-    self.feePickerArray = @[@"$5", @"$10", @"$15", @"$20", @"$25", @"$30", @"$35", @"$40", @"$45", @"$50"];
+    self.feePickerArray = @[@"Fee", @"$5", @"$10", @"$15", @"$20", @"$25", @"$30", @"$35", @"$40", @"$45", @"$50"];
     self.feePicker.delegate = self;
     self.feePicker.dataSource = self;
 
@@ -61,7 +61,14 @@
 #pragma mark - Both Picker Delegate Methods
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return self.availableSeatsPickerArray.count;
+    if (pickerView == self.availableSeatsPicker)
+    {
+        return self.availableSeatsPickerArray.count;
+    }
+    else
+    {
+        return self.feePickerArray.count;
+    }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -71,19 +78,25 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return self.availableSeatsPickerArray[row];
-}
+    if (pickerView == self.availableSeatsPicker)
+    {
+        return self.availableSeatsPickerArray[row];
+    }
+    else
+    {
+        return self.feePickerArray[row];
+    }}
 
 #pragma mark - KeyboardDelegate Methods
 - (void)keyboardDidShow:(NSNotification *)notification
 {
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 226)];
+        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 220)];
     }
     else
     {
-        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 226)];
+        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 220)];
     }
 }
 
@@ -91,11 +104,11 @@
 {
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 226)];
+        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 220)];
     }
     else
     {
-        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 226)];
+        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 220)];
     }
 }
 
@@ -111,7 +124,7 @@
 
 
     ride[@"geoStart"] = geoStartPoint;
-    //ride[@"driver"] = [PFUser currentUser];
+    //ride[@"geoEnd"] = georesortPoint;
     ride[@"description"] = self.additionalTextView.text;
     ride[@"date"] = self.datePicker.date;
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
