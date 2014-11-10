@@ -10,5 +10,6 @@
 #import <Parse/Parse.h>
 
 @interface RideMapViewController : UIViewController
+@property PFObject *resortObject;
 
 @end

@@ -129,6 +129,8 @@
     ride[@"date"] = self.datePicker.date;
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
+    ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+
 
     [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)

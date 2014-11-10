@@ -8,10 +8,12 @@
 
 #import "RideMapViewController.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface RideMapViewController ()
+@interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
+@property CLLocationManager *locationManager;
 
 @property NSArray *rides;
 @end
@@ -21,14 +23,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.rideMapView.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
+
+
     [self refreshDisplay];
-    [self makeAndPlaceRidePins];
 
 }
+
+
+
 
 - (void)refreshDisplay
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Ride"];
+    [query whereKey:@"endName" containsString:self.resortObject[@"endName"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
@@ -38,6 +52,8 @@
         else
         {
             self.rides = objects;
+            NSLog(@"rides: %@", self.rides);
+            [self makeAndPlaceRidePins];
         }
     }];
 }
@@ -46,16 +62,15 @@
 {
     for (PFObject *ride in self.rides)
     {
-        PFGeoPoint *geoPoint = [ride objectForKey:@"geoStart"];
+        PFGeoPoint *tempGeoPoint = [ride objectForKey:@"geoStart"];
+
+        CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        [annotation setTitle:@"Starting Point"];
-        annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-//        [self.annotation setSubtitle:self.mapSearchBar.text];
+        //[annotation setTitle:@"Starting Point"];
+        annotation.coordinate = annotationCoordinate;
         [self.rideMapView addAnnotation:annotation];
-        //[self.rideMapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
+        [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.1f, 0.1f)) animated:YES];
     }
 }
-
-
 
 @end

@@ -8,6 +8,7 @@
 
 #import "RidesMainViewController.h"
 #import "RideOrDriveViewController.h"
+#import "RideMapViewController.h"
 #import "CreateRideMapViewController.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
@@ -95,16 +96,18 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"createNewRideSegue"])
-    {
-    CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
     NSIndexPath *indexPath = [self.resortsTableView indexPathForSelectedRow];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
-    createRideMapViewController.resortObject = resort;
+
+    if ([segue.identifier isEqualToString:@"createNewRideSegue"])
+    {
+        CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
+        createRideMapViewController.resortObject = resort;
     }
     else
     {
-    //THIS IS A GREAT PICKUP POINT
+        RideMapViewController *rideMapViewController = [segue destinationViewController];
+        rideMapViewController.resortObject = resort;
     }
 }
 

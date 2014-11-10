@@ -21,6 +21,19 @@
 
     [Parse setApplicationId:@"hezbTJQTfKuStxmusd8H7646am7qbRtvrljYJgdO" clientKey:@"Q94xr4Sz3dFZ6oBeDw9ojsaD21DAcsUSS5zPpQq6"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+
+        NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+        if (!UUID) {
+            CFUUIDRef uuid = CFUUIDCreate(NULL);
+            UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+            CFRelease(uuid);
+
+            [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:@"ApplicationUUIDKey"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            NSLog(@"UUID %@", UUID);
+        }
     return YES;
 }
 
