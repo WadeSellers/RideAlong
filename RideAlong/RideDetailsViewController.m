@@ -23,16 +23,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- [self loadComments];}
+    [self loadComments];
+}
 
-//-(void) loadComments{
+-(void) loadComments{
 //    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Ride"];
 //    request.sortDescriptors =[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"comment" ascending:YES]];
 //    self.commentsMutableArray = [self.managedObjectContext executeFetchRequest:request error:nil];
 //    [self.tableView reloadData];
-//}
+//
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.commentsTableView.count;
+    return self.commentsMutableArray.count;
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -42,8 +44,5 @@
     cell.textLabel.text =ride.name;
     return cell;
 }
-
-
-
 
 @end
