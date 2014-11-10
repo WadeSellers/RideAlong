@@ -10,6 +10,7 @@
 #import "RideOrDriveViewController.h"
 #import "RideMapViewController.h"
 #import "CreateRideMapViewController.h"
+#import "ProfileViewController.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 
@@ -104,10 +105,16 @@
         CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
         createRideMapViewController.resortObject = resort;
     }
-    else
+    else if ([segue.identifier isEqualToString:@"findAvailableRideSegue"])
     {
         RideMapViewController *rideMapViewController = [segue destinationViewController];
         rideMapViewController.resortObject = resort;
+    }
+    else if ([segue.identifier isEqualToString:@"myHubSegue"])
+
+    {
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.resortObject = resort;
     }
 }
 
