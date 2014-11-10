@@ -10,9 +10,10 @@
 #import <Parse/Parse.h>
 
 @interface RideDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
+@property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 
-@property (weak, nonatomic) IBOutlet UITextView *rideDetailsTextView;
-@property (weak, nonatomic) IBOutlet UITableView *rideCommentsTableView;
+
 
 @end
 

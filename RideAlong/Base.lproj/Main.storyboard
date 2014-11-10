@@ -29,36 +29,48 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="InA-ul-ifs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-2x-9EY">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="y7Q-Ph-qJB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="xBV-BS-0qL">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y7Q-Ph-qJB" id="54d-ko-roD">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xBV-BS-0qL" id="Y8Z-na-iCf">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="bhG-hO-RP0" id="eQb-fG-XRQ"/>
-                                    <outlet property="delegate" destination="bhG-hO-RP0" id="ngD-C2-0N2"/>
-                                </connections>
                             </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
+                                <rect key="frame" x="0.0" y="105" width="600" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EEU-2x-9EY" secondAttribute="trailing" id="3vv-7S-TSy"/>
+                            <constraint firstItem="EEU-2x-9EY" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="236" id="DQ2-Vi-QDl"/>
                             <constraint firstItem="fOx-fh-wjh" firstAttribute="leading" secondItem="LgS-tc-qFP" secondAttribute="leadingMargin" constant="-16" id="Dje-01-qcM"/>
+                            <constraint firstItem="EEU-2x-9EY" firstAttribute="top" secondItem="ZKc-LK-6cn" secondAttribute="bottom" constant="67" id="Hzu-bN-jHH"/>
+                            <constraint firstAttribute="trailing" secondItem="ZKc-LK-6cn" secondAttribute="trailing" id="THU-tl-Nfu"/>
                             <constraint firstItem="fOx-fh-wjh" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" id="i2l-yF-far"/>
+                            <constraint firstItem="EEU-2x-9EY" firstAttribute="leading" secondItem="LgS-tc-qFP" secondAttribute="leading" id="kSZ-2F-w8B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fOx-fh-wjh" secondAttribute="trailing" constant="-16" id="mAU-tn-ujI"/>
+                            <constraint firstItem="uxH-X9-iZ7" firstAttribute="top" secondItem="EEU-2x-9EY" secondAttribute="bottom" id="oAT-jH-Adc"/>
+                            <constraint firstItem="ZKc-LK-6cn" firstAttribute="leading" secondItem="LgS-tc-qFP" secondAttribute="leading" id="sfj-lY-UNO"/>
+                            <constraint firstItem="ZKc-LK-6cn" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="41" id="vjZ-6c-l6L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mCe-Jx-2XA">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Eif-0K-9yB"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="rideCommentsTableView" destination="InA-ul-ifs" id="eNH-Ak-Efw"/>
+                        <outlet property="commentsTableView" destination="EEU-2x-9EY" id="f8G-iT-1s3"/>
+                        <outlet property="commentsTextView" destination="ZKc-LK-6cn" id="t4u-Tf-sop"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
