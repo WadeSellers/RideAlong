@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "Ride.h"
 
-@interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 @property NSMutableArray * commentsMutableArray;
@@ -23,7 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.commentsTextView.delegate = self;
     [self loadComments];
+}
+- (IBAction)onSaveTabButtonPressed:(id)sender {
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+
+self.commentsTextView.text = @"";
 }
 
 -(void) loadComments{
@@ -39,9 +47,9 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    Ride  *ride = [self.commentsMutableArray objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    cell.textLabel.text =ride.name;
+    PFObject *comment = [self.commentsMutableArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = comment[@"name"];
     return cell;
 }
 
