@@ -7,23 +7,32 @@
 //
 
 #import "ProfileViewController.h"
+#import "RideDetailsViewController.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *usernameTitle;
 @property (weak, nonatomic) IBOutlet UITextView *userDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
 @end
 
 @implementation ProfileViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (IBAction)onBarButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"commentSegue" sender:self];
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    PFObject *resortObject = [[PFObject alloc] init] ;
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    RideDetailsViewController *rideDetailsViewController = segue.destinationViewController;
+    rideDetailsViewController.resortObject = self.resortObject;
+}
 
 
 @end

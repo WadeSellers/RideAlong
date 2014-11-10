@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface RideDetailsViewController : UIViewController
-
+@property PFObject *resortObject;
 
 @end

@@ -590,10 +590,14 @@
                     <navigationItem key="navigationItem" title="My Hub" id="DyG-LB-Q5E">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="XXS-pu-aY3">
                             <connections>
+                                <action selector="onBarButtonPressed:" destination="KmT-nw-Lr6" id="7BV-jR-HVC"/>
                                 <segue destination="bhG-hO-RP0" kind="show" identifier="commentSegue" id="qAv-Er-wGZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="barButton" destination="XXS-pu-aY3" id="5gw-jO-Q4n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRK-Nw-BbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
