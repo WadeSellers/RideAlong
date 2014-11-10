@@ -12,6 +12,7 @@
 @interface RideDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *rideDetailsTextView;
+@property (weak, nonatomic) IBOutlet UITableView *rideCommentsTableView;
 
 @end
 
@@ -21,16 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-- (IBAction)onBookLiftButtonPressed:(id)sender
-{
-    PFObject *ride = [PFObject objectWithClassName:@"Ride"];
-    NSLog(@"date: %@", ride[@"Date"]);
-    ride[@"Driver"] = [[PFUser currentUser] objectForKey:@"objectId"];
-    NSLog(@"driver id: %@", ride[@"Driver"]);
-    ride[@"Description"] = self.rideDetailsTextView;
-    NSLog(@"description: %@", ride[@"Description"]);
-    
-}
+
 
 
 
