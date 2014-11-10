@@ -12,7 +12,6 @@
 @interface RideMapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
-@property MKPointAnnotation *annotation;
 
 @property NSArray *rides;
 @end
@@ -22,26 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.annotation = [[MKPointAnnotation alloc] init];
-//    [self.annotation setCoordinate:newLocation];
-//    [self.annotation setTitle:@"Starting Point"];
-//    [self.annotation setSubtitle:self.mapSearchBar.text];
-//    [self.mapView addAnnotation:self.annotation];
-//    [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
+    [self refreshDisplay];
+    [self makeAndPlaceRidePins];
 
-}
-
-- (void)makeAndPlaceRidePins
-{
-    for (PFObject *ride in self.rides)
-    {
-
-        self.annotation = [[MKPointAnnotation alloc] init];
-        [self.annotation setTitle:@"Starting Point"];
-//        [self.annotation setSubtitle:self.mapSearchBar.text];
-//        [self.mapView addAnnotation:self.annotation];
-//        [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
-    }
 }
 
 - (void)refreshDisplay
@@ -58,7 +40,22 @@
             self.rides = objects;
         }
     }];
-
 }
+
+- (void)makeAndPlaceRidePins
+{
+    for (PFObject *ride in self.rides)
+    {
+        PFGeoPoint *geoPoint = [ride objectForKey:@"geoStart"];
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        [annotation setTitle:@"Starting Point"];
+        annotation.coordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//        [self.annotation setSubtitle:self.mapSearchBar.text];
+        [self.rideMapView addAnnotation:annotation];
+        //[self.rideMapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
+    }
+}
+
+
 
 @end

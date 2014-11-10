@@ -31,6 +31,8 @@
 
     self.flowSegmentedControl.selectedSegmentIndex = self.indexSetter;
 
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+
     [self refreshDisplay];
 }
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		166F0BA81A08137200ABF976 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BA71A08137200ABF976 /* main.m */; };
 		166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BAA1A08137200ABF976 /* AppDelegate.m */; };
-		166F0BAE1A08137200ABF976 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BAD1A08137200ABF976 /* ViewController.m */; };
 		166F0BB11A08137200ABF976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BAF1A08137200ABF976 /* Main.storyboard */; };
 		166F0BB61A08137200ABF976 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166F0BB41A08137200ABF976 /* LaunchScreen.xib */; };
 		166F0BC21A08137200ABF976 /* RideAlongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BC11A08137200ABF976 /* RideAlongTests.m */; };
@@ -61,8 +60,6 @@
 		166F0BA71A08137200ABF976 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		166F0BA91A08137200ABF976 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		166F0BAA1A08137200ABF976 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		166F0BAC1A08137200ABF976 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		166F0BAD1A08137200ABF976 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		166F0BB01A08137200ABF976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		166F0BB51A08137200ABF976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		166F0BBB1A08137200ABF976 /* RideAlongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideAlongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,16 +171,12 @@
 				166F0BCB1A0822F100ABF976 /* Storyboard in Here */,
 				166F0BA91A08137200ABF976 /* AppDelegate.h */,
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
-				166F0BAC1A08137200ABF976 /* ViewController.h */,
-				166F0BAD1A08137200ABF976 /* ViewController.m */,
 				16C21B981A0DFF4D00EEF533 /* RideOrDriveViewController.h */,
 				16C21B991A0DFF4D00EEF533 /* RideOrDriveViewController.m */,
 				16C21B5D1A0AB14000EEF533 /* RidesMainViewController.h */,
 				16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */,
 				16C21B9F1A0F04F400EEF533 /* CreateRideMapViewController.h */,
 				16C21BA01A0F04F400EEF533 /* CreateRideMapViewController.m */,
-				BC8D686B1A0ABB0E00BBD653 /* Ride.h */,
-				BC8D686C1A0ABB0E00BBD653 /* Ride.m */,
 				16C21B601A0AB18800EEF533 /* RideMapViewController.h */,
 				16C21B611A0AB18800EEF533 /* RideMapViewController.m */,
 				166F0BD61A09342500ABF976 /* CreateRideViewController.h */,
@@ -192,6 +185,8 @@
 				166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */,
 				166F0BD01A09316600ABF976 /* ProfileViewController.h */,
 				166F0BD11A09316600ABF976 /* ProfileViewController.m */,
+				BC8D686B1A0ABB0E00BBD653 /* Ride.h */,
+				BC8D686C1A0ABB0E00BBD653 /* Ride.m */,
 				16C21B9D1A0E059500EEF533 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -370,7 +365,6 @@
 			files = (
 				BC8D686D1A0ABB0E00BBD653 /* Ride.m in Sources */,
 				16C21BA11A0F04F400EEF533 /* CreateRideMapViewController.m in Sources */,
-				166F0BAE1A08137200ABF976 /* ViewController.m in Sources */,
 				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
 				16C21B9A1A0DFF4D00EEF533 /* RideOrDriveViewController.m in Sources */,
 				16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */,
