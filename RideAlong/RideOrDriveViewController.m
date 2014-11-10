@@ -7,9 +7,10 @@
 //
 
 #import "RideOrDriveViewController.h"
+#import "RidesMainViewController.h"
 
 @interface RideOrDriveViewController ()
-@property NSNumber *indexSetter;
+@property int indexSetter;
 
 @end
 
@@ -17,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,17 +27,19 @@
 }
 - (IBAction)onFindRideButtonPressed:(id)sender
 {
-    self.indexSetter = [NSNumber numberWithInt:0];
+    self.indexSetter = 0;
 }
 
 - (IBAction)onCreateRideButtonPressed:(id)sender
 {
-    self.indexSetter = [NSNumber numberWithInt:1]   ;
+    self.indexSetter = 1;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    UINavigationController *navigationController = [segue destinationViewController];
+    RidesMainViewController *ridesMainViewController = [[navigationController viewControllers]objectAtIndex:0];
+    ridesMainViewController.indexSetter = self.indexSetter;
 }
 
 

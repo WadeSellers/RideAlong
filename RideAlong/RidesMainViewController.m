@@ -7,6 +7,8 @@
 //
 
 #import "RidesMainViewController.h"
+#import "RideOrDriveViewController.h"
+#import "CreateRideMapViewController.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 
@@ -18,6 +20,7 @@
 
 @property NSArray *resorts;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *flowSegmentedControl;
+@property NSString *resortNameSelected;
 
 @end
 
@@ -26,11 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.flowSegmentedControl.selectedSegmentIndex = self.indexSetter;
+
     [self refreshDisplay];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
     [self refreshDisplay];
 }
 
@@ -51,8 +57,6 @@
         if (!error) {
             UIImage *image = [UIImage imageWithData:imageData];
             cell.imageView.image = image;
-            NSLog(@"%@", self.resorts);
-
         }
     }];
 
@@ -71,7 +75,6 @@
     }
 }
 
-
 - (void)refreshDisplay
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Resort"];
@@ -87,6 +90,22 @@
         }
     }];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"createNewRideSegue"])
+    {
+    CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
+    NSIndexPath *indexPath = [self.resortsTableView indexPathForSelectedRow];
+    PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
+    createRideMapViewController.resortObject = resort;
+    }
+    else
+    {
+    //THIS IS A GREAT PICKUP POINT
+    }
+}
+
 
 
 

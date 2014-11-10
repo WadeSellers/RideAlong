@@ -7,27 +7,21 @@
 //
 
 #import "CreateRideViewController.h"
-#import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <Parse/Parse.h>
 
-@interface CreateRideViewController ()<CLLocationManagerDelegate, MKAnnotation, UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property MKPointAnnotation *dropPin;
+@interface CreateRideViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pinGesture;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-//@property CLLocationCoordinate2D coordinate;
-//@property NSString * title;
-//@property NSString * subtitle;
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *availableSeatsPicker;
 @property NSArray *availableSeatsPickerArray;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *feePicker;
 @property NSArray *feePickerArray;
 
-@property (weak, nonatomic) IBOutlet UIPickerView *statePicker;
 @property NSArray *statePickerArray;
+@property (weak, nonatomic) IBOutlet UITextView *additionalTextView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
 @end
 
@@ -38,10 +32,14 @@
 {
     [super viewDidLoad];
 
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
+    self.additionalTextView.delegate = self;
+
+    [self.scroller setScrollEnabled:YES];
+    [self.scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
     self.availableSeatsPickerArray = @[@"Available Seats", @"1", @"2", @"3", @"4", @"5+"];
     self.availableSeatsPicker.delegate = self;
@@ -51,10 +49,13 @@
     self.feePicker.delegate = self;
     self.feePicker.dataSource = self;
 
-    self.statePickerArray = @[@"AL", @"AK", @"AZ", @"AR", @"CA", @"CO", @"CT", @"DE", @"FL", @"GA", @"HI", @"ID", @"IL", @"IN", @"IA", @"KS", @"KY", @"LA", @"ME", @"MD", @"MA", @"MI", @"MN", @"MS", @"MO", @"MT", @"NE", @"NV", @"NH", @"NJ", @"NM", @"NY", @"NC", @"ND", @"OH", @"OK", @"OR", @"PA", @"RI", @"SC", @"SD", @"TN", @"TX", @"UT", @"VT", @"VA", @"WA", @"WV", @"WI", @"WY"];
-    [self.statePicker selectRow:6 inComponent:0 animated:NO];
+}
 
-
+#pragma mark - UITextView delegate method
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    self.additionalTextView.text = @"";
+    [self.additionalTextView setTextAlignment:NSTextAlignmentLeft];
 }
 
 #pragma mark - Both Picker Delegate Methods
@@ -73,30 +74,56 @@
     return self.availableSeatsPickerArray[row];
 }
 
-- (void)pinDrop{
-    CLLocationCoordinate2D coord;
-
-    self.dropPin =[[MKPointAnnotation alloc]init];
-    self.dropPin.coordinate = coord;
-    self.dropPin.title =@"PostARide";
-    [self.mapView addAnnotation:self.dropPin];
-
-    UITapGestureRecognizer *pinGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pinGesture:)];
-    pinGesture.delegate = self;
-    [self.mapView addGestureRecognizer:pinGesture];
-}
-- (IBAction)pinGesture:(UITapGestureRecognizer *)sender
+#pragma mark - KeyboardDelegate Methods
+- (void)keyboardDidShow:(NSNotification *)notification
 {
-    CGPoint point = [sender locationInView:self.mapView];
-    CLLocationCoordinate2D locCoord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
-    // Then all you have to do is create the annotation and add it to the map
-
-    self.dropPin = [[MKPointAnnotation alloc] init];
-    self.dropPin.coordinate = locCoord;
-    [self.mapView addAnnotation:self.dropPin];
-
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 226)];
+    }
+    else
+    {
+        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 226)];
+    }
 }
 
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 226)];
+    }
+    else
+    {
+        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 226)];
+    }
+}
+
+- (IBAction)onCreateRideButtonPressed:(id)sender
+{
+    PFObject *ride = [PFObject objectWithClassName:@"Ride"];
+    PFGeoPoint *geoStartPoint = [[PFGeoPoint alloc] init];
+    geoStartPoint.latitude = self.startingMKPointAnnotation.coordinate.latitude;
+    geoStartPoint.longitude = self.startingMKPointAnnotation.coordinate.longitude;
+
+    PFGeoPoint *georesortPoint = [[PFGeoPoint alloc] init];
+    georesortPoint = [self.resortObject objectForKey:@"gpsLocation"];
+
+
+    ride[@"geoStart"] = geoStartPoint;
+    //ride[@"driver"] = [PFUser currentUser];
+    ride[@"description"] = self.additionalTextView.text;
+    ride[@"date"] = self.datePicker.date;
+    ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
+    ride[@"endName"] = [self.resortObject objectForKey:@"name"];
+
+    [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error userInfo]);
+        }
+    }];
+}
 
 
 //

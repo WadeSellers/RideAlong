@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
 
 @interface CreateRideViewController : UIViewController
+
+@property MKPointAnnotation *startingMKPointAnnotation;
+@property PFObject *resortObject;
 
 @end
