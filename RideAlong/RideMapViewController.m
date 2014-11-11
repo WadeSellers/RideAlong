@@ -34,7 +34,7 @@
 
     self.myPin = [[MKPointAnnotation alloc] init];
 
-    self.myPin.title = @"Mobile Makers";
+    self.myPin.title = @"YAY";
     [self.rideMapView addAnnotation:self.myPin];
 
     self.rideMapView.delegate = self;
@@ -74,8 +74,8 @@
         CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         //[annotation setTitle:@"Starting Point"];
-        annotation.coordinate = annotationCoordinate;
-        [self.rideMapView addAnnotation:annotation];
+        self.myPin.coordinate = annotationCoordinate;
+        [self.rideMapView addAnnotation:self.myPin];
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.1f, 0.1f)) animated:YES];
     }
 }
