@@ -27,6 +27,10 @@
     self.mapSearchBar.delegate =self;
 
     [self.mapView userTrackingMode];
+
+    UINavigationController *navCon  = (UINavigationController*) [self.navigationController.viewControllers objectAtIndex:1];
+
+    navCon.navigationItem.title = [self.resortObject objectForKey:@"name"];
 }
 
 #pragma mark - SearchBarDelegate Methods

@@ -142,7 +142,7 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="ZHT-ek-JHe">
                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Find A Ride"/>
                                 <segment title="Setup A Ride"/>
@@ -191,8 +191,25 @@
                                     <outlet property="delegate" destination="sze-Pg-POQ" id="SUE-aO-YlK"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIH-G7-6M6">
+                                <rect key="frame" x="0.0" y="547" width="600" height="53"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="Q63-6Q-pGy"/>
+                                    <constraint firstAttribute="height" constant="53" id="fAO-l0-ZYY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.30980392159999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapNextButton:" destination="sze-Pg-POQ" eventType="touchUpInside" id="f01-ef-BNY"/>
+                                </connections>
+                            </button>
                             <searchBar contentMode="redraw" prompt="Where should you meetup?" placeholder="Trip Starting Address" translatesAutoresizingMaskIntoConstraints="NO" id="Nuu-PV-uu5">
-                                <rect key="frame" x="0.0" y="64" width="600" height="75"/>
+                                <rect key="frame" x="0.0" y="472" width="600" height="75"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="CqI-qi-m3a"/>
                                     <constraint firstAttribute="height" constant="75" id="h02-Xj-ke0"/>
@@ -203,22 +220,6 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIH-G7-6M6">
-                                <rect key="frame" x="0.0" y="547" width="600" height="53"/>
-                                <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="Q63-6Q-pGy"/>
-                                    <constraint firstAttribute="height" constant="53" id="fAO-l0-ZYY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Drop A Start Location &amp; Tap Here">
-                                    <color key="titleColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="mapNextButton:" destination="sze-Pg-POQ" eventType="touchUpInside" id="f01-ef-BNY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -234,7 +235,7 @@
                             <constraint firstItem="57d-yY-IRq" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" id="gPA-ZT-uFt"/>
                             <constraint firstAttribute="centerX" secondItem="Nuu-PV-uu5" secondAttribute="centerX" id="hoi-zU-sE4"/>
                             <constraint firstItem="h4A-AX-11U" firstAttribute="top" secondItem="HQy-at-Pdt" secondAttribute="bottom" id="o2B-zf-pgD"/>
-                            <constraint firstItem="Nuu-PV-uu5" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" id="qr5-AY-uBx"/>
+                            <constraint firstItem="Nuu-PV-uu5" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" constant="408" id="qr5-AY-uBx"/>
                             <constraint firstAttribute="trailing" secondItem="dIH-G7-6M6" secondAttribute="trailing" id="rWD-LH-dGN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="57d-yY-IRq" secondAttribute="trailing" constant="-16" id="vpe-bH-Amz"/>
                         </constraints>
@@ -428,12 +429,12 @@
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDO-ty-7bb">
                                 <rect key="frame" x="0.0" y="554" width="600" height="46"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="mEh-nR-Rq9"/>
                                 </constraints>
                                 <state key="normal" title="Create Your Ride">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.99215686270000003" green="0.30980392159999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -563,6 +564,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="feO-rd-rv4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99215686270000003" green="0.30980392159999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
