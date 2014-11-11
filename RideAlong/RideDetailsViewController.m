@@ -35,7 +35,7 @@
     [self.commentsTableView reloadData];
 
     [self.resortObject[@"comments"] addObject: self.commentsTextView.text];
-    
+
     [self.resortObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {
@@ -43,8 +43,8 @@
         }
     }];
 
-
 }
+
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{
 
