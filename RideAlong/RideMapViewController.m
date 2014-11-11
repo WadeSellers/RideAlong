@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
 @property CLLocationManager *locationManager;
+@property MKPointAnnotation *myPin;
 
 @property NSArray *rides;
 @end
@@ -31,7 +32,12 @@
     }
     [self.locationManager startUpdatingLocation];
 
+    self.myPin = [[MKPointAnnotation alloc] init];
 
+    self.myPin.title = @"Mobile Makers";
+    [self.rideMapView addAnnotation:self.myPin];
+
+    self.rideMapView.delegate = self;
     [self refreshDisplay];
 
 }
@@ -73,5 +79,35 @@
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.1f, 0.1f)) animated:YES];
     }
 }
+
+-(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
+    pin.canShowCallout = YES;
+    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    return pin;
+}
+
+
+
+
+
+
+
+
+
+
+
+//    NSString *reuseId = @"standardPin";
+//
+//    MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[sender dequeueReusableAnnotationViewWithIdentifier:reuseId];
+//    if (pinAnnotation == nil)
+//    {
+//        pinAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoDark];
+//        pinAnnotation.canShowCallout = YES;
+//    }
+//    pinAnnotation.annotation = annotation;
+//    return pinAnnotation;
 
 @end
