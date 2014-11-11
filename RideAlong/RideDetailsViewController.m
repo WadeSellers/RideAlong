@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "Ride.h"
 
-@interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 @property NSMutableArray * commentsMutableArray;
@@ -23,7 +23,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.commentsTextView.delegate = self;
     [self loadComments];
+    self.commentsMutableArray = [NSMutableArray array];
+}
+- (IBAction)onSaveTabButtonPressed:(id)sender {
+
+    NSString *commentString =self.commentsTextView.text;
+    [self.commentsMutableArray addObject:commentString];
+    self.commentsTextView.text = @"";
+    [self.commentsTableView reloadData];
+
+    [self.resortObject[@"comments"] addObject: self.commentsTextView.text];
+    
+    [self.resortObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error userInfo]);
+        }
+    }];
+
+
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+
+self.commentsTextView.text = @"";
 }
 
 -(void) loadComments{
@@ -39,9 +64,11 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    Ride  *ride = [self.commentsMutableArray objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    cell.textLabel.text =ride.name;
+//    PFObject *comment = [self.commentsMutableArray objectAtIndex:indexPath.row];
+//    cell.textLabel.text = comment[@"name"];
+    cell.textLabel.text = [self.commentsMutableArray objectAtIndex:indexPath.row];
+
     return cell;
 }
 
