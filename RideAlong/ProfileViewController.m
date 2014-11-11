@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFObject *resortObject = [[PFObject alloc] init] ;
 
 }
 
