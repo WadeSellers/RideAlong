@@ -79,7 +79,8 @@
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.5f, 0.5f)) animated:YES];
+
         }
         else
         {
@@ -88,7 +89,7 @@
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.5f, 0.5f)) animated:YES];
         }
 
         [searchBar resignFirstResponder];

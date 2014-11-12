@@ -76,7 +76,7 @@
 
         self.myPin.coordinate = annotationCoordinate;
         [self.rideMapView addAnnotation:self.myPin];
-        [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.1f, 0.1f)) animated:YES];
+        [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
     }
 }
 
