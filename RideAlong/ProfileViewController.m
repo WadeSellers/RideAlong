@@ -11,22 +11,21 @@
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myRidesTableView;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property NSArray *driverArray;
 @property NSArray *passengerArray;
-
 @end
+
 
 @implementation ProfileViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [self retrieveUserRides];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - TableViewDelegate Methods

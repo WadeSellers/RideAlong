@@ -21,13 +21,12 @@
     [super viewDidLoad];
 
     NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]);
-
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
+
 - (IBAction)onFindRideButtonPressed:(id)sender
 {
     self.createRide = 1;
