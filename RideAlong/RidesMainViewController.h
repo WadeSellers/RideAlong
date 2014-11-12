@@ -10,7 +10,7 @@
 
 @interface RidesMainViewController : UIViewController
 
-@property int indexSetter;
+@property int createRide;
 
 
 @end

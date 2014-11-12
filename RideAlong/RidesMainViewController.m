@@ -21,7 +21,7 @@
 @property CLLocationManager *locationManager;
 
 @property NSArray *resorts;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *flowSegmentedControl;
+
 @property NSString *resortNameSelected;
 
 @end
@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.flowSegmentedControl.selectedSegmentIndex = self.indexSetter;
+    NSLog(@"%i", self.createRide);
 
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
 
@@ -69,7 +69,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.flowSegmentedControl.selectedSegmentIndex == 0)
+    if (self.createRide == 1)
     {
         [self performSegueWithIdentifier:@"findAvailableRideSegue" sender:self];
     }
@@ -110,12 +110,7 @@
         RideMapViewController *rideMapViewController = [segue destinationViewController];
         rideMapViewController.resortObject = resort;
     }
-    else if ([segue.identifier isEqualToString:@"myHubSegue"])
 
-    {
-        ProfileViewController *profileViewController = [segue destinationViewController];
-        profileViewController.resortObject = resort;
-    }
 }
 
 

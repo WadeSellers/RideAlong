@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="4792" y="673"/>
         </scene>
-        <!--Choose A Resort-->
+        <!--Choose a Resort-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RidesMainViewController" sceneMemberID="viewController">
@@ -128,7 +128,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QjV-hv-o0h" secondAttribute="trailing" constant="-16" id="P1h-Xu-wkh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose A Resort" id="dht-o2-ULz">
+                    <navigationItem key="navigationItem" title="Choose a Resort" id="dht-o2-ULz">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="m1V-YX-FKS">
                             <connections>
                                 <segue destination="pF9-aE-jsg" kind="presentation" id="18t-J2-gBk"/>
@@ -195,8 +195,7 @@
                                 <rect key="frame" x="0.0" y="472" width="600" height="75"/>
                                 <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="CqI-qi-m3a"/>
-                                    <constraint firstAttribute="height" constant="75" id="h02-Xj-ke0"/>
+                                    <constraint firstAttribute="height" constant="75" id="Uhi-hg-lbn"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <scopeButtonTitles>
@@ -207,19 +206,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nuu-PV-uu5" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leadingMargin" constant="-16" id="1cn-q4-ySd"/>
                             <constraint firstItem="HQy-at-Pdt" firstAttribute="top" secondItem="LKV-aF-coL" secondAttribute="topMargin" id="ByX-Zh-86g"/>
                             <constraint firstAttribute="centerX" secondItem="dIH-G7-6M6" secondAttribute="centerX" id="HZD-qV-g8F"/>
                             <constraint firstItem="57d-yY-IRq" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leadingMargin" constant="-16" id="Nkp-5V-iTb"/>
                             <constraint firstItem="HQy-at-Pdt" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leadingMargin" constant="-16" id="OOw-Ef-hEX"/>
                             <constraint firstItem="h4A-AX-11U" firstAttribute="top" secondItem="dIH-G7-6M6" secondAttribute="bottom" id="Otb-E3-dvE"/>
                             <constraint firstItem="dIH-G7-6M6" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leading" id="Pv0-J2-VeG"/>
+                            <constraint firstItem="Nuu-PV-uu5" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leading" id="Uzh-d9-JIy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HQy-at-Pdt" secondAttribute="trailing" constant="-16" id="cuY-D2-Odg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nuu-PV-uu5" secondAttribute="trailing" constant="-16" id="dDy-4N-Rph"/>
                             <constraint firstItem="57d-yY-IRq" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" id="gPA-ZT-uFt"/>
-                            <constraint firstAttribute="centerX" secondItem="Nuu-PV-uu5" secondAttribute="centerX" id="hoi-zU-sE4"/>
+                            <constraint firstAttribute="trailing" secondItem="Nuu-PV-uu5" secondAttribute="trailing" id="h5L-cb-l3W"/>
+                            <constraint firstItem="dIH-G7-6M6" firstAttribute="top" secondItem="Nuu-PV-uu5" secondAttribute="bottom" id="jMD-A4-PtN"/>
                             <constraint firstItem="h4A-AX-11U" firstAttribute="top" secondItem="HQy-at-Pdt" secondAttribute="bottom" id="o2B-zf-pgD"/>
-                            <constraint firstItem="Nuu-PV-uu5" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" constant="408" id="qr5-AY-uBx"/>
                             <constraint firstAttribute="trailing" secondItem="dIH-G7-6M6" secondAttribute="trailing" id="rWD-LH-dGN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="57d-yY-IRq" secondAttribute="trailing" constant="-16" id="vpe-bH-Amz"/>
                         </constraints>
@@ -284,7 +282,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="KIM-AB-nmg" kind="presentation" id="HCv-u1-36K"/>
+                                            <action selector="onCreateRideButtonPressed:" destination="pF9-aE-jsg" eventType="touchUpInside" id="apk-SN-HZi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygz-CG-AgX">
@@ -295,7 +293,7 @@
                                             <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="KIM-AB-nmg" kind="presentation" id="8qp-HW-Aoc"/>
+                                            <action selector="onFindRideButtonPressed:" destination="pF9-aE-jsg" eventType="touchUpInside" id="xOZ-aT-alD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -313,6 +311,9 @@
                             <constraint firstItem="3oo-8p-h6c" firstAttribute="top" secondItem="CXd-K7-c3g" secondAttribute="bottom" id="nc3-cK-JLv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="KIM-AB-nmg" kind="show" identifier="resortsSegue" id="zn8-Rc-xZ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dak-6D-RxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -546,7 +547,6 @@
         <image name="mountain" width="300" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HCv-u1-36K"/>
-        <segue reference="jFz-6N-b8t"/>
+        <segue reference="18t-J2-gBk"/>
     </inferredMetricsTieBreakers>
 </document>
