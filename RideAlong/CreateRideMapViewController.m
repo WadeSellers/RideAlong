@@ -115,6 +115,8 @@
     createRideViewController.resortObject = self.resortObject;
 }
 
+
+
 #pragma mark - MKMapViewDelegate Methods
 //-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 //{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pF9-aE-jsg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pF9-aE-jsg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -191,8 +191,8 @@
                                     <action selector="mapNextButton:" destination="sze-Pg-POQ" eventType="touchUpInside" id="f01-ef-BNY"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" prompt="Where do you want to meetup?" placeholder="Trip Starting Address" translatesAutoresizingMaskIntoConstraints="NO" id="Nuu-PV-uu5">
-                                <rect key="frame" x="0.0" y="472" width="600" height="75"/>
+                            <searchBar contentMode="redraw" misplaced="YES" prompt="Where do you want to meetup?" placeholder="Trip Starting Address" translatesAutoresizingMaskIntoConstraints="NO" id="Nuu-PV-uu5">
+                                <rect key="frame" x="0.0" y="428" width="600" height="75"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Uhi-hg-lbn"/>
