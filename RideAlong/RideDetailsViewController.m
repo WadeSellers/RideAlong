@@ -27,7 +27,7 @@
     [self loadComments];
     self.commentsMutableArray = [NSMutableArray array];
 }
-- (IBAction)onSaveTabButtonPressed:(id)sender {
+- (IBAction)onSendButtonPressed:(id)sender {
 
     NSString *commentString =self.commentsTextView.text;
     [self.commentsMutableArray addObject:commentString];
