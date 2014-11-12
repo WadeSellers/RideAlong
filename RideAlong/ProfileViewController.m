@@ -26,7 +26,7 @@
     [super viewDidLoad];
 
     [self retrieveUserRides];
-
+    NSLog(@"resort object: %@", self.resortObject);
 
 }
 
@@ -79,6 +79,12 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    [self performSegueWithIdentifier:@"commentSegue" sender:self];
+}
+
 #pragma mark - Parse Retrieval Methods
 - (void)retrieveUserRides
 {
@@ -111,26 +117,14 @@
             //NSLog(@"rides: %@", self.passengerArray);
         }
         [self.myRidesTableView reloadData];
-        NSLog(@"driver array: %@", self.driverArray);
-        NSLog(@"passenger array: %@", self.passengerArray);
 
     }];
 }
 
-
-
-- (IBAction)onBarButtonPressed:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self performSegueWithIdentifier:@"commentSegue" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    if ([segue.identifier isEqualToString:@"commentsSegue"])
-    {
-        RideDetailsViewController *rideDetailsViewController = segue.destinationViewController;
+        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
         rideDetailsViewController.resortObject = self.resortObject;
-    }
 }
 
 

@@ -41,7 +41,6 @@
 		BC8D68351A0819EE00BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68321A0819EE00BBD653 /* Parse.framework */; };
 		BC8D68361A0819EE00BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68331A0819EE00BBD653 /* ParseFacebookUtils.framework */; };
 		BC8D68381A081A1A00BBD653 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68371A081A1A00BBD653 /* FacebookSDK.framework */; };
-		BC8D686D1A0ABB0E00BBD653 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8D686C1A0ABB0E00BBD653 /* Ride.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,8 +101,6 @@
 		BC8D68321A0819EE00BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68331A0819EE00BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		BC8D68371A081A1A00BBD653 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		BC8D686B1A0ABB0E00BBD653 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
-		BC8D686C1A0ABB0E00BBD653 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +182,6 @@
 				166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */,
 				166F0BD01A09316600ABF976 /* ProfileViewController.h */,
 				166F0BD11A09316600ABF976 /* ProfileViewController.m */,
-				BC8D686B1A0ABB0E00BBD653 /* Ride.h */,
-				BC8D686C1A0ABB0E00BBD653 /* Ride.m */,
 				16C21B9D1A0E059500EEF533 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -363,7 +358,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC8D686D1A0ABB0E00BBD653 /* Ride.m in Sources */,
 				16C21BA11A0F04F400EEF533 /* CreateRideMapViewController.m in Sources */,
 				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
 				16C21B9A1A0DFF4D00EEF533 /* RideOrDriveViewController.m in Sources */,
