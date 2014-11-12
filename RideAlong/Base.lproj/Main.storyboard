@@ -496,6 +496,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KmT-nw-Lr6" id="dMg-p8-Ugv"/>
+                                    <outlet property="delegate" destination="KmT-nw-Lr6" id="t1D-Iv-Bz4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -517,6 +521,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="XXS-pu-aY3" id="5gw-jO-Q4n"/>
+                        <outlet property="myRidesTableView" destination="91V-Qz-asb" id="V2W-fq-OrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRK-Nw-BbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
