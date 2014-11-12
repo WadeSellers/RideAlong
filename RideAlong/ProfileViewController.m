@@ -26,7 +26,6 @@
     [super viewDidLoad];
 
     [self retrieveUserRides];
-    NSLog(@"resort object: %@", self.resortObject);
 
 }
 
@@ -42,7 +41,8 @@
     {
         return @"Spock, you have the con...";
     }
-    else{
+    else
+    {
         return @"Are we there yet? Are we there yet?";
     }
 }
@@ -68,20 +68,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
 
     if (indexPath.section == 0) {
-        PFObject *ride = [self.driverArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = ride[@"endName"];
+        PFObject *driverRide = [self.driverArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = driverRide[@"endName"];
     }
     else
     {
-        PFObject *ride = [self.passengerArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = ride[@"endName"];
+        PFObject *passengerRide = [self.passengerArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = passengerRide[@"endName"];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     [self performSegueWithIdentifier:@"commentSegue" sender:self];
 }
 
@@ -101,30 +100,39 @@
             self.driverArray = objects;
             //NSLog(@"rides: %@", self.driverArray);
         }
+        PFQuery *userIsPassengerQuery = [PFQuery queryWithClassName:@"Ride"];
+        [userIsPassengerQuery whereKey:@"passenger" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]];
+        [userIsPassengerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Error: %@", error.userInfo);
+                self.passengerArray = [NSArray array];
+            }
+            else
+            {
+                self.passengerArray = objects;
+                //NSLog(@"rides: %@", self.passengerArray);
+            }
+            [self.myRidesTableView reloadData];
+        }];
     }];
 
-    PFQuery *userIsPassengerQuery = [PFQuery queryWithClassName:@"Ride"];
-    [userIsPassengerQuery whereKey:@"passenger" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]];
-    [userIsPassengerQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
-            NSLog(@"Error: %@", error.userInfo);
-            self.passengerArray = [NSArray array];
-        }
-        else
-        {
-            self.passengerArray = objects;
-            //NSLog(@"rides: %@", self.passengerArray);
-        }
-        [self.myRidesTableView reloadData];
-
-    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
-        rideDetailsViewController.resortObject = self.resortObject;
+    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+    PFObject *resortObjectToPass = [PFObject new];
+
+    if ([self.myRidesTableView indexPathForSelectedRow].section == 0)
+    {
+        resortObjectToPass = [self.driverArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
+    }
+    else
+    {
+        resortObjectToPass = [self.passengerArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
+    }
+    rideDetailsViewController.resortObject = resortObjectToPass;
 }
 
 

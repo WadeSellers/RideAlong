@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 
 @interface ProfileViewController : UIViewController
-@property PFObject *resortObject;
 
 
 @end
