@@ -8,12 +8,11 @@
 
 #import "RideDetailsViewController.h"
 #import <Parse/Parse.h>
-#import "Ride.h"
 
 @interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
-@property NSMutableArray * commentsMutableArray;
+@property NSArray *commentsArray;
 
 
 
@@ -25,22 +24,20 @@
     [super viewDidLoad];
     self.commentsTextView.delegate = self;
     [self loadComments];
-    self.commentsMutableArray = [NSMutableArray array];
+    self.commentsArray = [NSMutableArray array];
 }
 - (IBAction)onSendButtonPressed:(id)sender {
 
     NSString *commentString =self.commentsTextView.text;
-    [self.commentsMutableArray addObject:commentString];
     self.commentsTextView.text = @"";
-    [self.commentsTableView reloadData];
 
-    [self.resortObject[@"comments"] addObject: self.commentsTextView.text];
-
+    [self.resortObject[@"comments"] addObject:commentString];
     [self.resortObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {
             NSLog(@"Error: %@", [error userInfo]);
         }
+        [self.commentsTableView reloadData];
     }];
 
 }
@@ -51,23 +48,34 @@
 self.commentsTextView.text = @"";
 }
 
--(void) loadComments{
-//    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Ride"];
-//    request.sortDescriptors =[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"comment" ascending:YES]];
-//    self.commentsMutableArray = [self.managedObjectContext executeFetchRequest:request error:nil];
-//    [self.tableView reloadData];
-//
+-(void) loadComments
+{
+    PFQuery *thisRide = [PFQuery queryWithClassName:@"Ride"];
+    [thisRide whereKey:@"objectId" equalTo:self.resortObject[@"objectId"]];
+    [thisRide findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", error.userInfo);
+            self.commentsArray = [NSArray array];
+        }
+        else
+        {
+            self.commentsArray = objects;
+            //NSLog(@"rides: %@", self.driverArray);
+        }
+    }];
+
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.commentsMutableArray.count;
+    return self.commentsArray.count;
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-//    PFObject *comment = [self.commentsMutableArray objectAtIndex:indexPath.row];
-//    cell.textLabel.text = comment[@"name"];
-    cell.textLabel.text = [self.commentsMutableArray objectAtIndex:indexPath.row];
+    PFObject *comment = [self.commentsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = comment[@"name"];
+    cell.detailTextLabel.text = [self.commentsArray objectAtIndex:indexPath.row];
 
     return cell;
 }

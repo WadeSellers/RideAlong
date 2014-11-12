@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type a comment Here:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Type a comment Here:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
                                 <rect key="frame" x="0.0" y="72" width="600" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -33,7 +33,7 @@
                                     <navigationItem title="Title" id="iIR-Tf-jD4"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6J-Vg-8Gg">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6J-Vg-8Gg">
                                 <rect key="frame" x="0.0" y="208" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -49,7 +49,7 @@
                                     <action selector="onSendButtonPressed:" destination="bhG-hO-RP0" eventType="touchUpInside" id="cUx-k3-yYG"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-F7-ToD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-F7-ToD">
                                 <rect key="frame" x="0.0" y="246" width="600" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -349,6 +349,7 @@
                     </view>
                     <connections>
                         <outlet property="rideMapView" destination="H96-gS-Ech" id="G5A-P3-gFS"/>
+                        <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailsSegue" id="tN3-yM-UPJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7w-sg-xOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -555,5 +556,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jFz-6N-b8t"/>
+        <segue reference="tN3-yM-UPJ"/>
     </inferredMetricsTieBreakers>
 </document>
