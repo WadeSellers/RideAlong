@@ -129,7 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose A Resort" id="dht-o2-ULz">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="m1V-YX-FKS"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="m1V-YX-FKS">
+                            <connections>
+                                <segue destination="pF9-aE-jsg" kind="presentation" id="18t-J2-gBk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="resortsTableView" destination="QjV-hv-o0h" id="ejA-R3-CHF"/>
@@ -456,6 +460,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-gd-ak5">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Igw-Ex-SEO"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="My Lifts" id="TTJ-qI-CSh">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="TpU-4x-Uol">
+                                            <connections>
+                                                <segue destination="pF9-aE-jsg" kind="presentation" id="jFz-6N-b8t"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="91V-Qz-asb">
                                 <rect key="frame" x="0.0" y="272" width="600" height="328"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -475,20 +494,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-gd-ak5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="My Lifts" id="TTJ-qI-CSh">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="TpU-4x-Uol"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ziH-gd-ak5" firstAttribute="top" secondItem="7Nv-W1-XS8" secondAttribute="bottom" id="FwF-jg-H4r"/>
+                            <constraint firstAttribute="trailing" secondItem="ziH-gd-ak5" secondAttribute="trailing" id="Zve-I2-gtx"/>
                             <constraint firstAttribute="trailing" secondItem="91V-Qz-asb" secondAttribute="trailing" id="eDC-ki-8hn"/>
                             <constraint firstItem="Ee3-BJ-pwz" firstAttribute="top" secondItem="91V-Qz-asb" secondAttribute="bottom" id="ftv-oy-V8r"/>
                             <constraint firstItem="91V-Qz-asb" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leading" id="iOd-tB-aeS"/>
+                            <constraint firstItem="ziH-gd-ak5" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leading" id="sLC-sB-6hX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Hub" id="DyG-LB-Q5E">
@@ -533,5 +547,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HCv-u1-36K"/>
+        <segue reference="jFz-6N-b8t"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -29,8 +29,13 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    RideDetailsViewController *rideDetailsViewController = segue.destinationViewController;
-    rideDetailsViewController.resortObject = self.resortObject;
+
+    if ([segue.identifier isEqualToString:@"commentsSegue"])
+    {
+        RideDetailsViewController *rideDetailsViewController = segue.destinationViewController;
+        rideDetailsViewController.resortObject = self.resortObject;
+    }
+
 }
 
 
