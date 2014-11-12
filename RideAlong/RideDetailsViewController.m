@@ -51,7 +51,7 @@ self.commentsTextView.text = @"";
 -(void) loadComments
 {
     PFQuery *thisRide = [PFQuery queryWithClassName:@"Ride"];
-    [thisRide whereKey:@"objectId" equalTo:self.resortObject[@"objectId"]];
+    [thisRide whereKey:@"objectId" equalTo:self.resortObject.objectId];
     [thisRide findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
