@@ -21,7 +21,7 @@
 
 @property NSArray *statePickerArray;
 @property (weak, nonatomic) IBOutlet UITextView *additionalTextView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
+
 
 @end
 
@@ -34,13 +34,6 @@
 
     self.additionalTextView.delegate = self;
 
-    [self.scroller setScrollEnabled:YES];
-    [self.scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-
     self.availableSeatsPickerArray = @[@"Seats", @"1", @"2", @"3", @"4", @"5+"];
     self.availableSeatsPicker.delegate = self;
     self.availableSeatsPicker.dataSource = self;
@@ -49,6 +42,27 @@
     self.feePicker.delegate = self;
     self.feePicker.dataSource = self;
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)keyboardDidShow:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    [self.view setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y - kbSize.height , self.view.frame.size.width, self.view.frame.size.height)];
+}
+
+-(void)keyboardDidHide:(NSNotification *)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    [self.view setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + kbSize.height, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
 #pragma mark - UITextView delegate method
@@ -85,30 +99,6 @@
     else
     {
         return self.feePickerArray[row];
-    }}
-
-#pragma mark - KeyboardDelegate Methods
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    if ([[UIScreen mainScreen] bounds].size.height == 568)
-    {
-        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 220)];
-    }
-    else
-    {
-        [self.view setFrame:CGRectMake(0,-35,self.view.frame.size.width,self.view.frame.size.height - 220)];
-    }
-}
-
--(void)keyboardDidHide:(NSNotification *)notification
-{
-    if ([[UIScreen mainScreen] bounds].size.height == 568)
-    {
-        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 220)];
-    }
-    else
-    {
-        [self.view setFrame:CGRectMake(0, 20, self.view.frame.size.width,self.view.frame.size.height + 220)];
     }
 }
 

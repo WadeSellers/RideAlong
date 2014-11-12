@@ -72,8 +72,7 @@
         PFGeoPoint *tempGeoPoint = [ride objectForKey:@"geoStart"];
 
         CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        //[annotation setTitle:@"Starting Point"];
+
         self.myPin.coordinate = annotationCoordinate;
         [self.rideMapView addAnnotation:self.myPin];
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.1f, 0.1f)) animated:YES];
