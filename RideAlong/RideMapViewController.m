@@ -103,15 +103,16 @@ return pin;
 {
      // use the annotation view as the sender
 
-    RideDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FILL ME IN"];
-    [self.navigationController pushViewController:vc animated:YES];
+//    RideDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FILL ME IN"];
+//    [self.navigationController pushViewController:vc animated:YES];
+     [self performSegueWithIdentifier:@"rideDetailsSegue" sender:view];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView *)sender
 {
-    if ([segue.identifier isEqualToString:@"RideDetailsVC"])
+    if ([segue.identifier isEqualToString:@"rideDetailsSegue"])
     {
-        RideDetailsViewController *destinationViewController = segue.destinationViewController;
+        RideDetailsViewController *destinationViewController = [segue destinationViewController];
 
         // grab the annotation from the sender
 
