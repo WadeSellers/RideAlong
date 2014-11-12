@@ -8,6 +8,7 @@
 
 #import "RideOrDriveViewController.h"
 #import "RidesMainViewController.h"
+#import "ProfileViewController.h"
 
 @interface RideOrDriveViewController ()
 @property int indexSetter;
@@ -21,26 +22,32 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)onFindRideButtonPressed:(id)sender
-{
-    self.indexSetter = 0;
-}
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+//- (IBAction)onFindRideButtonPressed:(id)sender
+//{
+//    self.indexSetter = 0;
+//}
+//
+//- (IBAction)onCreateRideButtonPressed:(id)sender
+//{
+//    self.indexSetter = 1;
+//}
 
-- (IBAction)onCreateRideButtonPressed:(id)sender
-{
-    self.indexSetter = 1;
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    UINavigationController *navigationController = [segue destinationViewController];
-    RidesMainViewController *ridesMainViewController = [[navigationController viewControllers]objectAtIndex:0];
-    ridesMainViewController.indexSetter = self.indexSetter;
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"resortsSegue"])
+//    {
+//        UINavigationController *navigationController = [segue destinationViewController];
+//        //RidesMainViewController *ridesMainViewController = [[navigationController viewControllers]objectAtIndex:0];
+//    }
+//        else if ([segue.identifier isEqualToString:@"myHubSegue"])
+//    {
+//        ProfileViewController
+//    }
+//}
 
 
 @end
