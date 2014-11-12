@@ -9,6 +9,7 @@
 #import "RideMapViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "RideDetailsViewController.h"
 
 @interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -81,14 +82,44 @@
 
 -(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
 
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
-    pin.canShowCallout = YES;
-    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    MKPinAnnotationView *pin = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"MyPinId"];
+//    if (pin == nil)
+//    {
+        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
+        pin.enabled = YES;
+        pin.canShowCallout = YES;
+//        pin.image = [UIImage imageNamed:@"locale.png"]; // could use MKAnnotationView instead of MKPinAnnotationView?
 
-    return pin;
+        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    }
+//    else {
+//    pin.annotation = annotation;
+//    }
+
+return pin;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+     // use the annotation view as the sender
 
+    RideDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FILL ME IN"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView *)sender
+{
+    if ([segue.identifier isEqualToString:@"RideDetailsVC"])
+    {
+        RideDetailsViewController *destinationViewController = segue.destinationViewController;
+
+        // grab the annotation from the sender
+
+        destinationViewController.resortObject = self.resortObject;
+    } else {
+        NSLog(@"WTF?");
+    }
+}
 
 
 
