@@ -26,7 +26,7 @@
     [super viewDidLoad];
 
     [self retrieveUserRides];
-    [self.myRidesTableView reloadData];
+
 
 }
 
@@ -36,15 +36,30 @@
     return 2;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return @"Spock, you have the con...";
+    }
+    else{
+        return @"Are we there yet? Are we there yet?";
+    }
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
     {
         return [self.driverArray count];
     }
-    else
+    else if (section == 1)
     {
         return [self.passengerArray count];
+    }
+    else
+    {
+        return 1;
     }
 }
 
@@ -54,12 +69,12 @@
 
     if (indexPath.section == 0) {
         PFObject *ride = [self.driverArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = ride[@"name"];
+        cell.textLabel.text = ride[@"endName"];
     }
     else
     {
         PFObject *ride = [self.passengerArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = ride[@"name"];
+        cell.textLabel.text = ride[@"endName"];
     }
     return cell;
 }
@@ -95,6 +110,10 @@
             self.passengerArray = objects;
             //NSLog(@"rides: %@", self.passengerArray);
         }
+        [self.myRidesTableView reloadData];
+        NSLog(@"driver array: %@", self.driverArray);
+        NSLog(@"passenger array: %@", self.passengerArray);
+
     }];
 }
 
