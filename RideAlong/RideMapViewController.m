@@ -10,6 +10,7 @@
 #import "RideDetailsViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MyCustomPin.h"
 
 @interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -18,13 +19,14 @@
 @property MKPointAnnotation *myPin;
 @property NSArray *rides;
 @property PFObject *resortObject;
+@property NSMutableArray *annotationsArray;
 @end
 
 @implementation RideMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.annotationsArray = [NSMutableArray array];
     self.rideMapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -42,6 +44,7 @@
     [self.rideMapView addAnnotation:self.myPin];
 
     self.rideMapView.delegate = self;
+
     [self refreshDisplay];
 
 }
@@ -79,18 +82,26 @@
 
         CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
 
-        self.myPin.coordinate = annotationCoordinate;
-        [self.rideMapView addAnnotation:self.myPin];
+        MyMKPointAnnotation *annotation= [[MyMKPointAnnotation alloc] init];
+        annotation.coordinate = annotationCoordinate;
+        annotation.title = ride[@"startName"];
+        annotation.rideObject = ride;
+
+        [self.annotationsArray addObject:annotation];
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
+            NSLog(@"rides: %@", ride);
+            NSLog(@"mypin.coordinate: %f, %f", self.myPin.coordinate.latitude, self.myPin.coordinate.longitude);
     }
+    [self.rideMapView showAnnotations:self.annotationsArray animated:YES];
 }
 
 -(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
+    MyCustomPin *pin = [[MyCustomPin alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
     pin.enabled = YES;
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    pin.myPointAnnotation = annotation;
 
     return pin;
 }
@@ -100,11 +111,12 @@
      [self performSegueWithIdentifier:@"rideDetailsSegue" sender:view];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView *)sender
-//{
-//    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
-//    rideDetailsViewController.resortObject = self.resortObject;
-//
-//}
+//Need to figure out how to know which annotation was selected and the ride object it originally came from
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MyCustomPin *)sender
+{
+    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+    rideDetailsViewController.tappedAnnotation = sender;
+}
 
 @end

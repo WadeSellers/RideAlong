@@ -25,6 +25,8 @@
     self.commentsTextView.delegate = self;
     [self loadComments];
     self.commentsArray = [NSMutableArray array];
+
+    NSLog(@"lalala %@", self.tappedAnnotation.myPointAnnotation.rideObject);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,7 +35,7 @@
 
 - (IBAction)onSendButtonPressed:(id)sender {
 
-    NSString *commentString =self.commentsTextView.text;
+   // NSString *commentString =self.commentsTextView.text;
     self.commentsTextView.text = @"";
 
 //    [self.resortObject[@"comments"] addObject:commentString];

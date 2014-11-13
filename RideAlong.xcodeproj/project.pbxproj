@@ -16,6 +16,8 @@
 		166F0BD21A09316600ABF976 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD11A09316600ABF976 /* ProfileViewController.m */; };
 		166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */; };
 		166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD71A09342500ABF976 /* CreateRideViewController.m */; };
+		1689E68C1A1466FE0089EF6B /* MyMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */; };
+		1689E68F1A1473B10089EF6B /* MyCustomPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689E68E1A1473B10089EF6B /* MyCustomPin.m */; };
 		16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */; };
 		16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B611A0AB18800EEF533 /* RideMapViewController.m */; };
 		16C21B651A0AC42400EEF533 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B641A0AC42400EEF533 /* Resort.m */; };
@@ -71,6 +73,10 @@
 		166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideDetailsViewController.m; sourceTree = "<group>"; };
 		166F0BD61A09342500ABF976 /* CreateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideViewController.h; sourceTree = "<group>"; };
 		166F0BD71A09342500ABF976 /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
+		1689E68A1A1466FE0089EF6B /* MyMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMKPointAnnotation.h; sourceTree = "<group>"; };
+		1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKPointAnnotation.m; sourceTree = "<group>"; };
+		1689E68D1A1473B10089EF6B /* MyCustomPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomPin.h; sourceTree = "<group>"; };
+		1689E68E1A1473B10089EF6B /* MyCustomPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomPin.m; sourceTree = "<group>"; };
 		16C21B5D1A0AB14000EEF533 /* RidesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RidesMainViewController.h; sourceTree = "<group>"; };
 		16C21B5E1A0AB14000EEF533 /* RidesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RidesMainViewController.m; sourceTree = "<group>"; };
 		16C21B601A0AB18800EEF533 /* RideMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideMapViewController.h; sourceTree = "<group>"; };
@@ -182,6 +188,10 @@
 				166F0BD41A09317F00ABF976 /* RideDetailsViewController.m */,
 				166F0BD01A09316600ABF976 /* ProfileViewController.h */,
 				166F0BD11A09316600ABF976 /* ProfileViewController.m */,
+				1689E68A1A1466FE0089EF6B /* MyMKPointAnnotation.h */,
+				1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */,
+				1689E68D1A1473B10089EF6B /* MyCustomPin.h */,
+				1689E68E1A1473B10089EF6B /* MyCustomPin.m */,
 				16C21B9D1A0E059500EEF533 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -362,7 +372,9 @@
 				166F0BD51A09317F00ABF976 /* RideDetailsViewController.m in Sources */,
 				16C21B9A1A0DFF4D00EEF533 /* RideOrDriveViewController.m in Sources */,
 				16C21B5F1A0AB14000EEF533 /* RidesMainViewController.m in Sources */,
+				1689E68F1A1473B10089EF6B /* MyCustomPin.m in Sources */,
 				16C21B651A0AC42400EEF533 /* Resort.m in Sources */,
+				1689E68C1A1466FE0089EF6B /* MyMKPointAnnotation.m in Sources */,
 				16C21B621A0AB18800EEF533 /* RideMapViewController.m in Sources */,
 				166F0BD81A09342500ABF976 /* CreateRideViewController.m in Sources */,
 				166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "MyMKPointAnnotation.h"
 
 @interface RideMapViewController : UIViewController
 

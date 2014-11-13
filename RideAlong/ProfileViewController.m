@@ -126,7 +126,7 @@
 {
     if ([segue.identifier isEqualToString:@"rideDetailSegue"])
     {
-        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+        //RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
         PFObject *resortObjectToPass;
     
         if ([self.myRidesTableView indexPathForSelectedRow].section == 0)
@@ -140,7 +140,7 @@
         NSLog(@"%@", resortObjectToPass);
 
         }
-        rideDetailsViewController.resortObject = resortObjectToPass;
+        //rideDetailsViewController.resortObject = resortObjectToPass;
     }
 }
 

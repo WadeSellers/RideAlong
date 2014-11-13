@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "MyMKPointAnnotation.h"
+#import "MyCustomPin.h"
 
 @interface RideDetailsViewController : UIViewController
-@property PFObject *resortObject;
+@property MyCustomPin *tappedAnnotation;
 
 @end
