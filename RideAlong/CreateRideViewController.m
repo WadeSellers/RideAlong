@@ -11,26 +11,22 @@
 
 @interface CreateRideViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pinGesture;
-
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *availableSeatsPicker;
-@property NSArray *availableSeatsPickerArray;
-
 @property (weak, nonatomic) IBOutlet UIPickerView *feePicker;
-@property NSArray *feePickerArray;
-
-@property NSArray *statePickerArray;
 @property (weak, nonatomic) IBOutlet UITextView *additionalTextView;
-
+@property NSArray *feePickerArray;
+@property NSArray *statePickerArray;
+@property NSArray *availableSeatsPickerArray;
 
 @end
 
 @implementation CreateRideViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"lalala: %@", self.resortObject);
 
     self.additionalTextView.delegate = self;
 
@@ -108,26 +104,23 @@
     PFGeoPoint *geoStartPoint = [[PFGeoPoint alloc] init];
     geoStartPoint.latitude = self.startingMKPointAnnotation.coordinate.latitude;
     geoStartPoint.longitude = self.startingMKPointAnnotation.coordinate.longitude;
-
+    
     PFGeoPoint *georesortPoint = [[PFGeoPoint alloc] init];
     georesortPoint = [self.resortObject objectForKey:@"gpsLocation"];
 
-
     ride[@"geoStart"] = geoStartPoint;
-    //ride[@"geoEnd"] = georesortPoint;
     ride[@"description"] = self.additionalTextView.text;
     ride[@"date"] = self.datePicker.date;
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
     ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
 
-
-//    [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (error)
-//        {
-//            NSLog(@"Error: %@", [error userInfo]);
-//        }
-//    }];
+    [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", [error userInfo]);
+        }
+    }];
 }
 
 @end

@@ -32,8 +32,6 @@
 
     navCon.navigationItem.title = [self.resortObject objectForKey:@"name"];
 
-
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
@@ -43,8 +41,6 @@
 {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-
-    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     [self.view setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y - kbSize.height , self.view.frame.size.width, self.view.frame.size.height)];
 }
 
@@ -52,8 +48,6 @@
 {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-
-    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     [self.view setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + kbSize.height, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
@@ -73,14 +67,12 @@
         region.center = [(CLCircularRegion *)placemark.region center];
 
         //Drop a Pin
-
         if (self.annotation) {
             [self.annotation setCoordinate:newLocation];
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.5f, 0.5f)) animated:YES];
-
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.001f, 0.001f)) animated:YES];
         }
         else
         {
@@ -89,9 +81,8 @@
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.5f, 0.5f)) animated:YES];
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(0.001f, 0.001f)) animated:YES];
         }
-
         [searchBar resignFirstResponder];
     }];
 }
@@ -116,26 +107,13 @@
     createRideViewController.resortObject = self.resortObject;
 }
 
-
-
 #pragma mark - MKMapViewDelegate Methods
 //-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 //{
 //    [self.mapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
 //}
 
-//#pragma mark - Keyboard Methods
-//- (void)registerForKeyboardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWasShown:)
-//                                                 name:UIKeyboardDidShowNotification object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillBeHidden:)
-//                                                 name:UIKeyboardWillHideNotification object:nil];
-//    
-//}
+
 
 
 @end

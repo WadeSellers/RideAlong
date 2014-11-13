@@ -13,7 +13,6 @@
 
 
 @interface MyCustomPin : MKPinAnnotationView
-@property PFObject *rideObject;
 @property MyMKPointAnnotation *myPointAnnotation;
 
 @end

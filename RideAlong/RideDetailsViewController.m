@@ -7,6 +7,7 @@
 //
 
 #import "RideDetailsViewController.h"
+#import "RideOrDriveViewController.h"
 #import <Parse/Parse.h>
 
 @interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
@@ -27,6 +28,7 @@
     self.commentsArray = [NSMutableArray array];
 
     NSLog(@"lalala %@", self.tappedAnnotation.myPointAnnotation.rideObject);
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
