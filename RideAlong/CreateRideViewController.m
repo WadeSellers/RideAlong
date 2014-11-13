@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"lalala: %@", self.resortObject);
+    //NSLog(@"lalala: %@", self.resortObject);
 
     self.additionalTextView.delegate = self;
 
@@ -114,6 +114,7 @@
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
     ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+    ride[@"comments"] = [[NSMutableArray alloc] init];
 
     [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
