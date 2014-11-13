@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pF9-aE-jsg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Ride Details View Controller-->
+        <!--Title-->
         <scene sceneID="7JF-XJ-BEI">
             <objects>
                 <viewController id="bhG-hO-RP0" customClass="RideDetailsViewController" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Type a comment Here:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type a comment Here:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZKc-LK-6cn">
                                 <rect key="frame" x="0.0" y="72" width="600" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -29,11 +29,8 @@
                             </textView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3Y-hw-eSI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="iIR-Tf-jD4"/>
-                                </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6J-Vg-8Gg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6J-Vg-8Gg">
                                 <rect key="frame" x="0.0" y="208" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -45,11 +42,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onSaveTabButtonPressed:" destination="bhG-hO-RP0" eventType="touchUpInside" id="Ype-GQ-bEs"/>
                                     <action selector="onSendButtonPressed:" destination="bhG-hO-RP0" eventType="touchUpInside" id="cUx-k3-yYG"/>
+                                    <segue destination="KmT-nw-Lr6" kind="show" id="HfG-Ra-no9"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-F7-ToD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-F7-ToD">
                                 <rect key="frame" x="0.0" y="246" width="600" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -67,7 +64,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="T6J-Vg-8Gg" secondAttribute="trailing" id="9R7-1e-uqQ"/>
                             <constraint firstItem="UFb-F7-ToD" firstAttribute="top" secondItem="T6J-Vg-8Gg" secondAttribute="bottom" constant="8" id="BSc-Hv-DiN"/>
-                            <constraint firstItem="ZKc-LK-6cn" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="52" id="KgV-Iu-sjx"/>
+                            <constraint firstItem="ZKc-LK-6cn" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="8" id="KgV-Iu-sjx"/>
                             <constraint firstItem="ZKc-LK-6cn" firstAttribute="leading" secondItem="LgS-tc-qFP" secondAttribute="leadingMargin" constant="-16" id="LH5-Ml-gh2"/>
                             <constraint firstItem="T6J-Vg-8Gg" firstAttribute="top" secondItem="ZKc-LK-6cn" secondAttribute="bottom" constant="8" id="MZ2-5Z-ulg"/>
                             <constraint firstItem="T6J-Vg-8Gg" firstAttribute="leading" secondItem="LgS-tc-qFP" secondAttribute="leading" id="ZGe-Zq-69B"/>
@@ -78,6 +75,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="XqD-oT-1o1">
+                        <barButtonItem key="rightBarButtonItem" title="Book Lift" id="8PL-Wx-KSv">
+                            <connections>
+                                <segue destination="Q92-ry-5d6" kind="unwind" unwindAction="unwindFromBookLift:" id="Oqt-9W-g3x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentsTableView" destination="UFb-F7-ToD" id="Jvc-d3-bon"/>
@@ -85,8 +89,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Q92-ry-5d6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4792" y="673"/>
+            <point key="canvasLocation" x="4914" y="-223"/>
         </scene>
         <!--Choose a Resort-->
         <scene sceneID="ufC-wZ-h7g">
@@ -128,16 +133,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QjV-hv-o0h" secondAttribute="trailing" constant="-16" id="P1h-Xu-wkh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose a Resort" id="dht-o2-ULz">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="m1V-YX-FKS">
-                            <connections>
-                                <segue destination="pF9-aE-jsg" kind="presentation" id="18t-J2-gBk"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Choose a Resort" id="dht-o2-ULz"/>
                     <connections>
                         <outlet property="resortsTableView" destination="QjV-hv-o0h" id="ejA-R3-CHF"/>
-                        <segue destination="6cg-cN-dhY" kind="show" identifier="findAvailableRideSegue" id="tHs-nV-5ms"/>
                         <segue destination="sze-Pg-POQ" kind="show" identifier="createNewRideSegue" id="cem-HX-JLb"/>
                     </connections>
                 </viewController>
@@ -148,7 +146,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3380" y="366"/>
+            <point key="canvasLocation" x="4156" y="556"/>
         </scene>
         <!--Create Ride Map View Controller-->
         <scene sceneID="obW-Rx-ELg">
@@ -191,8 +189,8 @@
                                     <action selector="mapNextButton:" destination="sze-Pg-POQ" eventType="touchUpInside" id="f01-ef-BNY"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" misplaced="YES" prompt="Where do you want to meetup?" placeholder="Trip Starting Address" translatesAutoresizingMaskIntoConstraints="NO" id="Nuu-PV-uu5">
-                                <rect key="frame" x="0.0" y="428" width="600" height="75"/>
+                            <searchBar contentMode="redraw" prompt="Where do you want to meetup?" placeholder="Trip Starting Address" translatesAutoresizingMaskIntoConstraints="NO" id="Nuu-PV-uu5">
+                                <rect key="frame" x="0.0" y="472" width="600" height="75"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Uhi-hg-lbn"/>
@@ -226,12 +224,12 @@
                     <connections>
                         <outlet property="mapSearchBar" destination="Nuu-PV-uu5" id="V9r-Ap-D50"/>
                         <outlet property="mapView" destination="HQy-at-Pdt" id="UNb-nq-wvm"/>
-                        <segue destination="9JT-jN-5WR" kind="show" identifier="setupRideSegue" id="so9-kg-Q89"/>
+                        <segue destination="9JT-jN-5WR" kind="show" identifier="completeRideSegue" id="so9-kg-Q89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfy-N8-fhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4098" y="-123"/>
+            <point key="canvasLocation" x="4914" y="556"/>
         </scene>
         <!--Ride Or Drive View Controller-->
         <scene sceneID="QzE-d0-KPv">
@@ -252,7 +250,7 @@
                                         <rect key="frame" x="168" y="496" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
-                                        <state key="normal" title="My Lifts">
+                                        <state key="normal" title="My Rides">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -278,23 +276,23 @@
                                         <rect key="frame" x="168" y="405" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
-                                        <state key="normal" title="Create A Lift">
+                                        <state key="normal" title="Create A Ride">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onCreateRideButtonPressed:" destination="pF9-aE-jsg" eventType="touchUpInside" id="apk-SN-HZi"/>
+                                            <segue destination="vXZ-lx-hvc" kind="show" identifier="createARideSegue" id="NoJ-8M-h5n"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygz-CG-AgX">
                                         <rect key="frame" x="168" y="304" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
-                                        <state key="normal" title="Find A Lift">
+                                        <state key="normal" title="Rides Near Me">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="onFindRideButtonPressed:" destination="pF9-aE-jsg" eventType="touchUpInside" id="xOZ-aT-alD"/>
+                                            <segue destination="6cg-cN-dhY" kind="show" id="YMZ-SB-eEl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -312,13 +310,11 @@
                             <constraint firstItem="3oo-8p-h6c" firstAttribute="top" secondItem="CXd-K7-c3g" secondAttribute="bottom" id="nc3-cK-JLv"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="KIM-AB-nmg" kind="show" identifier="resortsSegue" id="zn8-Rc-xZ6"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="rD2-Se-VIw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dak-6D-RxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1995" y="366"/>
+            <point key="canvasLocation" x="3423" y="366"/>
         </scene>
         <!--Ride Map View Controller-->
         <scene sceneID="sXG-RE-Dqx">
@@ -354,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7w-sg-xOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4098" y="673"/>
+            <point key="canvasLocation" x="4156" y="-223"/>
         </scene>
         <!--Setup Lift-->
         <scene sceneID="DgI-mT-JY7">
@@ -386,6 +382,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onCreateRideButtonPressed:" destination="9JT-jN-5WR" eventType="touchUpInside" id="AuM-wx-Bem"/>
+                                    <segue destination="qlj-BM-EBX" kind="unwind" unwindAction="unwindFromCompleteNewRide:" id="EDj-Px-l0l"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-8t-Nmm">
@@ -444,15 +441,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POI-aH-Xgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qlj-BM-EBX" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="lVt-Gu-CtO">
                     <connections>
                         <action selector="pinGesture:" destination="9JT-jN-5WR" id="l0f-cl-2kO"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4792" y="-122"/>
+            <point key="canvasLocation" x="5680" y="556"/>
         </scene>
-        <!--My Hub-->
+        <!--Profile View Controller-->
         <scene sceneID="HY9-tN-iG3">
             <objects>
                 <viewController id="KmT-nw-Lr6" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -464,22 +462,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-gd-ak5">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-gd-ak5">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Igw-Ex-SEO"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="My Lifts" id="TTJ-qI-CSh">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="TpU-4x-Uol">
-                                            <connections>
-                                                <segue destination="pF9-aE-jsg" kind="presentation" id="jFz-6N-b8t"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="My Lifts" id="TTJ-qI-CSh"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="91V-Qz-asb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="91V-Qz-asb">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -493,7 +485,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="bhG-hO-RP0" kind="show" identifier="commentSegue" id="CR4-2C-f8e"/>
+                                            <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailSegue" id="xgw-kr-aqg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -513,49 +505,38 @@
                             <constraint firstItem="ziH-gd-ak5" firstAttribute="leading" secondItem="4wM-1h-pd3" secondAttribute="leading" id="sLC-sB-6hX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Hub" id="DyG-LB-Q5E">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="XXS-pu-aY3">
-                            <connections>
-                                <action selector="onBarButtonPressed:" destination="KmT-nw-Lr6" id="7BV-jR-HVC"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
-                        <outlet property="barButton" destination="XXS-pu-aY3" id="5gw-jO-Q4n"/>
                         <outlet property="myRidesTableView" destination="91V-Qz-asb" id="V2W-fq-OrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRK-Nw-BbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1995" y="1167"/>
+            <point key="canvasLocation" x="3423" y="1261"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="hQe-G4-XBH">
+        <scene sceneID="kf0-F4-wiA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KIM-AB-nmg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sjq-pT-I2N" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="feO-rd-rv4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qml-yV-I1W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.99215686270000003" green="0.30980392159999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="mp6-Xg-SLK"/>
+                        <segue destination="pF9-aE-jsg" kind="relationship" relationship="rootViewController" id="K6R-wq-mYC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fmb-cM-YlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wKN-4U-Dds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2707" y="366"/>
+            <point key="canvasLocation" x="2687" y="366"/>
         </scene>
     </scenes>
     <resources>
         <image name="mountain" width="300" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jFz-6N-b8t"/>
         <segue reference="tN3-yM-UPJ"/>
+        <segue reference="HfG-Ra-no9"/>
     </inferredMetricsTieBreakers>
 </document>

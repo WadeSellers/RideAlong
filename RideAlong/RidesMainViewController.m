@@ -31,15 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSLog(@"%i", self.createRide);
-
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-
     [self refreshDisplay];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 
     [self refreshDisplay];
 }
@@ -69,14 +66,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.createRide == 1)
-    {
-        [self performSegueWithIdentifier:@"findAvailableRideSegue" sender:self];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"createNewRideSegue" sender:self];
-    }
+    [self performSegueWithIdentifier:@"createNewRideSegue" sender:self];
 }
 
 - (void)refreshDisplay
@@ -105,12 +95,6 @@
         CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
         createRideMapViewController.resortObject = resort;
     }
-    else if ([segue.identifier isEqualToString:@"findAvailableRideSegue"])
-    {
-        RideMapViewController *rideMapViewController = [segue destinationViewController];
-        rideMapViewController.resortObject = resort;
-    }
-
 }
 
 

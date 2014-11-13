@@ -26,19 +26,24 @@
     [self loadComments];
     self.commentsArray = [NSMutableArray array];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 - (IBAction)onSendButtonPressed:(id)sender {
 
     NSString *commentString =self.commentsTextView.text;
     self.commentsTextView.text = @"";
 
-    [self.resortObject[@"comments"] addObject:commentString];
-    [self.resortObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error)
-        {
-            NSLog(@"Error: %@", [error userInfo]);
-        }
-        [self.commentsTableView reloadData];
-    }];
+//    [self.resortObject[@"comments"] addObject:commentString];
+//    [self.resortObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"Error: %@", [error userInfo]);
+//        }
+//        [self.commentsTableView reloadData];
+//    }];
 
 }
 
@@ -51,7 +56,7 @@ self.commentsTextView.text = @"";
 -(void) loadComments
 {
     PFQuery *thisRide = [PFQuery queryWithClassName:@"Ride"];
-    [thisRide whereKey:@"objectId" equalTo:self.resortObject.objectId];
+    //[thisRide whereKey:@"objectId" equalTo:self.resortObject.objectId];
     [thisRide findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

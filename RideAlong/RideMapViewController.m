@@ -7,17 +7,17 @@
 //
 
 #import "RideMapViewController.h"
+#import "RideDetailsViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "RideDetailsViewController.h"
 
 @interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
 @property CLLocationManager *locationManager;
 @property MKPointAnnotation *myPin;
-
 @property NSArray *rides;
+@property PFObject *resortObject;
 @end
 
 @implementation RideMapViewController
@@ -28,9 +28,12 @@
     self.rideMapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
         [self.locationManager requestWhenInUseAuthorization];
     }
+
     [self.locationManager startUpdatingLocation];
 
     self.myPin = [[MKPointAnnotation alloc] init];
@@ -43,14 +46,16 @@
 
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 
 
 - (void)refreshDisplay
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Ride"];
-    //[query whereKey:@"endName" equalTo:@"Arapahoe Basin"];
-    [query whereKey:@"endName" equalTo:self.resortObject[@"name"]];
+    //[query whereKey:@"endName" equalTo:self.resortObject[@"name"]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
@@ -60,7 +65,7 @@
         else
         {
             self.rides = objects;
-            NSLog(@"rides: %@", self.rides);
+//            NSLog(@"rides: %@", self.rides);
             [self makeAndPlaceRidePins];
         }
     }];
@@ -80,65 +85,26 @@
     }
 }
 
--(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+-(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
+    pin.enabled = YES;
+    pin.canShowCallout = YES;
+    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
-//    MKPinAnnotationView *pin = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"MyPinId"];
-//    if (pin == nil)
-//    {
-        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
-        pin.enabled = YES;
-        pin.canShowCallout = YES;
-//        pin.image = [UIImage imageNamed:@"locale.png"]; // could use MKAnnotationView instead of MKPinAnnotationView?
-
-        pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//    }
-//    else {
-//    pin.annotation = annotation;
-//    }
-
-return pin;
+    return pin;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-     // use the annotation view as the sender
-
-//    RideDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"FILL ME IN"];
-//    [self.navigationController pushViewController:vc animated:YES];
      [self performSegueWithIdentifier:@"rideDetailsSegue" sender:view];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView *)sender
-{
-    if ([segue.identifier isEqualToString:@"rideDetailsSegue"])
-    {
-        RideDetailsViewController *destinationViewController = [segue destinationViewController];
-
-        // grab the annotation from the sender
-
-        destinationViewController.resortObject = self.resortObject;
-    } else {
-        NSLog(@"WTF?");
-    }
-}
-
-
-
-
-
-
-
-
-
-//    NSString *reuseId = @"standardPin";
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView *)sender
+//{
+//    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+//    rideDetailsViewController.resortObject = self.resortObject;
 //
-//    MKPinAnnotationView *pinAnnotation = (MKPinAnnotationView *)[sender dequeueReusableAnnotationViewWithIdentifier:reuseId];
-//    if (pinAnnotation == nil)
-//    {
-//        pinAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoDark];
-//        pinAnnotation.canShowCallout = YES;
-//    }
-//    pinAnnotation.annotation = annotation;
-//    return pinAnnotation;
+//}
 
 @end

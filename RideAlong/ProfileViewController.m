@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "RideDetailsViewController.h"
+#import <Parse/Parse.h>
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myRidesTableView;
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self retrieveUserRides];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,10 +80,10 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"commentSegue" sender:self];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self performSegueWithIdentifier:@"rideDetailSegue" sender:self];
+//}
 
 #pragma mark - Parse Retrieval Methods
 - (void)retrieveUserRides
@@ -110,8 +112,10 @@
             else
             {
                 self.passengerArray = objects;
-                //NSLog(@"rides: %@", self.passengerArray);
+//                NSLog(@"rides: %@", self.passengerArray);
             }
+//            NSLog(@"Driver: %@", self.driverArray);
+//            NSLog(@"Passenger: %@", self.passengerArray);
             [self.myRidesTableView reloadData];
         }];
     }];
@@ -120,22 +124,25 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
-    PFObject *resortObjectToPass = [PFObject new];
-
-    if ([self.myRidesTableView indexPathForSelectedRow].section == 0)
+    if ([segue.identifier isEqualToString:@"rideDetailSegue"])
     {
-        resortObjectToPass = [self.driverArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
-    }
-    else
-    {
+        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+        PFObject *resortObjectToPass;
+    
+        if ([self.myRidesTableView indexPathForSelectedRow].section == 0)
+        {
+            resortObjectToPass = [self.driverArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
+            NSLog(@"%@", resortObjectToPass);
+        }
+        else
+        {
         resortObjectToPass = [self.passengerArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
+        NSLog(@"%@", resortObjectToPass);
+
+        }
+        rideDetailsViewController.resortObject = resortObjectToPass;
     }
-    rideDetailsViewController.resortObject = resortObjectToPass;
 }
-
-
-
 
 
 @end

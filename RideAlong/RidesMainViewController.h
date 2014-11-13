@@ -10,7 +10,6 @@
 
 @interface RidesMainViewController : UIViewController
 
-@property int createRide;
 
 
 @end

@@ -100,7 +100,7 @@
 {
     if (self.annotation)
     {
-        [self performSegueWithIdentifier:@"setupRideSegue" sender:self];
+        [self performSegueWithIdentifier:@"completeRideSegue" sender:self];
     }
     else
     {
