@@ -13,5 +13,6 @@
 
 @interface RideDetailsViewController : UIViewController
 @property MyCustomPin *tappedAnnotation;
+//@property PFObject *myRidePassed;
 
 @end

@@ -9,10 +9,11 @@
 #import "ProfileViewController.h"
 #import "RideDetailsViewController.h"
 #import <Parse/Parse.h>
+#import "MyMKPointAnnotation.h"
+#import "MyCustomPin.h"
 
 @interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myRidesTableView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property NSArray *driverArray;
 @property NSArray *passengerArray;
 @end
@@ -22,12 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self retrieveUserRides];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self retrieveUserRides];
+
 }
 
 #pragma mark - TableViewDelegate Methods
@@ -126,8 +128,10 @@
 {
     if ([segue.identifier isEqualToString:@"rideDetailSegue"])
     {
-        //RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
         PFObject *resortObjectToPass;
+        MyMKPointAnnotation *myMKPointAnnotation = [[MyMKPointAnnotation alloc] init];
+        MyCustomPin *myCustomPin = [[MyCustomPin alloc] init];
     
         if ([self.myRidesTableView indexPathForSelectedRow].section == 0)
         {
@@ -136,11 +140,13 @@
         }
         else
         {
-        resortObjectToPass = [self.passengerArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
-        NSLog(@"%@", resortObjectToPass);
-
+            resortObjectToPass = [self.passengerArray objectAtIndex:[self.myRidesTableView indexPathForSelectedRow].row];
         }
-        //rideDetailsViewController.resortObject = resortObjectToPass;
+        myMKPointAnnotation.rideObject = resortObjectToPass;
+        NSLog(@"%@", myMKPointAnnotation.rideObject);
+        myCustomPin.myPointAnnotation = myMKPointAnnotation;
+        rideDetailsViewController.tappedAnnotation = myCustomPin;
+        NSLog(@"the object being passed: %@", rideDetailsViewController.tappedAnnotation.myPointAnnotation.rideObject);
     }
 }
 

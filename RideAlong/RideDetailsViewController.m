@@ -37,28 +37,11 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-
-    [self.view addGestureRecognizer:tap];
-
-//    if (self.tappedAnnotation.myPointAnnotation.rideObject[@"passenger"] == [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"])
-//    {
-//        self.bookLiftButton.title = @"You're Booked!";
-//        [self.bookLiftButton setEnabled:NO];
-//    }
-//    else if (self.tappedAnnotation.myPointAnnotation.rideObject[@"driver"] == [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"])
-//    {
-//        self.bookLiftButton.title = @"Your Ride!";
-//        [self.bookLiftButton setEnabled:NO];
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self loadComments];
-    NSLog(@"***** %@ *****", self.tappedAnnotation.myPointAnnotation.rideObject);
     self.addressTextField.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"startName"];
     self.resortTextField.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"endName"];
     //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -159,5 +142,10 @@ self.commentsTextView.text = @"";
     {
         self.commentsTextView.text = @"Write a comment here...";
     }
+}
+
+- (void)showTheRideInfo:(PFObject *)rideObject
+{
+
 }
 @end
