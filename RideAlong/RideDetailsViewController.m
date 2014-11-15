@@ -37,12 +37,6 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-
-    [self.view addGestureRecognizer:tap];
-
 //    if (self.tappedAnnotation.myPointAnnotation.rideObject[@"passenger"] == [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"])
 //    {
 //        self.bookLiftButton.title = @"You're Booked!";
