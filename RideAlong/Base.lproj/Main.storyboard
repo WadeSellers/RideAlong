@@ -199,7 +199,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Q92-ry-5d6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4914" y="-223"/>
+            <point key="canvasLocation" x="2578" y="-17"/>
         </scene>
         <!--Choose a Resort-->
         <scene sceneID="ufC-wZ-h7g">
@@ -254,7 +254,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4156" y="556"/>
+            <point key="canvasLocation" x="1604" y="604"/>
         </scene>
         <!--Create Ride Map View Controller-->
         <scene sceneID="obW-Rx-ELg">
@@ -337,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfy-N8-fhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4914" y="556"/>
+            <point key="canvasLocation" x="2454" y="804"/>
         </scene>
         <!--Ride Or Drive View Controller-->
         <scene sceneID="QzE-d0-KPv">
@@ -422,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dak-6D-RxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3423" y="366"/>
+            <point key="canvasLocation" x="895" y="358"/>
         </scene>
         <!--Ride Map View Controller-->
         <scene sceneID="sXG-RE-Dqx">
@@ -437,28 +437,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H96-gS-Ech">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="305" id="z2F-hC-jsU"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="6cg-cN-dhY" id="EhN-Rw-7Iy"/>
                                 </connections>
                             </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-G2-umd">
+                                <rect key="frame" x="0.0" y="313" width="600" height="287"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myCell" id="EWN-m1-Gdp">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EWN-m1-Gdp" id="GXd-ol-gHN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6cg-cN-dhY" id="y13-fJ-Tqb"/>
+                                    <outlet property="delegate" destination="6cg-cN-dhY" id="v3j-fx-M7J"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H96-gS-Ech" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leading" id="KoT-fn-wf9"/>
-                            <constraint firstAttribute="trailing" secondItem="H96-gS-Ech" secondAttribute="trailing" id="StD-bq-i7G"/>
-                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="top" id="jEU-Ll-M0J"/>
-                            <constraint firstItem="WE6-k2-hA8" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" id="r7P-YG-KgB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vfF-G2-umd" secondAttribute="trailing" constant="-16" id="3Xf-OF-wNf"/>
+                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" id="FNo-Jl-A9b"/>
+                            <constraint firstItem="H96-gS-Ech" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="YAI-cb-pDW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H96-gS-Ech" secondAttribute="trailing" constant="-16" id="e3N-IW-zgm"/>
+                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="8" id="hR9-oG-bgY"/>
+                            <constraint firstItem="vfF-G2-umd" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="sih-xN-KTI"/>
+                            <constraint firstItem="WE6-k2-hA8" firstAttribute="top" secondItem="vfF-G2-umd" secondAttribute="bottom" id="whO-yi-sQh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="resortsTableView" destination="vfF-G2-umd" id="VcW-sv-ImT"/>
                         <outlet property="rideMapView" destination="H96-gS-Ech" id="G5A-P3-gFS"/>
                         <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailsSegue" id="tN3-yM-UPJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7w-sg-xOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4156" y="-223"/>
+            <point key="canvasLocation" x="1604" y="-119"/>
         </scene>
         <!--Setup Lift-->
         <scene sceneID="DgI-mT-JY7">
@@ -556,7 +581,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5680" y="556"/>
+            <point key="canvasLocation" x="3284" y="798"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="HY9-tN-iG3">
@@ -617,7 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRK-Nw-BbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3423" y="1261"/>
+            <point key="canvasLocation" x="895" y="1245"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kf0-F4-wiA">
@@ -635,13 +660,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKN-4U-Dds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687" y="366"/>
+            <point key="canvasLocation" x="23" y="366"/>
         </scene>
     </scenes>
     <resources>
         <image name="mountain" width="300" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xgw-kr-aqg"/>
+        <segue reference="tN3-yM-UPJ"/>
     </inferredMetricsTieBreakers>
 </document>

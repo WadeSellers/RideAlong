@@ -12,14 +12,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MyCustomPin.h"
 
-@interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
+@property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
 @property CLLocationManager *locationManager;
 @property MKPointAnnotation *myPin;
 @property NSArray *rides;
 @property PFObject *resortObject;
 @property NSMutableArray *annotationsArray;
+@property NSArray *resorts;
+@property UITableViewCell *myCell;
 @end
 
 @implementation RideMapViewController
@@ -30,6 +33,7 @@
     self.rideMapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    self.resorts = [[NSArray alloc] init];
 
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
     {
@@ -45,21 +49,24 @@
 
     self.rideMapView.delegate = self;
 
-    [self refreshDisplay];
+
+
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self refreshDisplay];
+
 }
 
 
 - (void)refreshDisplay
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Ride"];
+    PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
     //[query whereKey:@"endName" equalTo:self.resortObject[@"name"]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
             NSLog(@"Error: %@", error.userInfo);
@@ -68,10 +75,22 @@
         else
         {
             self.rides = objects;
-//            NSLog(@"rides: %@", self.rides);
             [self makeAndPlaceRidePins];
         }
+        PFQuery *resortQuery = [PFQuery queryWithClassName:@"Resort"];
+        [resortQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Error: %@", error.userInfo);
+            }
+            else
+            {
+                self.resorts = [[NSArray alloc] initWithArray:objects];
+                [self.resortsTableView reloadData];
+            }
+        }];
     }];
+
 }
 
 - (void)makeAndPlaceRidePins
@@ -89,8 +108,6 @@
 
         [self.annotationsArray addObject:annotation];
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
-            NSLog(@"rides: %@", ride);
-            NSLog(@"mypin.coordinate: %f, %f", self.myPin.coordinate.latitude, self.myPin.coordinate.longitude);
     }
     [self.rideMapView showAnnotations:self.annotationsArray animated:YES];
 }
@@ -118,5 +135,56 @@
     RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
     rideDetailsViewController.tappedAnnotation = sender;
 }
+
+#pragma mark - TableView Delegate Methods
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.resorts.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.myCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
+    self.myCell.textLabel.text = resort[@"name"];
+
+    PFFile *resortImage = resort[@"logo"];
+    [resortImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            UIImage *image = [UIImage imageWithData:imageData];
+            self.myCell.imageView.image = image;
+        }
+    }];
+
+    return self.myCell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
+    PFObject *selectedObject = [self.resorts objectAtIndex:indexPath.row];
+    [rideQuery whereKey:@"endName" containsString:selectedObject[@"name"]];
+    [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", error.userInfo);
+            self.rides = [NSArray array];
+        }
+        else
+        {
+            self.rides = objects;
+            [self makeAndPlaceRidePins];
+        }
+    }];
+    self.title = selectedObject[@"name"];
+}
+
+
 
 @end
