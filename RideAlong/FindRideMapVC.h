@@ -1,5 +1,5 @@
 //
-//  RidesMainViewController.h
+//  RideMapViewController.h
 //  RideAlong
 //
 //  Created by Wade Sellers on 11/5/14.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "MyMKPointAnnotation.h"
 
-@interface RidesMainViewController : UIViewController
-
+@interface FindRideMapVC : UIViewController
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "CreateRideViewController.h"
+#import "CreateRideDetailsVC.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface CreateRideViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
+@interface CreateRideDetailsVC ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pinGesture;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *availableSeatsPicker;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation CreateRideViewController
+@implementation CreateRideDetailsVC
 
 - (void)viewDidLoad
 {

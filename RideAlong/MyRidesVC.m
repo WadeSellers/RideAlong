@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "ProfileViewController.h"
-#import "RideDetailsViewController.h"
+#import "MyRidesVC.h"
+#import "FindRideDetailsVC.h"
 #import <Parse/Parse.h>
 #import "MyMKPointAnnotation.h"
 #import "MyCustomPin.h"
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MyRidesVC () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myRidesTableView;
 @property NSArray *driverArray;
 @property NSArray *passengerArray;
 @end
 
 
-@implementation ProfileViewController
+@implementation MyRidesVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -124,7 +124,7 @@
 {
     if ([segue.identifier isEqualToString:@"rideDetailSegue"])
     {
-        RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+        FindRideDetailsVC *rideDetailsViewController = [segue destinationViewController];
         PFObject *resortObjectToPass;
         MyMKPointAnnotation *myMKPointAnnotation = [[MyMKPointAnnotation alloc] init];
         MyCustomPin *myCustomPin = [[MyCustomPin alloc] init];

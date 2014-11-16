@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Ride Details-->
         <scene sceneID="7JF-XJ-BEI">
             <objects>
-                <viewController id="bhG-hO-RP0" customClass="RideDetailsViewController" sceneMemberID="viewController">
+                <viewController id="bhG-hO-RP0" customClass="FindRideDetailsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xim-dh-e9b"/>
                         <viewControllerLayoutGuide type="bottom" id="uxH-X9-iZ7"/>
@@ -177,7 +177,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="XqD-oT-1o1">
+                    <navigationItem key="navigationItem" title="Ride Details" id="XqD-oT-1o1">
                         <barButtonItem key="rightBarButtonItem" title="Book Lift" id="8PL-Wx-KSv">
                             <connections>
                                 <action selector="onBookLiftButtonPressed:" destination="bhG-hO-RP0" id="pCi-hB-V3X"/>
@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="2578" y="-17"/>
         </scene>
-        <!--Choose a Resort-->
+        <!--Where We Going?-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="RidesMainViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="CreateChooseResortVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -241,7 +241,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QjV-hv-o0h" secondAttribute="trailing" constant="-16" id="P1h-Xu-wkh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose a Resort" id="dht-o2-ULz"/>
+                    <navigationItem key="navigationItem" title="Where We Going?" id="dht-o2-ULz"/>
                     <connections>
                         <outlet property="resortsTableView" destination="QjV-hv-o0h" id="ejA-R3-CHF"/>
                         <segue destination="sze-Pg-POQ" kind="show" identifier="createNewRideSegue" id="cem-HX-JLb"/>
@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="1604" y="604"/>
         </scene>
-        <!--Create Ride Map View Controller-->
+        <!--Create Map Start PointVC-->
         <scene sceneID="obW-Rx-ELg">
             <objects>
-                <viewController id="sze-Pg-POQ" customClass="CreateRideMapViewController" sceneMemberID="viewController">
+                <viewController id="sze-Pg-POQ" customClass="CreateMapStartPointVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l5J-n8-tvS"/>
                         <viewControllerLayoutGuide type="bottom" id="h4A-AX-11U"/>
@@ -268,13 +268,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57d-yY-IRq">
-                                <rect key="frame" x="0.0" y="64" width="600" height="58"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="tuk-aC-lAM"/>
-                                </constraints>
-                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="HQy-at-Pdt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
@@ -315,18 +308,15 @@
                         <constraints>
                             <constraint firstItem="HQy-at-Pdt" firstAttribute="top" secondItem="LKV-aF-coL" secondAttribute="topMargin" id="ByX-Zh-86g"/>
                             <constraint firstAttribute="centerX" secondItem="dIH-G7-6M6" secondAttribute="centerX" id="HZD-qV-g8F"/>
-                            <constraint firstItem="57d-yY-IRq" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leadingMargin" constant="-16" id="Nkp-5V-iTb"/>
                             <constraint firstItem="HQy-at-Pdt" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leadingMargin" constant="-16" id="OOw-Ef-hEX"/>
                             <constraint firstItem="h4A-AX-11U" firstAttribute="top" secondItem="dIH-G7-6M6" secondAttribute="bottom" id="Otb-E3-dvE"/>
                             <constraint firstItem="dIH-G7-6M6" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leading" id="Pv0-J2-VeG"/>
                             <constraint firstItem="Nuu-PV-uu5" firstAttribute="leading" secondItem="LKV-aF-coL" secondAttribute="leading" id="Uzh-d9-JIy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HQy-at-Pdt" secondAttribute="trailing" constant="-16" id="cuY-D2-Odg"/>
-                            <constraint firstItem="57d-yY-IRq" firstAttribute="top" secondItem="l5J-n8-tvS" secondAttribute="bottom" id="gPA-ZT-uFt"/>
                             <constraint firstAttribute="trailing" secondItem="Nuu-PV-uu5" secondAttribute="trailing" id="h5L-cb-l3W"/>
                             <constraint firstItem="dIH-G7-6M6" firstAttribute="top" secondItem="Nuu-PV-uu5" secondAttribute="bottom" id="jMD-A4-PtN"/>
                             <constraint firstItem="h4A-AX-11U" firstAttribute="top" secondItem="HQy-at-Pdt" secondAttribute="bottom" id="o2B-zf-pgD"/>
                             <constraint firstAttribute="trailing" secondItem="dIH-G7-6M6" secondAttribute="trailing" id="rWD-LH-dGN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="57d-yY-IRq" secondAttribute="trailing" constant="-16" id="vpe-bH-Amz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -339,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="2454" y="804"/>
         </scene>
-        <!--Ride Or Drive View Controller-->
+        <!--Find Or Create RideVC-->
         <scene sceneID="QzE-d0-KPv">
             <objects>
-                <viewController id="pF9-aE-jsg" customClass="RideOrDriveViewController" sceneMemberID="viewController">
+                <viewController id="pF9-aE-jsg" customClass="FindOrCreateRideVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F2P-NW-K4P"/>
                         <viewControllerLayoutGuide type="bottom" id="3oo-8p-h6c"/>
@@ -424,10 +414,10 @@
             </objects>
             <point key="canvasLocation" x="895" y="358"/>
         </scene>
-        <!--Ride Map View Controller-->
+        <!--Find Ride MapVC-->
         <scene sceneID="sXG-RE-Dqx">
             <objects>
-                <viewController id="6cg-cN-dhY" customClass="RideMapViewController" sceneMemberID="viewController">
+                <viewController id="6cg-cN-dhY" customClass="FindRideMapVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddV-29-bsd"/>
                         <viewControllerLayoutGuide type="bottom" id="WE6-k2-hA8"/>
@@ -488,7 +478,7 @@
         <!--Setup Lift-->
         <scene sceneID="DgI-mT-JY7">
             <objects>
-                <viewController title="Setup Lift" id="9JT-jN-5WR" customClass="CreateRideViewController" sceneMemberID="viewController">
+                <viewController title="Setup Lift" id="9JT-jN-5WR" customClass="CreateRideDetailsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cu1-Nu-xVI"/>
                         <viewControllerLayoutGuide type="bottom" id="Wdm-Wg-7WE"/>
@@ -583,10 +573,10 @@
             </objects>
             <point key="canvasLocation" x="3284" y="798"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--My RidesVC-->
         <scene sceneID="HY9-tN-iG3">
             <objects>
-                <viewController id="KmT-nw-Lr6" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="KmT-nw-Lr6" customClass="MyRidesVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Nv-W1-XS8"/>
                         <viewControllerLayoutGuide type="bottom" id="Ee3-BJ-pwz"/>

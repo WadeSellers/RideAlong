@@ -11,7 +11,7 @@
 #import "MyMKPointAnnotation.h"
 #import "MyCustomPin.h"
 
-@interface RideDetailsViewController : UIViewController
+@interface FindRideDetailsVC : UIViewController
 @property MyCustomPin *tappedAnnotation;
 //@property PFObject *myRidePassed;
 

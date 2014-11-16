@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "RideMapViewController.h"
-#import "RideDetailsViewController.h"
+#import "FindRideMapVC.h"
+#import "FindRideDetailsVC.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MyCustomPin.h"
 
-@interface RideMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
 @property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
@@ -25,7 +25,7 @@
 @property UITableViewCell *myCell;
 @end
 
-@implementation RideMapViewController
+@implementation FindRideMapVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -132,7 +132,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MyCustomPin *)sender
 {
-    RideDetailsViewController *rideDetailsViewController = [segue destinationViewController];
+    FindRideDetailsVC *rideDetailsViewController = [segue destinationViewController];
     rideDetailsViewController.tappedAnnotation = sender;
 }
 

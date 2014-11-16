@@ -1,5 +1,5 @@
 //
-//  CreateRideMapViewController.h
+//  RideOrDriveViewController.h
 //  RideAlong
 //
 //  Created by Wade Sellers on 11/8/14.
@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface CreateRideMapViewController : UIViewController
-@property PFObject *resortObject;
-
+@interface FindOrCreateRideVC : UIViewController
+//made a change
 @end

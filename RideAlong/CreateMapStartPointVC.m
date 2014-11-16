@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "CreateRideMapViewController.h"
+#import "CreateMapStartPointVC.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "CreateRideViewController.h"
+#import "CreateRideDetailsVC.h"
 
-@interface CreateRideMapViewController () <MKMapViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, UISearchBarDelegate>
+@interface CreateMapStartPointVC () <MKMapViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *mapSearchBar;
 @property MKPointAnnotation *annotation;
 @property MKPolygon* poly;
 @end
 
-@implementation CreateRideMapViewController
+@implementation CreateMapStartPointVC
 
 - (void)viewDidLoad
 {
@@ -123,7 +123,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    CreateRideViewController *createRideViewController = [segue destinationViewController];
+    CreateRideDetailsVC *createRideViewController = [segue destinationViewController];
     createRideViewController.startingMKPointAnnotation = self.annotation;
     createRideViewController.resortObject = self.resortObject;
 }

@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "RideDetailsViewController.h"
-#import "RideOrDriveViewController.h"
+#import "FindRideDetailsVC.h"
+#import "FindOrCreateRideVC.h"
 #import <Parse/Parse.h>
 
-@interface RideDetailsViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface FindRideDetailsVC () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 @property NSArray *commentsArray;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation RideDetailsViewController
+@implementation FindRideDetailsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

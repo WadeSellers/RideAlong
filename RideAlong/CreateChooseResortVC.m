@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "RidesMainViewController.h"
-#import "RideOrDriveViewController.h"
-#import "RideMapViewController.h"
-#import "CreateRideMapViewController.h"
-#import "ProfileViewController.h"
+#import "CreateChooseResortVC.h"
+#import "FindOrCreateRideVC.h"
+#import "FindRideMapVC.h"
+#import "CreateMapStartPointVC.h"
+#import "MyRidesVC.h"
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 
-@interface RidesMainViewController ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
+@interface CreateChooseResortVC ()<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
 
 @property MKMapItem *skiResortMapItem ;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation RidesMainViewController
+@implementation CreateChooseResortVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +92,7 @@
 
     if ([segue.identifier isEqualToString:@"createNewRideSegue"])
     {
-        CreateRideMapViewController *createRideMapViewController = [segue destinationViewController];
+        CreateMapStartPointVC *createRideMapViewController = [segue destinationViewController];
         createRideMapViewController.resortObject = resort;
     }
 }

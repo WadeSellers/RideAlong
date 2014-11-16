@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Wade Sellers. All rights reserved.
 //
 
-#import "RideOrDriveViewController.h"
-#import "RideDetailsViewController.h"
+#import "FindOrCreateRideVC.h"
+#import "FindRideDetailsVC.h"
 #import "MyCustomPin.h"
 
-@interface RideOrDriveViewController ()
+@interface FindOrCreateRideVC ()
 @property MyCustomPin *ridePin;
 
 @end
 
-@implementation RideOrDriveViewController
+@implementation FindOrCreateRideVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +50,7 @@
 
 - (IBAction)unwindFromBookLift:(UIStoryboardSegue *)segue
 {
-    RideDetailsViewController *rideDetailsViewController = [segue sourceViewController];
+    FindRideDetailsVC *rideDetailsViewController = [segue sourceViewController];
     self.ridePin = rideDetailsViewController.tappedAnnotation;
     NSLog(@"dadada %@", self.ridePin.myPointAnnotation.rideObject);
     [self passengerSetupAndSave];
