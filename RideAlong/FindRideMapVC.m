@@ -86,12 +86,16 @@
             else
             {
                 self.resorts = [[NSArray alloc] initWithArray:objects];
+//The issue with the thumbnails not loading nicely may be here too.  Perhaps I should be doing the reloadData methods elsewhere instead of in this nested block
+                
                 [self.resortsTableView reloadData];
             }
         }];
     }];
 
 }
+
+#pragma mark - MapView Methods
 
 - (void)makeAndPlaceRidePins
 {
@@ -105,6 +109,8 @@
         annotation.coordinate = annotationCoordinate;
         annotation.title = ride[@"startName"];
         annotation.rideObject = ride;
+
+        //This may be where the issue of the zoom is coming from, but I am not sure exactly how to remedy the situation.
 
         [self.annotationsArray addObject:annotation];
         [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
@@ -127,8 +133,6 @@
 {
      [self performSegueWithIdentifier:@"rideDetailsSegue" sender:view];
 }
-
-//Need to figure out how to know which annotation was selected and the ride object it originally came from
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MyCustomPin *)sender
 {
