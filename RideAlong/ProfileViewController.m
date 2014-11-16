@@ -82,10 +82,6 @@
     return cell;
 }
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self performSegueWithIdentifier:@"rideDetailSegue" sender:self];
-//}
 
 #pragma mark - Parse Retrieval Methods
 - (void)retrieveUserRides
