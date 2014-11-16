@@ -44,11 +44,12 @@
     self.addressTextField.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"startName"];
     self.resortTextField.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"endName"];
 
-    //SO this is where I would like to set the date to display in a basic format like this: 11/15/2014 @ 9:15AM
-
-    //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //dateFormatter = self.tappedAnnotation.myPointAnnotation.rideObject[@"date"];
-    //self.dateTextField.text = [dateFormatter stringForObjectValue:dateFormatter];
+    NSDate *rideDateAndTime = [[NSDate alloc] init];
+    rideDateAndTime = self.tappedAnnotation.myPointAnnotation.rideObject[@"date"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"M/d/yyyy @ h:mma"];
+    NSLog(@"date: %@", [formatter stringFromDate:rideDateAndTime]);
+    self.dateTextField.text = [formatter stringFromDate:rideDateAndTime];
 
 
     self.detailsTextView.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"description"];
