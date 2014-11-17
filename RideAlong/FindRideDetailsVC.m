@@ -9,6 +9,7 @@
 #import "FindRideDetailsVC.h"
 #import "FindOrCreateRideVC.h"
 #import <Parse/Parse.h>
+#import "Comment.h"
 
 @interface FindRideDetailsVC () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
@@ -30,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.commentsTextView.delegate = self;
-    [self loadComments];
     self.commentsArray = [NSMutableArray array];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
@@ -58,11 +58,16 @@
 
 - (IBAction)onSendButtonPressed:(id)sender {
 
-    NSString *commentString =self.commentsTextView.text;
+    Comment *comment = [[Comment alloc] init];
+    NSDate *now = [[NSDate alloc] init];
+    comment.commentText = self.commentsTextView.text;
+    comment.authorId = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+    comment.dateTimeWritten = now;
     self.commentsTextView.text = @"Write a comment here...";
+
     [self dismissKeyboard];
 
-    [self.tappedAnnotation.myPointAnnotation.rideObject[@"comments"] addObject:commentString];
+    [self.tappedAnnotation.myPointAnnotation.rideObject[@"Comments"] addObject:comment];
     [self.tappedAnnotation.myPointAnnotation.rideObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {

@@ -24,6 +24,7 @@
 		16C21B9A1A0DFF4D00EEF533 /* FindOrCreateRideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B991A0DFF4D00EEF533 /* FindOrCreateRideVC.m */; };
 		16C21B9E1A0E059500EEF533 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C21B9D1A0E059500EEF533 /* Images.xcassets */; };
 		16C21BA11A0F04F400EEF533 /* CreateMapStartPointVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21BA01A0F04F400EEF533 /* CreateMapStartPointVC.m */; };
+		16C611491A196BB100B881BA /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C611481A196BB100B881BA /* Comment.m */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -88,6 +89,8 @@
 		16C21B9D1A0E059500EEF533 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		16C21B9F1A0F04F400EEF533 /* CreateMapStartPointVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMapStartPointVC.h; sourceTree = "<group>"; };
 		16C21BA01A0F04F400EEF533 /* CreateMapStartPointVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMapStartPointVC.m; sourceTree = "<group>"; };
+		16C611471A196BB100B881BA /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		16C611481A196BB100B881BA /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */,
 				1689E68D1A1473B10089EF6B /* MyCustomPin.h */,
 				1689E68E1A1473B10089EF6B /* MyCustomPin.m */,
+				16C611471A196BB100B881BA /* Comment.h */,
+				16C611481A196BB100B881BA /* Comment.m */,
 				16C21B9D1A0E059500EEF533 /* Images.xcassets */,
 				166F0BB41A08137200ABF976 /* LaunchScreen.xib */,
 				166F0BA51A08137200ABF976 /* Supporting Files */,
@@ -376,6 +381,7 @@
 				16C21B651A0AC42400EEF533 /* Resort.m in Sources */,
 				1689E68C1A1466FE0089EF6B /* MyMKPointAnnotation.m in Sources */,
 				16C21B621A0AB18800EEF533 /* FindRideMapVC.m in Sources */,
+				16C611491A196BB100B881BA /* Comment.m in Sources */,
 				166F0BD81A09342500ABF976 /* CreateRideDetailsVC.m in Sources */,
 				166F0BAB1A08137200ABF976 /* AppDelegate.m in Sources */,
 				166F0BD21A09316600ABF976 /* MyRidesVC.m in Sources */,
