@@ -152,6 +152,11 @@
     self.myCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
     self.myCell.textLabel.text = resort[@"name"];
+    //self.myCell.imageView.image = [UIImage imageNamed:@"mountain"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"mountain"];
+    self.myCell.imageView.image = placeholderImage;
+    [self.myCell setNeedsLayout];
+
 
     PFFile *resortImage = resort[@"logo"];
     [resortImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -165,7 +170,6 @@
             self.myCell.imageView.image = image;
         }
     }];
-
     return self.myCell;
 }
 
