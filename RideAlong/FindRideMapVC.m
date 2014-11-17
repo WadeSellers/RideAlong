@@ -25,6 +25,7 @@
 @property UITableViewCell *myCell;
 @property (weak, nonatomic) IBOutlet UICollectionView *findRideCollectionView;
 @property NSArray *datesArray;
+@property (weak, nonatomic) IBOutlet UIDatePicker *findRideDatePicker;
 @end
 
 @implementation FindRideMapVC
@@ -226,6 +227,8 @@
     return cell;
 
 
+}
+- (IBAction)findRidesForDateFromDatePicker:(id)sender {
 }
 
 @end

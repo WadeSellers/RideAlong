@@ -470,32 +470,6 @@
                                     <outlet property="delegate" destination="6cg-cN-dhY" id="v3j-fx-M7J"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-iu-kQ2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CnJ-Kd-NbI">
-                                    <size key="itemSize" width="130" height="200"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="LQE-k5-ZMN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="200"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="0.68751120460000004" blue="0.3356404992" alpha="1" colorSpace="calibratedRGB"/>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="6cg-cN-dhY" id="Owl-3L-YEq"/>
-                                    <outlet property="delegate" destination="6cg-cN-dhY" id="sbW-Mp-Q2X"/>
-                                </connections>
-                            </collectionView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H96-gS-Ech">
                                 <rect key="frame" x="0.0" y="197" width="600" height="205"/>
                                 <constraints>
@@ -505,20 +479,34 @@
                                     <outlet property="delegate" destination="6cg-cN-dhY" id="EhN-Rw-7Iy"/>
                                 </connections>
                             </mapView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hFK-F4-3Cx">
+                                <rect key="frame" x="0.0" y="34" width="600" height="162"/>
+                                <color key="backgroundColor" red="1" green="0.68751120460000004" blue="0.3356404992" alpha="1" colorSpace="calibratedRGB"/>
+                                <date key="date" timeIntervalSinceReferenceDate="437960353.05436301">
+                                    <!--2014-11-17 23:39:13 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="findRidesForDateFromDatePicker:" destination="6cg-cN-dhY" eventType="valueChanged" id="Yur-r7-YDl"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="vfF-G2-umd" secondAttribute="trailing" constant="-16" id="3Xf-OF-wNf"/>
+                            <constraint firstAttribute="trailing" secondItem="hFK-F4-3Cx" secondAttribute="trailing" id="A2Y-I0-q2R"/>
+                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="hFK-F4-3Cx" secondAttribute="bottom" constant="141" id="EHi-To-tW9"/>
                             <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" constant="197" id="FNo-Jl-A9b"/>
+                            <constraint firstItem="hFK-F4-3Cx" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leading" id="NWX-3o-CPX"/>
                             <constraint firstItem="H96-gS-Ech" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="YAI-cb-pDW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H96-gS-Ech" secondAttribute="trailing" constant="-16" id="e3N-IW-zgm"/>
+                            <constraint firstItem="hFK-F4-3Cx" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="top" constant="34" id="gFa-tJ-npW"/>
                             <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="-65" id="hR9-oG-bgY"/>
                             <constraint firstItem="vfF-G2-umd" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="sih-xN-KTI"/>
                             <constraint firstItem="WE6-k2-hA8" firstAttribute="top" secondItem="vfF-G2-umd" secondAttribute="bottom" id="whO-yi-sQh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="findRideCollectionView" destination="MrY-iu-kQ2" id="VoO-Lw-K7B"/>
+                        <outlet property="findRideDatePicker" destination="hFK-F4-3Cx" id="bDu-bN-nAa"/>
                         <outlet property="resortsTableView" destination="vfF-G2-umd" id="VcW-sv-ImT"/>
                         <outlet property="rideMapView" destination="H96-gS-Ech" id="G5A-P3-gFS"/>
                         <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailsSegue" id="tN3-yM-UPJ"/>
