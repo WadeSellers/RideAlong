@@ -8,10 +8,14 @@
 
 #import "FindOrCreateRideVC.h"
 #import "FindRideDetailsVC.h"
+#import "FindRideMapVC.h"
 #import "MyCustomPin.h"
+#import "CreateChooseResortVC.h"
 
 @interface FindOrCreateRideVC ()
 @property MyCustomPin *ridePin;
+@property NSArray *resorts;
+@property NSArray *resortImages;
 
 @end
 
@@ -19,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.resortImages = [[NSArray alloc] init];
+    [self pullInResorts];
 
     //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]);
 }
@@ -43,6 +49,26 @@
     }];
 }
 
+- (void)pullInResorts
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Resort"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", error.userInfo);
+        }
+        else
+        {
+            self.resorts = [[NSArray alloc] initWithArray:objects];
+            for (PFObject *resort in self.resorts)
+            {
+                NSLog(@"resort: %@", resort);
+            }
+//            NSLog(@"resort: %lu", (unsigned long)self.resorts.count);
+        }
+    }];
+}
+
 - (IBAction)unwindFromCompleteNewRide:(UIStoryboardSegue *)segue
 {
 
@@ -55,5 +81,12 @@
     NSLog(@"dadada %@", self.ridePin.myPointAnnotation.rideObject);
     [self passengerSetupAndSave];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    FindRideMapVC *findRideMapVC = [segue destinationViewController];
+    findRideMapVC.resorts = self.resorts;
+}
+
 
 @end

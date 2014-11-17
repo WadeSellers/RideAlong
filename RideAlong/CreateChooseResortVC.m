@@ -20,7 +20,7 @@
 @property MKMapItem *skiResortMapItem ;
 @property CLLocationManager *locationManager;
 
-@property NSArray *resorts;
+//@property NSArray *resorts;
 
 @property NSString *resortNameSelected;
 

@@ -14,7 +14,7 @@
 @interface FindRideDetailsVC () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
-@property NSArray *commentsArray;
+@property NSMutableArray *commentsArray;
 @property PFObject *displayedRide;
 @property (weak, nonatomic) IBOutlet UILabel *addressTextField;
 @property (weak, nonatomic) IBOutlet UILabel *resortTextField;
@@ -58,18 +58,28 @@
 
 - (IBAction)onSendButtonPressed:(id)sender {
 
-    NSString *comment = [[NSString alloc] initWithString:self.commentsTextView.text];
+    PFObject *comment = [[PFObject alloc] initWithClassName:@"Comment"];
+    comment[@"remark"] = self.commentsTextView.text;
+    comment[@"ride"] = self.tappedAnnotation.myPointAnnotation.rideObject;
+    comment[@"userId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+//    NSString *comment = [[NSString alloc] initWithString:self.commentsTextView.text];
     self.commentsTextView.text = @"Write a comment here...";
 
     [self dismissKeyboard];
-
-    [self.tappedAnnotation.myPointAnnotation.rideObject[@"comments"] addObject:comment];
-    [self.tappedAnnotation.myPointAnnotation.rideObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:self.commentsArray];
+//    [tempArray addObject:comment];
+//    [self.commentsArray addcomment];
+    [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {
             NSLog(@"Error: %@", [error userInfo]);
         }
-        [self loadComments];
+        else
+        {
+            [self.commentsArray addObject:comment];
+            [self.commentsTableView reloadData];
+        }
+//        [self loadComments];
     }];
 
 }
@@ -81,18 +91,19 @@ self.commentsTextView.text = @"";
 
 -(void) loadComments
 {
-    PFQuery *thisRide = [PFQuery queryWithClassName:@"Ride"];
-    [thisRide whereKey:@"objectId" equalTo:self.tappedAnnotation.myPointAnnotation.rideObject.objectId];
-    [thisRide findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    PFQuery *thisRide = [PFQuery queryWithClassName:@"Comment"];
+    [thisRide includeKey:@"ride"];
+    [thisRide whereKey:@"ride" equalTo:self.tappedAnnotation.myPointAnnotation.rideObject];
+    [thisRide findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
         if (error)
         {
             NSLog(@"Error: %@", error.userInfo);
-            self.commentsArray = [NSArray array];
+//            self.commentsArray = [NSMutableArray array];
         }
         else
         {
-            self.displayedRide = [objects firstObject];
-            self.commentsArray = self.displayedRide[@"comments"];
+            self.displayedRide = self.tappedAnnotation.myPointAnnotation.rideObject;
+            self.commentsArray = [NSMutableArray arrayWithArray:comments];
             NSLog(@"**** rides: %@ ****", self.commentsArray);
         }
         [self.commentsTableView reloadData];
@@ -107,12 +118,12 @@ self.commentsTextView.text = @"";
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
 //    PFObject *comment = [self.commentsArray objectAtIndex:indexPath.row];
-    NSString *comment = [self.commentsArray objectAtIndex:indexPath.row];
+    PFObject *comment = [self.commentsArray objectAtIndex:indexPath.row];
 
 //    cell.textLabel.text = comment[@"name"];
-    cell.textLabel.text = comment;
+    cell.textLabel.text = comment[@"remark"];
 
-    cell.detailTextLabel.text = [self.commentsArray objectAtIndex:indexPath.row];
+    //cell.detailTextLabel.text = [self.commentsArray objectAtIndex:indexPath.row];
 
     return cell;
 }

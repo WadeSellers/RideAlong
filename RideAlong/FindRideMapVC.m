@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MyCustomPin.h"
+#import "CustomResortTableViewCell.h"
 
 @interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -21,7 +22,6 @@
 @property NSArray *rides;
 @property PFObject *resortObject;
 @property NSMutableArray *annotationsArray;
-@property NSArray *resorts;
 @property UITableViewCell *myCell;
 @end
 
@@ -58,6 +58,7 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self refreshDisplay];
+    [self.resortsTableView reloadData];
 
 }
 
@@ -149,27 +150,31 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.myCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    CustomResortTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
-    self.myCell.textLabel.text = resort[@"name"];
-    UIImage *placeholderImage = [UIImage imageNamed:@"mountain"];
-    self.myCell.imageView.image = placeholderImage;
-    [self.myCell setNeedsLayout];
+    [cell pullResortImage:resort];
 
 
-    PFFile *resortImage = resort[@"logo"];
-    [resortImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (error)
-        {
-            NSLog(@"%@", error);
-        }
-        else
-        {
-            UIImage *image = [UIImage imageWithData:imageData];
-            self.myCell.imageView.image = image;
-        }
-    }];
-    return self.myCell;
+    //NSLog(@"resorts: %@", resort);
+    cell.textLabel.text = resort[@"name"];
+    //UIImage *resortImage = [resort objectForKey:@"logo"];
+    //cell.imageView.image = resortImage;
+    //[cell setNeedsLayout];
+
+
+//    PFFile *resortImage = resort[@"logo"];
+//    [resortImage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"%@", error);
+//        }
+//        else
+//        {
+//            UIImage *image = [UIImage imageWithData:imageData];
+//            cell.imageView.image = image;
+//        }
+//    }];
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -11,5 +11,6 @@
 #import "MyMKPointAnnotation.h"
 
 @interface FindRideMapVC : UIViewController
+@property NSArray *resorts;
 
 @end
