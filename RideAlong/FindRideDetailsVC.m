@@ -63,7 +63,7 @@
 
     [self dismissKeyboard];
 
-    [self.tappedAnnotation.myPointAnnotation.rideObject[@"Comments"] addObject:comment];
+    [self.tappedAnnotation.myPointAnnotation.rideObject[@"comments"] addObject:comment];
     [self.tappedAnnotation.myPointAnnotation.rideObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {
