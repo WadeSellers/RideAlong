@@ -152,7 +152,6 @@
     self.myCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     PFObject *resort = [self.resorts objectAtIndex:indexPath.row];
     self.myCell.textLabel.text = resort[@"name"];
-    //self.myCell.imageView.image = [UIImage imageNamed:@"mountain"];
     UIImage *placeholderImage = [UIImage imageNamed:@"mountain"];
     self.myCell.imageView.image = placeholderImage;
     [self.myCell setNeedsLayout];
