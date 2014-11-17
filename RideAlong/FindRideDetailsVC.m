@@ -58,11 +58,7 @@
 
 - (IBAction)onSendButtonPressed:(id)sender {
 
-    Comment *comment = [[Comment alloc] init];
-    NSDate *now = [[NSDate alloc] init];
-    comment.commentText = self.commentsTextView.text;
-    comment.authorId = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
-    comment.dateTimeWritten = now;
+    NSString *comment = [[NSString alloc] initWithString:self.commentsTextView.text];
     self.commentsTextView.text = @"Write a comment here...";
 
     [self dismissKeyboard];
