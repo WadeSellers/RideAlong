@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -141,6 +141,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seats:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEM-q8-fjy">
+                                <rect key="frame" x="349" y="74" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fee:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-N5-aTI">
+                                <rect key="frame" x="349" y="103" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="seat goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="195-31-dyz">
+                                <rect key="frame" x="425" y="74" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fee goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-z1-F5k">
+                                <rect key="frame" x="425" y="103" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -193,7 +217,9 @@
                         <outlet property="commentsTextView" destination="jw4-X0-sga" id="bcX-wa-LKv"/>
                         <outlet property="dateTextField" destination="jt9-6E-pVy" id="8bg-qx-dv1"/>
                         <outlet property="detailsTextView" destination="dDv-Z3-zXT" id="8uK-vL-0L9"/>
+                        <outlet property="feeLabel" destination="9pi-z1-F5k" id="FFw-G9-sme"/>
                         <outlet property="resortTextField" destination="AK2-NV-eW6" id="bvU-Hy-oLi"/>
+                        <outlet property="seatLabel" destination="195-31-dyz" id="mml-0n-AEz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbf-Wl-kRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -426,17 +452,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H96-gS-Ech">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="305" id="z2F-hC-jsU"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="6cg-cN-dhY" id="EhN-Rw-7Iy"/>
-                                </connections>
-                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-G2-umd">
-                                <rect key="frame" x="0.0" y="313" width="600" height="287"/>
+                                <rect key="frame" x="0.0" y="337" width="600" height="263"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -453,19 +470,55 @@
                                     <outlet property="delegate" destination="6cg-cN-dhY" id="v3j-fx-M7J"/>
                                 </connections>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-iu-kQ2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CnJ-Kd-NbI">
+                                    <size key="itemSize" width="130" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="LQE-k5-ZMN">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.68751120460000004" blue="0.3356404992" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6cg-cN-dhY" id="Owl-3L-YEq"/>
+                                    <outlet property="delegate" destination="6cg-cN-dhY" id="sbW-Mp-Q2X"/>
+                                </connections>
+                            </collectionView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H96-gS-Ech">
+                                <rect key="frame" x="0.0" y="197" width="600" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="z2F-hC-jsU"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="6cg-cN-dhY" id="EhN-Rw-7Iy"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="vfF-G2-umd" secondAttribute="trailing" constant="-16" id="3Xf-OF-wNf"/>
-                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" id="FNo-Jl-A9b"/>
+                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" constant="197" id="FNo-Jl-A9b"/>
                             <constraint firstItem="H96-gS-Ech" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="YAI-cb-pDW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H96-gS-Ech" secondAttribute="trailing" constant="-16" id="e3N-IW-zgm"/>
-                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="8" id="hR9-oG-bgY"/>
+                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="-65" id="hR9-oG-bgY"/>
                             <constraint firstItem="vfF-G2-umd" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="sih-xN-KTI"/>
                             <constraint firstItem="WE6-k2-hA8" firstAttribute="top" secondItem="vfF-G2-umd" secondAttribute="bottom" id="whO-yi-sQh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="findRideCollectionView" destination="MrY-iu-kQ2" id="VoO-Lw-K7B"/>
                         <outlet property="resortsTableView" destination="vfF-G2-umd" id="VcW-sv-ImT"/>
                         <outlet property="rideMapView" destination="H96-gS-Ech" id="G5A-P3-gFS"/>
                         <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailsSegue" id="tN3-yM-UPJ"/>
@@ -473,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7w-sg-xOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="-119"/>
+            <point key="canvasLocation" x="1604" y="-17"/>
         </scene>
         <!--Setup Lift-->
         <scene sceneID="DgI-mT-JY7">

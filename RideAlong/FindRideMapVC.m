@@ -13,7 +13,7 @@
 #import "MyCustomPin.h"
 #import "CustomResortTableViewCell.h"
 
-@interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
 @property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
@@ -23,6 +23,8 @@
 @property PFObject *resortObject;
 @property NSMutableArray *annotationsArray;
 @property UITableViewCell *myCell;
+@property (weak, nonatomic) IBOutlet UICollectionView *findRideCollectionView;
+@property NSArray *datesArray;
 @end
 
 @implementation FindRideMapVC
@@ -49,7 +51,7 @@
 
     self.rideMapView.delegate = self;
 
-
+    self.datesArray = [[NSArray alloc]init];
 
 
 }
@@ -197,6 +199,33 @@
     self.title = selectedObject[@"name"];
 }
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return  self.datesArray.count;
+}
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"collectionViewCell";
+
+    UICollectionViewCell *cell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:identifier
+                                              forIndexPath:indexPath];
+
+//    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+//    recipeImageView.image = [imageArray objectAtIndex:
+//                             (indexPath.section * noOfSection + indexPath.row)];
+
+    return cell;
+
+
+}
 
 @end

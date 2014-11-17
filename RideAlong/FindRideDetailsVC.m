@@ -21,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateTextField;
 @property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *bookLiftButton;
+@property (weak, nonatomic) IBOutlet UILabel *seatLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *feeLabel;
 
 
 @end
