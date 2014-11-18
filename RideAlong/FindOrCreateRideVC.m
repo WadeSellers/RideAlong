@@ -84,8 +84,12 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FindRideMapVC *findRideMapVC = [segue destinationViewController];
-    findRideMapVC.resorts = self.resorts;
+    if ([[segue identifier] isEqualToString:@"findRideSegue"])
+    {
+        FindRideMapVC *findRideMapVC = [segue destinationViewController];
+        findRideMapVC.resorts = self.resorts;
+    }
+
 }
 
 

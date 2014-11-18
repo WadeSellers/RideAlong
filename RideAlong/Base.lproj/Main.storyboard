@@ -454,7 +454,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="6cg-cN-dhY" kind="show" id="YMZ-SB-eEl"/>
+                                            <segue destination="6cg-cN-dhY" kind="show" identifier="findRideSegue" id="YMZ-SB-eEl"/>
                                         </connections>
                                     </button>
                                 </subviews>
