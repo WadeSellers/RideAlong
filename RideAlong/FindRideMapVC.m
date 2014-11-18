@@ -13,7 +13,7 @@
 #import "MyCustomPin.h"
 #import "CustomResortTableViewCell.h"
 
-@interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *rideMapView;
 @property (weak, nonatomic) IBOutlet UITableView *resortsTableView;
@@ -23,7 +23,6 @@
 @property PFObject *resortObject;
 @property NSMutableArray *annotationsArray;
 @property UITableViewCell *myCell;
-@property (weak, nonatomic) IBOutlet UICollectionView *findRideCollectionView;
 @property NSArray *datesArray;
 @property (weak, nonatomic) IBOutlet UIDatePicker *findRideDatePicker;
 @end
@@ -55,6 +54,27 @@
     self.datesArray = [[NSArray alloc]init];
 
 
+
+//        self.findRideDatePicker = [[UIDatePicker alloc]init];
+
+    // Set the delegate
+
+    // Add the picker in our view.
+    [self.view addSubview: self.findRideDatePicker];
+
+
+
+
+
+
+//    NSDate *ridedDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"FindRideMapVC.selectedDate"];
+//    [self.findRideDatePicker setDate:ridedDate animated:YES];
+
+
+
+//    [self.findRideDatePicker setDate:ridedDate animated:NO];
+
+//    NSLog(@"today is %@", ridedDate);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -229,6 +249,26 @@
 
 }
 - (IBAction)findRidesForDateFromDatePicker:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSDate *selectedDate = [self.findRideDatePicker date];
+//
+//    [defaults setObject:selectedDate forKey:@"FindRideMapVC.selectedDate"];
+//    NSDate* eventDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"FindRideMapVC.selectedDate"];
+
+    NSLog(@"and th date is %@", selectedDate);
+    NSLog(@"and th date is %@", self.findRideDatePicker.date);
+
 }
 
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+return 31;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 1;
+}
 @end
+
