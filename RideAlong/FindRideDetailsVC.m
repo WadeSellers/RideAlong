@@ -123,13 +123,22 @@ self.commentsTextView.text = @"";
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-//    PFObject *comment = [self.commentsArray objectAtIndex:indexPath.row];
     PFObject *comment = [self.commentsArray objectAtIndex:indexPath.row];
 
-//    cell.textLabel.text = comment[@"name"];
-    cell.textLabel.text = comment[@"remark"];
+    if ([comment[@"userId"] isEqualToString: self.tappedAnnotation.myPointAnnotation.rideObject[@"driver"]])
+    {
+        cell.textLabel.text = @"Driver writes:";
+    }
+    else if ([comment[@"userId"] isEqualToString: self.tappedAnnotation.myPointAnnotation.rideObject[@"passenger"]])
+    {
+        cell.textLabel.text = @"Passenger writes:";
+    }
+    else
+    {
+        cell.textLabel.text = @"A potential rider writes:";
+    }
 
-    //cell.detailTextLabel.text = [self.commentsArray objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = comment[@"remark"];
 
     return cell;
 }
