@@ -116,6 +116,8 @@
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
     ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+    ride[@"seats"] = self.availableSeatsPicker.description;
+    ride[@"fee"] = self.feePicker.description;
     ride[@"comments"] = [[NSMutableArray alloc] init];
 
     [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
