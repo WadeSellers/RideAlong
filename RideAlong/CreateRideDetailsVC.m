@@ -18,6 +18,8 @@
 @property NSArray *feePickerArray;
 @property NSArray *statePickerArray;
 @property NSArray *availableSeatsPickerArray;
+@property NSString *seatsChosen;
+@property NSString *feeChosen;
 
 @end
 
@@ -100,6 +102,19 @@
     }
 }
 
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView == self.availableSeatsPicker)
+    {
+        self.seatsChosen = [self.availableSeatsPickerArray objectAtIndex:row];
+    }
+    else
+    {
+        self.feeChosen = [self.feePickerArray objectAtIndex:row];
+    }
+
+}
+
 - (IBAction)onCreateRideButtonPressed:(id)sender
 {
     PFObject *ride = [PFObject objectWithClassName:@"Ride"];
@@ -116,8 +131,9 @@
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
     ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
-    ride[@"seats"] = self.availableSeatsPicker.description;
-    ride[@"fee"] = self.feePicker.description;
+    ride[@"passenger"] = @"";
+    ride[@"seats"] = self.seatsChosen;
+    ride[@"fee"] = self.feeChosen;
     ride[@"comments"] = [[NSMutableArray alloc] init];
 
     [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

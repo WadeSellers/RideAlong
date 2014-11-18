@@ -55,11 +55,14 @@
     self.dateTextField.text = [formatter stringFromDate:rideDateAndTime];
     self.seatLabel.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"seats"];
     self.feeLabel.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"fee"];
-
-
-
     self.detailsTextView.text = self.tappedAnnotation.myPointAnnotation.rideObject[@"description"];
 
+    if (![self.tappedAnnotation.myPointAnnotation.rideObject[@"passenger"] isEqualToString:@""])
+    {
+        self.bookLiftButton.title = @"Ride Is Booked!";
+        self.bookLiftButton.enabled = FALSE;
+
+    }
 }
 
 - (IBAction)onSendButtonPressed:(id)sender {
