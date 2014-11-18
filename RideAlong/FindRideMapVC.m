@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MyCustomPin.h"
 #import "CustomResortTableViewCell.h"
+#import "FindRideCollectionViewCell.h"
 
 @interface FindRideMapVC () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -25,12 +26,15 @@
 @property UITableViewCell *myCell;
 @property NSArray *datesArray;
 @property (weak, nonatomic) IBOutlet UIDatePicker *findRideDatePicker;
+@property (weak, nonatomic) IBOutlet UICollectionView *findRidesCollectionView;
 @end
 
 @implementation FindRideMapVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getDate];
+
     self.annotationsArray = [NSMutableArray array];
     self.rideMapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
@@ -219,26 +223,37 @@
     }];
     self.title = selectedObject[@"name"];
 }
+#pragma mark - CollectionView Delegate Methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return  self.datesArray.count;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    return 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"collectionViewCell";
+    static NSString *identifier = @"Cell";
 
-    UICollectionViewCell *cell =
+    FindRideCollectionViewCell *cell =
     [collectionView dequeueReusableCellWithReuseIdentifier:identifier
                                               forIndexPath:indexPath];
+
+ 
+    cell.backgroundColor = [UIColor grayColor];
+
+    [cell.findRideButton setTitle:@"click" forState:UIControlStateNormal];
+
+
+    cell.tintColor = [UIColor redColor];
+//    cell.textLabel.text = @"Hello";
+
 
 //    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
 //    recipeImageView.image = [imageArray objectAtIndex:
@@ -249,7 +264,11 @@
 
 }
 - (IBAction)findRidesForDateFromDatePicker:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(3.14/2);
+    rotate = CGAffineTransformScale(rotate, 1, 3);
+    [self.findRideDatePicker setTransform:rotate];
 
     NSDate *selectedDate = [self.findRideDatePicker date];
 //
@@ -257,7 +276,7 @@
 //    NSDate* eventDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"FindRideMapVC.selectedDate"];
 
     NSLog(@"and th date is %@", selectedDate);
-    NSLog(@"and th date is %@", self.findRideDatePicker.date);
+    NSLog(@"and thee date is %@", self.findRideDatePicker.date);
 
 }
 
@@ -269,6 +288,46 @@ return 31;
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return 1;
+}
+
+#pragma mark - Date Methods
+-(void)getDate {
+
+    NSString *dateString = @"Thu Oct 25 10:34:58 +0000 2012";
+
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"MMM-dd";
+//    [dateFormatter setDateFormat:@"dd/MM/yyyy hh:mm"];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    NSLog(@"hello, date is %@", date);
+    NSLog(@"hi, the date is %@", [dateFormatter stringFromDate:[NSDate date]]);
+
+
+    //dateFromString
+    NSString *currentDateString = @"2013-03-24 10:45:32";
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"yyyy-MM-DD HH:mm:ss"];
+//    [dateFormater setDateFormat:@"MM-DD"];
+
+    NSDate *currentDate = [dateFormater dateFromString:currentDateString];
+      NSLog(@"hello hello, date is %@", currentDate);
+    NSLog(@"sup?");
+
+    //stringFromDate
+    NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"EdMMM" options:0
+                                                              locale:[NSLocale currentLocale]];
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    [myDateFormatter setDateFormat:formatString];
+
+    NSString *todayString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"todayString: %@", todayString);
+
+//    CFAbsoluteTime at = CFAbsoluteTimeGetCurrent();
+//    CFTimeZoneRef tz = CFTimeZoneCopySystem();
+//    SInt32 WeekdayNumber = CFAbsoluteTimeGetDayOfWeek(at, tz);
+//
+//    NSLog(@"day of the week is %@", WeekdayNumber);
 }
 @end
 

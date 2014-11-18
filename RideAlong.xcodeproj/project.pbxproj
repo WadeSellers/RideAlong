@@ -26,6 +26,7 @@
 		16C21BA11A0F04F400EEF533 /* CreateMapStartPointVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21BA01A0F04F400EEF533 /* CreateMapStartPointVC.m */; };
 		16C611491A196BB100B881BA /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C611481A196BB100B881BA /* Comment.m */; };
 		16C611811A1A5C7300B881BA /* CustomResortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C611801A1A5C7300B881BA /* CustomResortTableViewCell.m */; };
+		BC7C11271A1B993B00AA4E19 /* FindRideCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C11261A1B993B00AA4E19 /* FindRideCollectionViewCell.m */; };
 		BC8D68161A08181100BBD653 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68131A08181100BBD653 /* Bolts.framework */; };
 		BC8D68171A08181100BBD653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68141A08181100BBD653 /* Parse.framework */; };
 		BC8D68181A08181100BBD653 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */; };
@@ -94,6 +95,8 @@
 		16C611481A196BB100B881BA /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		16C6117F1A1A5C7300B881BA /* CustomResortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomResortTableViewCell.h; sourceTree = "<group>"; };
 		16C611801A1A5C7300B881BA /* CustomResortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomResortTableViewCell.m; sourceTree = "<group>"; };
+		BC7C11251A1B993B00AA4E19 /* FindRideCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindRideCollectionViewCell.h; sourceTree = "<group>"; };
+		BC7C11261A1B993B00AA4E19 /* FindRideCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindRideCollectionViewCell.m; sourceTree = "<group>"; };
 		BC8D68131A08181100BBD653 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BC8D68141A08181100BBD653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BC8D68151A08181100BBD653 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				16C21BA01A0F04F400EEF533 /* CreateMapStartPointVC.m */,
 				16C21B601A0AB18800EEF533 /* FindRideMapVC.h */,
 				16C21B611A0AB18800EEF533 /* FindRideMapVC.m */,
+				BC7C11251A1B993B00AA4E19 /* FindRideCollectionViewCell.h */,
+				BC7C11261A1B993B00AA4E19 /* FindRideCollectionViewCell.m */,
 				16C6117F1A1A5C7300B881BA /* CustomResortTableViewCell.h */,
 				16C611801A1A5C7300B881BA /* CustomResortTableViewCell.m */,
 				166F0BD61A09342500ABF976 /* CreateRideDetailsVC.h */,
@@ -378,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7C11271A1B993B00AA4E19 /* FindRideCollectionViewCell.m in Sources */,
 				16C21BA11A0F04F400EEF533 /* CreateMapStartPointVC.m in Sources */,
 				166F0BD51A09317F00ABF976 /* FindRideDetailsVC.m in Sources */,
 				16C21B9A1A0DFF4D00EEF533 /* FindOrCreateRideVC.m in Sources */,
