@@ -131,6 +131,7 @@
     ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
     ride[@"endName"] = [self.resortObject objectForKey:@"name"];
     ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+    ride[@"passenger"] = @"";
     ride[@"seats"] = self.seatsChosen;
     ride[@"fee"] = self.feeChosen;
     ride[@"comments"] = [[NSMutableArray alloc] init];
