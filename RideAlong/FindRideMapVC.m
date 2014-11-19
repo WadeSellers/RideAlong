@@ -44,7 +44,7 @@
     }
 
     [self.locationManager startUpdatingLocation];
-    [self.rideMapView setShowsUserLocation:YES];
+    [self.rideMapView showsUserLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,6 +52,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self refreshDisplay];
     [self.resortsTableView reloadData];
+    [self removeAllAnnotations];
 }
 
 
@@ -87,28 +88,16 @@
 
 #pragma mark - MapView Methods
 
-- (void)makeAndPlaceRidePins
-{
-    [self removeAllAnnotations];
-    for (PFObject *ride in self.rides)
-    {
-        PFGeoPoint *tempGeoPoint = [ride objectForKey:@"geoStart"];
-        CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
-
-        MyMKPointAnnotation *annotation= [[MyMKPointAnnotation alloc] init];
-        annotation.rideObject = ride;
-        annotation.coordinate = annotationCoordinate;
-        annotation.title = ride[@"startName"];
-        [self.annotationsArray addObject:annotation];
-
-        //This sets zoom on pics for when a resort is tapped
-        [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.005f, 0.005f)) animated:YES];
-    }
-    [self.rideMapView showAnnotations:self.annotationsArray animated:YES];
-}
 
 -(MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    //check annotation is not user location
+    if([annotation isEqual:[self.rideMapView userLocation]])
+    {
+        //bail
+        return nil;
+    }
+
     MyCustomPin *pin = [[MyCustomPin alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinId"];
     pin.enabled = YES;
     pin.canShowCallout = YES;
@@ -148,6 +137,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.rideMapView removeAnnotations:self.rideMapView.annotations];
+
     PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
     PFObject *selectedObject = [self.resorts objectAtIndex:indexPath.row];
     [rideQuery whereKey:@"endName" containsString:selectedObject[@"name"]];
@@ -164,6 +155,26 @@
         }
     }];
     self.title = selectedObject[@"name"];
+}
+
+- (void)makeAndPlaceRidePins
+{
+    [self.annotationsArray removeAllObjects];
+    for (PFObject *ride in self.rides)
+    {
+        PFGeoPoint *tempGeoPoint = [ride objectForKey:@"geoStart"];
+        CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
+
+        MyMKPointAnnotation *annotation= [[MyMKPointAnnotation alloc] init];
+        annotation.rideObject = ride;
+        annotation.coordinate = annotationCoordinate;
+        annotation.title = ride[@"startName"];
+        [self.annotationsArray addObject:annotation];
+
+        //This sets zoom on pics for when a resort is tapped
+        [self.rideMapView setRegion:MKCoordinateRegionMake(annotationCoordinate, MKCoordinateSpanMake(0.005f, 0.005f)) animated:YES];
+    }
+    [self.rideMapView showAnnotations:self.annotationsArray animated:YES];
 }
 
 -(void)removeAllAnnotations
