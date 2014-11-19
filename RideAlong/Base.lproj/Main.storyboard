@@ -647,7 +647,7 @@
                         <outlet property="datePicker" destination="g6r-UC-Tsa" id="bt6-tQ-Pun"/>
                         <outlet property="feePicker" destination="8Wp-hM-NgW" id="lRC-yK-jS1"/>
                         <outlet property="pinGesture" destination="lVt-Gu-CtO" id="5yJ-f5-JYs"/>
-                        <segue destination="pF9-aE-jsg" kind="presentation" identifier="CreateToFindOrCreateSegue" id="r08-SP-mwb"/>
+                        <segue destination="pF9-aE-jsg" kind="presentation" identifier="CreateToFindOrCreateSegue" modalTransitionStyle="partialCurl" id="r08-SP-mwb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POI-aH-Xgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
