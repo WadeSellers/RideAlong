@@ -27,14 +27,22 @@
 @property NSArray *datesArray;
 @property (weak, nonatomic) IBOutlet UIDatePicker *findRideDatePicker;
 @property (weak, nonatomic) IBOutlet UICollectionView *findRidesCollectionView;
+@property NSMutableArray *days;
+@property NSMutableArray *daysOfWeek;
 @end
 
 @implementation FindRideMapVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    //populate array with dates
+//    [self setDates];
     [self getDate];
 
+    self.daysOfWeek = [NSMutableArray array];
+    self.days = [NSMutableArray new];
+      [self setDates];
     self.annotationsArray = [NSMutableArray array];
     self.rideMapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
@@ -57,14 +65,14 @@
 
     self.datesArray = [[NSArray alloc]init];
 
-
+    [self.findRidesCollectionView setDelegate:self];
 
 //        self.findRideDatePicker = [[UIDatePicker alloc]init];
 
     // Set the delegate
 
     // Add the picker in our view.
-    [self.view addSubview: self.findRideDatePicker];
+//    [self.view addSubview: self.findRideDatePicker];
 
 
 
@@ -233,7 +241,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return 7;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -248,7 +256,8 @@
  
     cell.backgroundColor = [UIColor grayColor];
 
-    [cell.findRideButton setTitle:@"click" forState:UIControlStateNormal];
+//    [cell.findRideButton setTitle:[self.days objectAtIndex:indexPath] forState:UIControlStateNormal];
+    [cell.findRideButton setTitle:[self.days objectAtIndex:indexPath.row] forState:UIControlStateNormal];
 
 
     cell.tintColor = [UIColor redColor];
@@ -260,9 +269,15 @@
 //                             (indexPath.section * noOfSection + indexPath.row)];
 
     return cell;
-
-
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+    {
+        NSLog(@"didselect");
+        NSLog(@"yaya %@", indexPath);
+    }
+
+
 - (IBAction)findRidesForDateFromDatePicker:(id)sender {
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
@@ -291,7 +306,7 @@ return 31;
 }
 
 #pragma mark - Date Methods
--(void)getDate {
+-(NSString *)getDate {
 
     NSString *dateString = @"Thu Oct 25 10:34:58 +0000 2012";
 
@@ -300,7 +315,9 @@ return 31;
     dateFormatter.dateFormat = @"MMM-dd";
 //    [dateFormatter setDateFormat:@"dd/MM/yyyy hh:mm"];
     NSDate *date = [dateFormatter dateFromString:dateString];
+//Null
     NSLog(@"hello, date is %@", date);
+//date is 2013-01-24 16:45:32
     NSLog(@"hi, the date is %@", [dateFormatter stringFromDate:[NSDate date]]);
 
 
@@ -320,7 +337,8 @@ return 31;
     NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
     [myDateFormatter setDateFormat:formatString];
 
-    NSString *todayString = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *todayString = [myDateFormatter stringFromDate:[NSDate date]];
+    // Nov-18
     NSLog(@"todayString: %@", todayString);
 
 //    CFAbsoluteTime at = CFAbsoluteTimeGetCurrent();
@@ -328,6 +346,105 @@ return 31;
 //    SInt32 WeekdayNumber = CFAbsoluteTimeGetDayOfWeek(at, tz);
 //
 //    NSLog(@"day of the week is %@", WeekdayNumber);
+
+    NSDateFormatter *dateFormatterWeek = [[NSDateFormatter alloc] init];
+    [dateFormatterWeek setDateFormat:@"EEEE"];
+    NSString *dayOfTheWeek = [dateFormatterWeek stringFromDate:[NSDate date]];
+
+    //Tuesday
+    NSLog(@"%@", [dateFormatterWeek stringFromDate:[NSDate date]]);
+    NSLog(@"returns %@", dayOfTheWeek);
+
+
+
+
+    NSDate *today = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dayComponent = [NSDateComponents new];
+    dayComponent.day = 1;
+
+    NSDate* tomorrow = [calendar dateByAddingComponents:dayComponent toDate:today options:0];
+    NSLog(@"tomorrow is%@", tomorrow);
+    NSLog(@"dayComponent day is%ld", (long)dayComponent.day);
+
+
+
+    NSDate *myCurrentDate = [NSDate date];
+    NSLog(@"myCurrentDate is %@", myCurrentDate);
+
+    int nextDay = dayComponent.day;
+
+    for (int i =0; i< 7; i++) {
+        NSString *myDayOfTheWeek = [dateFormatterWeek stringFromDate:currentDate];
+        [self.daysOfWeek addObject:myDayOfTheWeek];
+
+    }
+
+
+     return dayOfTheWeek;
+}
+
+-(NSMutableArray*) setDates{
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dayComponent = [NSDateComponents new];
+    dayComponent.day = 0;
+
+    NSDate *today = [NSDate date];
+
+    for (int i=0; i<7; i++) {
+
+        dayComponent.day =i;
+
+        NSDate *currentDay = [calendar dateByAddingComponents:dayComponent toDate:today options:0];
+
+        NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"EdMMM" options:0
+                                                                  locale:[NSLocale currentLocale]];
+        NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+
+        [myDateFormatter setDateFormat:formatString];
+
+        NSString *dayString = [myDateFormatter stringFromDate:currentDay];
+        NSLog(@"daystring is %@", dayString);
+
+        [self.days addObject:dayString];
+
+        NSLog(@"day is: %@", [self.days objectAtIndex:i]);
+    }
+     NSLog(@"days are: %@", self.days);
+    return self.days;
+}
+
+-(void)getObjectsFromParseAndCompareDates{
+    PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
+    //[query whereKey:@"endName" equalTo:self.resortObject[@"name"]];
+    [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Error: %@", error.userInfo);
+            self.rides = [NSArray array];
+        }
+        else
+        {
+            self.rides = objects;
+            [self makeAndPlaceRidePins];
+        }
+        PFQuery *resortQuery = [PFQuery queryWithClassName:@"Resort"];
+        [resortQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Error: %@", error.userInfo);
+            }
+            else
+            {
+                self.resorts = [[NSArray alloc] initWithArray:objects];
+                //The issue with the thumbnails not loading nicely may be here too.  Perhaps I should be doing the reloadData methods elsewhere instead of in this nested block
+
+                [self.resortsTableView reloadData];
+            }
+        }];
+    }];
+
 }
 @end
 
