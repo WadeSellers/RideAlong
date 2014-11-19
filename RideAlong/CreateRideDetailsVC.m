@@ -28,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //NSLog(@"lalala: %@", self.resortObject);
 
     self.additionalTextView.delegate = self;
 

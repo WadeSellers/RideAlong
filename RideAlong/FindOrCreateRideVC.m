@@ -26,13 +26,11 @@
     self.resortImages = [[NSArray alloc] init];
     [self pullInResorts];
 
-    //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 
-//    NSLog(@"dadada %@", self.ridePin.myPointAnnotation.rideObject);
 
 }
 
@@ -40,7 +38,6 @@
 {
     self.ridePin.myPointAnnotation.rideObject[@"passenger"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
 
-    //NSLog(@"dadada %@", self.rideObject);
     [self.ridePin.myPointAnnotation.rideObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error)
         {
@@ -60,11 +57,6 @@
         else
         {
             self.resorts = [[NSArray alloc] initWithArray:objects];
-            for (PFObject *resort in self.resorts)
-            {
-                NSLog(@"resort: %@", resort);
-            }
-//            NSLog(@"resort: %lu", (unsigned long)self.resorts.count);
         }
     }];
 }
@@ -78,7 +70,6 @@
 {
     FindRideDetailsVC *rideDetailsViewController = [segue sourceViewController];
     self.ridePin = rideDetailsViewController.tappedAnnotation;
-    NSLog(@"dadada %@", self.ridePin.myPointAnnotation.rideObject);
     [self passengerSetupAndSave];
 }
 
