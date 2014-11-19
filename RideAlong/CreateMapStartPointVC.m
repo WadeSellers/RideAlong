@@ -11,11 +11,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CreateRideDetailsVC.h"
 
-@interface CreateMapStartPointVC () <MKMapViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, UISearchBarDelegate>
+@interface CreateMapStartPointVC () <MKMapViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *mapSearchBar;
 @property MKPointAnnotation *annotation;
 @property MKPolygon* poly;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @end
 
 @implementation CreateMapStartPointVC
@@ -27,7 +28,6 @@
 
     self.mapView.delegate = self;
     self.mapSearchBar.delegate =self;
-
     [self.mapView userTrackingMode];
     [self addSquareToMap];
 
@@ -35,21 +35,21 @@
 
     navCon.navigationItem.title = [self.resortObject objectForKey:@"name"];
 
-
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:)name:UIKeyboardDidShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)name:UIKeyboardDidHideNotification object:nil];
 
+    [self.nextButton setTitleColor:[UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1] forState:UIControlStateNormal];
+}
 
-    //TODO
-    //
-    //    CLLocationCoordinate2D coord =  CLLocationCoordinate2DMake
-    //    MKCoordinateRegion *region = MKCoordinateRegionMake(<#CLLocationCoordinate2D centerCoordinate#>, <#MKCoordinateSpan span#>)
-    //      [self.mapView setRegion:
-    //
-    //      MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
-    //
+-(void)viewWillAppear:(BOOL)animated
+{
+    CLLocationManager *myLocationManager = [[CLLocationManager alloc] init];
+    myLocationManager.distanceFilter = kCLLocationAccuracyBest;
+    myLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [myLocationManager startUpdatingLocation];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:myLocationManager.location.coordinate.latitude longitude:myLocationManager.location.coordinate.longitude];
+    [self reverseGeocode:location];
 }
 
 - (void)keyboardDidShow:(NSNotification*)aNotification {
@@ -91,7 +91,7 @@
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(.005f, .005f)) animated:YES];
 
         }
         else
@@ -101,9 +101,9 @@
             [self.annotation setTitle:@"Starting Point"];
             [self.annotation setSubtitle:self.mapSearchBar.text];
             [self.mapView addAnnotation:self.annotation];
-            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(5.0f, 5.0f)) animated:YES];
+            [self.mapView setRegion:MKCoordinateRegionMake(newLocation, MKCoordinateSpanMake(.005f, .005f)) animated:YES];
         }
-        
+        [self colorNextButtonIfAnnotationNotNull];
         [searchBar resignFirstResponder];
     }];
 }
@@ -129,23 +129,6 @@
 }
 
 #pragma mark - MKMapViewDelegate Methods
-//-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    [self.mapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.0025f, 0.0025f)) animated:YES];
-//}
-
-//#pragma mark - Keyboard Methods
-//- (void)registerForKeyboardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                            selector:@selector(keyboardWasShown:)
-//                                                name:UIKeyboardDidShowNotification object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                            selector:@selector(keyboardWillBeHidden:)
-//                                                name:UIKeyboardWillHideNotification object:nil];
-//
-//}
 
 - (void) addSquareToMap{
 
@@ -186,10 +169,43 @@
     return aView;
 }
 
-//- (IBAction)allAction:(id)sender{
-//    //CLLocationCoordinate2D SF = CLLocationCoordinate2DMake(37.786996, -122.440100) ;
-//    CLLocation *center = [[CLLocation alloc] initWithLatitude:37.786996 longitude:-122.440100];
-//    [self addSquareToMap:center withRadius:1000];
-//}
+- (void)colorNextButtonIfAnnotationNotNull
+{
+    if (!(self.annotation == (id)[NSNull null]))
+    {
+        [self.nextButton setTitleColor:[UIColor colorWithRed:255.0/255.0 green:78.0/255.0 blue:0.0 alpha:1] forState:UIControlStateNormal];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    for (CLLocation *location in locations)
+    {
+        if (location.verticalAccuracy < 1000 && location.horizontalAccuracy < 1000)
+        {
+            //self.myTextView.text = @"Location Found. Reverse Geocoding...";
+            [self reverseGeocode:location];
+            NSLog(@"The locations: %@", location);
+            [manager stopUpdatingLocation];
+            break;
+        }
+    }
+}
+
+- (void)reverseGeocode:(CLLocation *)location
+{
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = [placemarks firstObject];
+        NSString *address = [NSString stringWithFormat:@"%@ %@ %@",
+                             placemark.subThoroughfare,
+                             placemark.thoroughfare,
+                             placemark.locality];
+        self.mapSearchBar.text = address;
+    }];
+}
+
+
+
 
 @end

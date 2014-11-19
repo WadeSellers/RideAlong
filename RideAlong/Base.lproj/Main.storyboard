@@ -386,6 +386,7 @@
                     <connections>
                         <outlet property="mapSearchBar" destination="Nuu-PV-uu5" id="V9r-Ap-D50"/>
                         <outlet property="mapView" destination="HQy-at-Pdt" id="UNb-nq-wvm"/>
+                        <outlet property="nextButton" destination="dIH-G7-6M6" id="wJ3-GS-yqa"/>
                         <segue destination="9JT-jN-5WR" kind="show" identifier="completeRideSegue" id="so9-kg-Q89"/>
                     </connections>
                 </viewController>
