@@ -584,11 +584,10 @@
                                 </state>
                                 <connections>
                                     <action selector="onCreateRideButtonPressed:" destination="9JT-jN-5WR" eventType="touchUpInside" id="AuM-wx-Bem"/>
-                                    <segue destination="qlj-BM-EBX" kind="unwind" unwindAction="unwindFromCompleteNewRide:" id="EDj-Px-l0l"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-8t-Nmm">
-                                <rect key="frame" x="16" y="234" width="183" height="162"/>
+                            <pickerView alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-8t-Nmm">
+                                <rect key="frame" x="16" y="186" width="183" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="HrL-5d-4iw"/>
                                     <constraint firstAttribute="width" constant="183" id="psM-1g-Py5"/>
@@ -598,8 +597,8 @@
                                     <outlet property="delegate" destination="9JT-jN-5WR" id="zOf-HV-vMN"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wp-hM-NgW">
-                                <rect key="frame" x="401" y="234" width="183" height="162"/>
+                            <pickerView alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Wp-hM-NgW">
+                                <rect key="frame" x="401" y="186" width="183" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="183" id="8SO-gD-hvo"/>
                                     <constraint firstAttribute="height" constant="162" id="aHq-IR-QP9"/>
@@ -609,10 +608,18 @@
                                     <outlet property="delegate" destination="9JT-jN-5WR" id="VL5-jk-8rM"/>
                                 </connections>
                             </pickerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tap here to add any additional information to your ride..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yhU-ZQ-P93">
-                                <rect key="frame" x="87" y="404" width="427" height="142"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhU-ZQ-P93">
+                                <rect key="frame" x="87" y="356" width="427" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Tap to add a few details...">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99215686270000003" green="0.30980392159999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
@@ -625,10 +632,10 @@
                             <constraint firstItem="NDO-ty-7bb" firstAttribute="leading" secondItem="0nD-tH-YUV" secondAttribute="leading" id="H5G-uY-4ht"/>
                             <constraint firstItem="yhU-ZQ-P93" firstAttribute="leading" secondItem="0nD-tH-YUV" secondAttribute="leadingMargin" constant="71" id="IoP-T3-Tap"/>
                             <constraint firstAttribute="trailing" secondItem="g6r-UC-Tsa" secondAttribute="trailing" id="QIb-kd-LEy"/>
-                            <constraint firstItem="8Wp-hM-NgW" firstAttribute="top" secondItem="g6r-UC-Tsa" secondAttribute="bottom" constant="8" id="Veo-LW-lGL"/>
+                            <constraint firstItem="8Wp-hM-NgW" firstAttribute="top" secondItem="g6r-UC-Tsa" secondAttribute="bottom" constant="-40" id="Veo-LW-lGL"/>
                             <constraint firstItem="g6r-UC-Tsa" firstAttribute="top" secondItem="cu1-Nu-xVI" secondAttribute="bottom" id="XXh-IS-GsI"/>
                             <constraint firstItem="Xwm-8t-Nmm" firstAttribute="leading" secondItem="0nD-tH-YUV" secondAttribute="leadingMargin" id="Zb2-aW-ffV"/>
-                            <constraint firstItem="Xwm-8t-Nmm" firstAttribute="top" secondItem="g6r-UC-Tsa" secondAttribute="bottom" constant="8" id="aje-mv-9cF"/>
+                            <constraint firstItem="Xwm-8t-Nmm" firstAttribute="top" secondItem="g6r-UC-Tsa" secondAttribute="bottom" constant="-40" id="aje-mv-9cF"/>
                             <constraint firstItem="NDO-ty-7bb" firstAttribute="top" secondItem="yhU-ZQ-P93" secondAttribute="bottom" constant="8" id="dgn-g6-BLb"/>
                             <constraint firstItem="8Wp-hM-NgW" firstAttribute="trailing" secondItem="0nD-tH-YUV" secondAttribute="trailingMargin" id="gH2-bY-eNK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yhU-ZQ-P93" secondAttribute="trailing" constant="70" id="rOr-mc-KhS"/>
@@ -640,10 +647,10 @@
                         <outlet property="datePicker" destination="g6r-UC-Tsa" id="bt6-tQ-Pun"/>
                         <outlet property="feePicker" destination="8Wp-hM-NgW" id="lRC-yK-jS1"/>
                         <outlet property="pinGesture" destination="lVt-Gu-CtO" id="5yJ-f5-JYs"/>
+                        <segue destination="pF9-aE-jsg" kind="presentation" identifier="CreateToFindOrCreateSegue" id="r08-SP-mwb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POI-aH-Xgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qlj-BM-EBX" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="lVt-Gu-CtO">
                     <connections>
                         <action selector="pinGesture:" destination="9JT-jN-5WR" id="l0f-cl-2kO"/>
@@ -736,6 +743,7 @@
         <image name="mountain" width="300" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r08-SP-mwb"/>
         <segue reference="tN3-yM-UPJ"/>
     </inferredMetricsTieBreakers>
 </document>

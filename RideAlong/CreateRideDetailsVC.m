@@ -9,7 +9,7 @@
 #import "CreateRideDetailsVC.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface CreateRideDetailsVC ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
+@interface CreateRideDetailsVC ()<UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *pinGesture;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *availableSeatsPicker;
@@ -39,6 +39,9 @@
     self.feePicker.delegate = self;
     self.feePicker.dataSource = self;
 
+    self.seatsChosen = [self.availableSeatsPickerArray objectAtIndex:0];
+    self.feeChosen = [self.feePickerArray objectAtIndex:0];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
@@ -60,7 +63,6 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
-    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     [self.view setFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + kbSize.height, self.view.frame.size.width, self.view.frame.size.height)];
 }
 
@@ -116,31 +118,46 @@
 
 - (IBAction)onCreateRideButtonPressed:(id)sender
 {
-    PFObject *ride = [PFObject objectWithClassName:@"Ride"];
-    PFGeoPoint *geoStartPoint = [[PFGeoPoint alloc] init];
-    geoStartPoint.latitude = self.startingMKPointAnnotation.coordinate.latitude;
-    geoStartPoint.longitude = self.startingMKPointAnnotation.coordinate.longitude;
-    
-    PFGeoPoint *georesortPoint = [[PFGeoPoint alloc] init];
-    georesortPoint = [self.resortObject objectForKey:@"gpsLocation"];
+    if ([self.seatsChosen isEqualToString:[self.availableSeatsPickerArray objectAtIndex:0]])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoopsie Daisy" message:@"Enter your available seating pretty please" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alert show];
+    }
+    else if ([self.feeChosen isEqualToString:[self.feePickerArray objectAtIndex:0]])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Whoopsie Daisy" message:@"Enter your fee rate pretty please" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alert show];
+    }
+    else
+    {
+        PFObject *ride = [PFObject objectWithClassName:@"Ride"];
+        PFGeoPoint *geoStartPoint = [[PFGeoPoint alloc] init];
+        geoStartPoint.latitude = self.startingMKPointAnnotation.coordinate.latitude;
+        geoStartPoint.longitude = self.startingMKPointAnnotation.coordinate.longitude;
+        
+        PFGeoPoint *georesortPoint = [[PFGeoPoint alloc] init];
+        georesortPoint = [self.resortObject objectForKey:@"gpsLocation"];
 
-    ride[@"geoStart"] = geoStartPoint;
-    ride[@"description"] = self.additionalTextView.text;
-    ride[@"date"] = self.datePicker.date;
-    ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
-    ride[@"endName"] = [self.resortObject objectForKey:@"name"];
-    ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
-    ride[@"passenger"] = @"";
-    ride[@"seats"] = self.seatsChosen;
-    ride[@"fee"] = self.feeChosen;
-    ride[@"comments"] = [[NSMutableArray alloc] init];
+        ride[@"geoStart"] = geoStartPoint;
+        ride[@"description"] = self.additionalTextView.text;
+        ride[@"date"] = self.datePicker.date;
+        ride[@"startName"] = self.startingMKPointAnnotation.subtitle;
+        ride[@"endName"] = [self.resortObject objectForKey:@"name"];
+        ride[@"driver"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"];
+        ride[@"passenger"] = @"";
+        ride[@"seats"] = self.seatsChosen;
+        ride[@"fee"] = self.feeChosen;
+        ride[@"comments"] = [[NSMutableArray alloc] init];
 
-    [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error)
-        {
-            NSLog(@"Error: %@", [error userInfo]);
-        }
-    }];
+        [ride saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Error: %@", [error userInfo]);
+            }
+        }];
+
+        [self performSegueWithIdentifier:@"CreateToFindOrCreateSegue" sender:nil];
+    }
 }
 
 @end
