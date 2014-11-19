@@ -42,11 +42,11 @@
 {
     if (section == 0)
     {
-        return @"Spock, you have the con...";
+        return @"Driving";
     }
     else
     {
-        return @"Are we there yet? Are we there yet?";
+        return @"Riding";
     }
 }
 
@@ -97,7 +97,6 @@
         else
         {
             self.driverArray = objects;
-            //NSLog(@"rides: %@", self.driverArray);
         }
         PFQuery *userIsPassengerQuery = [PFQuery queryWithClassName:@"Ride"];
         [userIsPassengerQuery whereKey:@"passenger" equalTo:[[NSUserDefaults standardUserDefaults] objectForKey:@"ApplicationUUIDKey"]];
@@ -110,10 +109,8 @@
             else
             {
                 self.passengerArray = objects;
-//                NSLog(@"rides: %@", self.passengerArray);
             }
-//            NSLog(@"Driver: %@", self.driverArray);
-//            NSLog(@"Passenger: %@", self.passengerArray);
+
             [self.myRidesTableView reloadData];
         }];
     }];

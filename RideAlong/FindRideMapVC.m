@@ -164,7 +164,6 @@
     {
         PFGeoPoint *tempGeoPoint = [ride objectForKey:@"geoStart"];
         CLLocationCoordinate2D annotationCoordinate = CLLocationCoordinate2DMake(tempGeoPoint.latitude, tempGeoPoint.longitude);
-
         MyMKPointAnnotation *annotation= [[MyMKPointAnnotation alloc] init];
         annotation.rideObject = ride;
         annotation.coordinate = annotationCoordinate;

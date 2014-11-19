@@ -147,10 +147,10 @@
     //convert MKCoordinateRegion from MKMapRect
     MKCoordinateRegion region = MKCoordinateRegionForMapRect(mapRect);
 
-    region.center.latitude = points[0].latitude - (points[0].latitude - points[2].latitude) * 0.5;
+    region.center.latitude = points[0].latitude - (points[0].latitude - points[2].latitude) * 0.7;
     region.center.longitude = points[0].longitude + (points[2].longitude - points[0].longitude) * 0.5;
-    region.span.latitudeDelta = fabs(points[0].latitude - points[3].latitude) * 4; // Add a little extra space on the sides
-    region.span.longitudeDelta = fabs(points[2].longitude - points[0].longitude) * 4; // Add a little extra space on the sides
+    region.span.latitudeDelta = fabs(points[0].latitude - points[3].latitude) * 2; // Add a little extra space on the sides
+    region.span.longitudeDelta = fabs(points[2].longitude - points[0].longitude) * 2; // Add a little extra space on the sides
 
     region = [self.mapView regionThatFits:region];
     [self.mapView setRegion:region animated:YES];
