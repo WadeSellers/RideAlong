@@ -423,9 +423,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CXd-K7-c3g">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rga-aJ-gCj">
-                                        <rect key="frame" x="168" y="496" width="264" height="55"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rga-aJ-gCj">
+                                        <rect key="frame" x="168" y="500" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="4Ed-kj-kM9"/>
+                                            <constraint firstAttribute="width" constant="264" id="XIr-PD-9s4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
                                         <state key="normal" title="My Rides">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -449,9 +453,13 @@
                                         <color key="textColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoD-a4-O3L">
-                                        <rect key="frame" x="168" y="405" width="264" height="55"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoD-a4-O3L">
+                                        <rect key="frame" x="167" y="415" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="264" id="pT6-0D-2hc"/>
+                                            <constraint firstAttribute="height" constant="55" id="qi1-Tz-HoZ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
                                         <state key="normal" title="Create A Ride">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -461,9 +469,13 @@
                                             <segue destination="vXZ-lx-hvc" kind="show" identifier="createARideSegue" id="NoJ-8M-h5n"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygz-CG-AgX">
-                                        <rect key="frame" x="168" y="304" width="264" height="55"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygz-CG-AgX">
+                                        <rect key="frame" x="167" y="330" width="264" height="55"/>
                                         <color key="backgroundColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="DdB-Dd-KG4"/>
+                                            <constraint firstAttribute="width" constant="264" id="Fa1-qT-8xJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
                                         <state key="normal" title="Rides Near Me">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -475,8 +487,14 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
+                                    <constraint firstItem="Rga-aJ-gCj" firstAttribute="top" secondItem="MoD-a4-O3L" secondAttribute="bottom" constant="30" id="ErS-iO-lzt"/>
                                     <constraint firstAttribute="width" constant="600" id="S3H-HA-Xyt"/>
+                                    <constraint firstAttribute="centerX" secondItem="Rga-aJ-gCj" secondAttribute="centerX" id="XUB-lx-s8d"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rga-aJ-gCj" secondAttribute="bottom" constant="45" id="aCE-lm-aQa"/>
+                                    <constraint firstItem="MoD-a4-O3L" firstAttribute="centerX" secondItem="Rga-aJ-gCj" secondAttribute="centerX" constant="-1" id="d6M-FA-Xh1"/>
                                     <constraint firstAttribute="height" constant="600" id="dK0-sH-Uf5"/>
+                                    <constraint firstItem="MoD-a4-O3L" firstAttribute="top" secondItem="ygz-CG-AgX" secondAttribute="bottom" constant="30" id="uqn-Gj-JPA"/>
+                                    <constraint firstItem="MoD-a4-O3L" firstAttribute="centerX" secondItem="ygz-CG-AgX" secondAttribute="centerX" id="zeC-ly-dnf"/>
                                 </constraints>
                             </view>
                         </subviews>
