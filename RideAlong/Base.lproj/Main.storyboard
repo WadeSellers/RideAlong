@@ -76,16 +76,6 @@
                                     <outlet property="delegate" destination="bhG-hO-RP0" id="0PW-4f-5dG"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting @:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KK-sF-6qj">
-                                <rect key="frame" x="16" y="28" width="116" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="62B-ll-OJD"/>
-                                    <constraint firstAttribute="width" constant="116" id="6Q5-tb-USY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resort:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iG5-wJ-6jw">
                                 <rect key="frame" x="16" y="72" width="59" height="21"/>
                                 <constraints>
@@ -147,18 +137,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Will Show Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjQ-eH-kLP">
-                                <rect key="frame" x="85" y="18" width="444" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="DpF-7Y-vlP"/>
-                                    <constraint firstAttribute="width" constant="444" id="lBF-A7-iPa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seats:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEM-q8-fjy">
-                                <rect key="frame" x="480" y="28" width="49" height="21"/>
+                                <rect key="frame" x="480" y="57" width="49" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="I1e-82-Isd"/>
                                     <constraint firstAttribute="height" constant="21" id="dW9-hN-02v"/>
@@ -167,8 +147,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="195-31-dyz">
+                                <rect key="frame" x="537" y="57" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="0Rl-5F-MIb"/>
+                                    <constraint firstAttribute="height" constant="21" id="FNZ-eu-o9p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-z1-F5k">
-                                <rect key="frame" x="537" y="72" width="33" height="21"/>
+                                <rect key="frame" x="537" y="101" width="33" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="GIN-3n-q6b"/>
                                     <constraint firstAttribute="width" constant="33" id="W9N-R9-3Fx"/>
@@ -178,7 +168,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-N5-aTI">
-                                <rect key="frame" x="480" y="72" width="34" height="21"/>
+                                <rect key="frame" x="480" y="101" width="34" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="7Vh-GM-pW9"/>
                                     <constraint firstAttribute="height" constant="21" id="lrh-pv-J8x"/>
@@ -197,11 +187,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="195-31-dyz">
-                                <rect key="frame" x="537" y="28" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting @:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KK-sF-6qj">
+                                <rect key="frame" x="16" y="28" width="116" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="0Rl-5F-MIb"/>
-                                    <constraint firstAttribute="height" constant="21" id="FNZ-eu-o9p"/>
+                                    <constraint firstAttribute="height" constant="21" id="62B-ll-OJD"/>
+                                    <constraint firstAttribute="width" constant="116" id="6Q5-tb-USY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Will Show Here" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjQ-eH-kLP">
+                                <rect key="frame" x="85" y="18" width="444" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="DpF-7Y-vlP"/>
+                                    <constraint firstAttribute="width" constant="444" id="lBF-A7-iPa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -225,9 +225,9 @@
                             <constraint firstItem="AK2-NV-eW6" firstAttribute="leading" secondItem="iG5-wJ-6jw" secondAttribute="trailing" constant="10" id="LWW-VP-aeL"/>
                             <constraint firstItem="jt9-6E-pVy" firstAttribute="leading" secondItem="DCG-Kc-2ZR" secondAttribute="trailing" constant="-21" id="Mz2-1e-l6d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UFb-F7-ToD" secondAttribute="trailing" constant="-16" id="Qar-iG-8hy"/>
-                            <constraint firstItem="rEM-q8-fjy" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="8" id="SYa-Cp-5Bw"/>
+                            <constraint firstItem="rEM-q8-fjy" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="37" id="SYa-Cp-5Bw"/>
                             <constraint firstItem="dDv-Z3-zXT" firstAttribute="top" secondItem="jt9-6E-pVy" secondAttribute="bottom" constant="8" id="Stw-q7-Ud8"/>
-                            <constraint firstItem="195-31-dyz" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="8" id="U9V-nL-II0"/>
+                            <constraint firstItem="195-31-dyz" firstAttribute="top" secondItem="Xim-dh-e9b" secondAttribute="bottom" constant="37" id="U9V-nL-II0"/>
                             <constraint firstItem="SjQ-eH-kLP" firstAttribute="trailing" secondItem="LgS-tc-qFP" secondAttribute="trailingMargin" constant="-55" id="UiH-OG-3bm"/>
                             <constraint firstItem="iG5-wJ-6jw" firstAttribute="top" secondItem="4KK-sF-6qj" secondAttribute="bottom" constant="23" id="W7h-yA-LB5"/>
                             <constraint firstItem="dDv-Z3-zXT" firstAttribute="trailing" secondItem="LgS-tc-qFP" secondAttribute="trailingMargin" id="WBb-SW-qmM"/>
