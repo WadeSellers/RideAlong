@@ -662,6 +662,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ff248f47-b0bb-4802-9f29-c1ff3ee38ea5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -696,6 +697,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "ff248f47-b0bb-4802-9f29-c1ff3ee38ea5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -712,6 +714,7 @@
 				INFOPLIST_FILE = RideAlong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff248f47-b0bb-4802-9f29-c1ff3ee38ea5";
 			};
 			name = Debug;
 		};
@@ -726,6 +729,7 @@
 				INFOPLIST_FILE = RideAlong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff248f47-b0bb-4802-9f29-c1ff3ee38ea5";
 			};
 			name = Release;
 		};
@@ -860,6 +864,7 @@
 				BC7C114D1A1BEA8500AA4E19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC7C11511A1BEA8500AA4E19 /* Build configuration list for PBXNativeTarget "DatesTests" */ = {
 			isa = XCConfigurationList;
@@ -868,6 +873,7 @@
 				BC7C114F1A1BEA8500AA4E19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
