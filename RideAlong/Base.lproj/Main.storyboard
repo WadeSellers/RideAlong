@@ -524,7 +524,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-G2-umd">
-                                <rect key="frame" x="0.0" y="309" width="600" height="291"/>
+                                <rect key="frame" x="0.0" y="354" width="600" height="246"/>
                                 <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -543,29 +543,91 @@
                                 </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H96-gS-Ech">
-                                <rect key="frame" x="0.0" y="28" width="600" height="273"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="301"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="273" id="z2F-hC-jsU"/>
+                                    <constraint firstAttribute="height" constant="301" id="z2F-hC-jsU"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="6cg-cN-dhY" id="EhN-Rw-7Iy"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWp-mg-hBq">
+                                <rect key="frame" x="266" y="316" width="68" height="30"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WFS-it-aLl"/>
+                                    <constraint firstAttribute="width" constant="68" id="X3z-VN-lCS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                <state key="normal" title="Tomorrow">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dateButtonTapped:" destination="6cg-cN-dhY" eventType="touchUpInside" id="gbt-LB-8Lc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ih-M6-4gl">
+                                <rect key="frame" x="342" y="316" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="nXu-AM-eMf"/>
+                                    <constraint firstAttribute="height" constant="30" id="oAi-ag-tHn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                <state key="normal" title="One Week Out">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dateButtonTapped:" destination="6cg-cN-dhY" eventType="touchUpInside" id="ey5-fa-0Wh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvq-a2-uI1">
+                                <rect key="frame" x="171" y="316" width="87" height="30"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="9cB-fc-BfK"/>
+                                    <constraint firstAttribute="height" constant="30" id="haq-Ud-JCC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                <color key="tintColor" red="0.074509803920000006" green="0.57647058819999997" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="All Day Long">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dateButtonTapped:" destination="6cg-cN-dhY" eventType="touchUpInside" id="j9I-XY-efI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="uWp-mg-hBq" secondAttribute="centerX" id="1Tx-Ig-6Ob"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vfF-G2-umd" secondAttribute="trailing" constant="-16" id="3Xf-OF-wNf"/>
-                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" constant="28" id="FNo-Jl-A9b"/>
+                            <constraint firstItem="H96-gS-Ech" firstAttribute="top" secondItem="Lhl-eO-QF0" secondAttribute="topMargin" id="FNo-Jl-A9b"/>
+                            <constraint firstItem="0Ih-M6-4gl" firstAttribute="leading" secondItem="uWp-mg-hBq" secondAttribute="trailing" constant="8" id="XZ3-QJ-Xrk"/>
                             <constraint firstItem="H96-gS-Ech" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="YAI-cb-pDW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H96-gS-Ech" secondAttribute="trailing" constant="-16" id="e3N-IW-zgm"/>
-                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="8" id="hR9-oG-bgY"/>
+                            <constraint firstItem="vfF-G2-umd" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="53" id="hR9-oG-bgY"/>
+                            <constraint firstItem="fvq-a2-uI1" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="15" id="k2t-VD-K9r"/>
+                            <constraint firstItem="0Ih-M6-4gl" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="15" id="pdQ-Xi-ozP"/>
                             <constraint firstItem="vfF-G2-umd" firstAttribute="leading" secondItem="Lhl-eO-QF0" secondAttribute="leadingMargin" constant="-16" id="sih-xN-KTI"/>
                             <constraint firstItem="WE6-k2-hA8" firstAttribute="top" secondItem="vfF-G2-umd" secondAttribute="bottom" id="whO-yi-sQh"/>
+                            <constraint firstItem="uWp-mg-hBq" firstAttribute="top" secondItem="H96-gS-Ech" secondAttribute="bottom" constant="15" id="xHd-OW-cWK"/>
+                            <constraint firstItem="uWp-mg-hBq" firstAttribute="leading" secondItem="fvq-a2-uI1" secondAttribute="trailing" constant="8" id="ygS-n7-0Yd"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="resortsTableView" destination="vfF-G2-umd" id="VcW-sv-ImT"/>
                         <outlet property="rideMapView" destination="H96-gS-Ech" id="G5A-P3-gFS"/>
+                        <outlet property="todayButton" destination="fvq-a2-uI1" id="aHa-jB-SFQ"/>
+                        <outlet property="tomorrowButton" destination="uWp-mg-hBq" id="Po1-SX-Cef"/>
+                        <outlet property="weekButton" destination="0Ih-M6-4gl" id="7Ht-AV-sGx"/>
                         <segue destination="bhG-hO-RP0" kind="show" identifier="rideDetailsSegue" id="tN3-yM-UPJ"/>
                     </connections>
                 </viewController>

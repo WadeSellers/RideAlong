@@ -24,6 +24,13 @@
 @property PFObject *resortObject;
 @property NSMutableArray *annotationsArray;
 @property UITableViewCell *myCell;
+@property (weak, nonatomic) IBOutlet UIButton *todayButton;
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowButton;
+@property (weak, nonatomic) IBOutlet UIButton *weekButton;
+@property NSDate *startDate;
+@property NSDate *endDate;
+@property PFObject *resortSelected;
+@property BOOL resortWasSelected;
 
 @end
 
@@ -49,16 +56,35 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.startDate = [self takeTimeOutOfDates:[NSDate date]];
+    self.resortWasSelected = NO;
+
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = 7;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *revisedendDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+    self.endDate = [self takeTimeOutOfDates:revisedendDate];
+
+    [self.weekButton setSelected:YES];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [self refreshDisplay];
+    [self parseForResults];
     [self.resortsTableView reloadData];
     [self removeAllAnnotations];
+
+
 }
 
 
-- (void)refreshDisplay
+
+- (void)parseForResults
 {
     PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
+    [rideQuery whereKey:@"date" greaterThan:self.startDate];
+    [rideQuery whereKey:@"date" lessThan:self.endDate];
+    if (self.resortWasSelected == YES)
+    {
+        [rideQuery whereKey:@"endName" containsString:self.resortSelected[@"name"]];
+    }
     [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
@@ -138,23 +164,27 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.rideMapView removeAnnotations:self.rideMapView.annotations];
+    self.resortSelected = [self.resorts objectAtIndex:indexPath.row];
+    self.resortWasSelected = YES;
 
-    PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
-    PFObject *selectedObject = [self.resorts objectAtIndex:indexPath.row];
-    [rideQuery whereKey:@"endName" containsString:selectedObject[@"name"]];
-    [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
-            NSLog(@"Error: %@", error.userInfo);
-            self.rides = [NSArray array];
-        }
-        else
-        {
-            self.rides = objects;
-            [self makeAndPlaceRidePins];
-        }
-    }];
-    self.title = selectedObject[@"name"];
+    [self parseForResults];
+//    PFQuery *rideQuery = [PFQuery queryWithClassName:@"Ride"];
+//    PFObject *selectedObject = [self.resorts objectAtIndex:indexPath.row];
+//    [rideQuery whereKey:@"endName" containsString:selectedObject[@"name"]];
+//    [rideQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"Error: %@", error.userInfo);
+//            self.rides = [NSArray array];
+//        }
+//        else
+//        {
+//            self.rides = objects;
+//            [self makeAndPlaceRidePins];
+//        }
+//    }];
+//    [self makeAndPlaceRidePins];
+    self.title = self.resortSelected[@"name"];
 }
 
 - (void)makeAndPlaceRidePins
@@ -188,6 +218,64 @@
     if(userAnnotation!=nil)
         [self.rideMapView addAnnotation:userAnnotation];
 }
+- (IBAction)dateButtonTapped:(id)sender
+{
+    [self.todayButton setSelected:NO];
+    [self.tomorrowButton setSelected:NO];
+    [self.weekButton setSelected:NO];
+
+    if ([[sender currentTitle] isEqualToString:@"All Day Long"])
+    {
+        [self.todayButton setSelected:YES];
+
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 0;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *revisedStartDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.startDate = [self takeTimeOutOfDates:revisedStartDate];
+        dayComponent.day = 1;
+        NSDate *revisedEndDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.endDate = [self takeTimeOutOfDates:revisedEndDate];
+    }
+    else if ([[sender currentTitle] isEqualToString:@"Tomorrow"])
+    {
+        [self.tomorrowButton setSelected:YES];
+
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 1;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *revisedStartDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.startDate = [self takeTimeOutOfDates:revisedStartDate];
+        dayComponent.day = 2;
+        NSDate *revisedEndDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.endDate = [self takeTimeOutOfDates:revisedEndDate];
+    }
+    else //button pressed must be "One Week Out"
+    {
+        [self.weekButton setSelected:YES];
+
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 0;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *revisedStartDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.startDate = [self takeTimeOutOfDates:revisedStartDate];
+        dayComponent.day = 7;
+        NSDate *revisedEndDate = [calendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        self.endDate = [self takeTimeOutOfDates:revisedEndDate];
+    }
+}
+
+- (NSDate *)takeTimeOutOfDates: (NSDate *)inputDate
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear) fromDate:inputDate];
+    NSDate *reformattedDate = [calendar dateFromComponents:components];
+
+    NSLog(@"Now todays date starts at midnight: %@", inputDate);
+    return reformattedDate;
+}
+
+
 
 @end
 

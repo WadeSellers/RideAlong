@@ -17,6 +17,9 @@
 @property MKPointAnnotation *annotation;
 @property MKPolygon* poly;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+
+
 @end
 
 @implementation CreateMapStartPointVC
