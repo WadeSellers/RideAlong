@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -506,6 +506,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rD2-Se-VIw"/>
+                    <connections>
+                        <outlet property="mountainLogo" destination="85E-Cb-AKs" id="guK-h5-h3V"/>
+                        <outlet property="skiLiftLabel" destination="gb8-D9-KCZ" id="lxD-jH-2GV"/>
+                        <outlet property="sloganLabel" destination="JZA-kB-KYo" id="bcn-6P-caz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dak-6D-RxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

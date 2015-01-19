@@ -17,12 +17,18 @@
 @property NSArray *resorts;
 @property NSArray *resortImages;
 
+@property (weak, nonatomic) IBOutlet UIImageView *mountainLogo;
+@property (weak, nonatomic) IBOutlet UILabel *skiLiftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sloganLabel;
+
+
 @end
 
 @implementation FindOrCreateRideVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.resortImages = [[NSArray alloc] init];
     [self pullInResorts];
 
@@ -33,6 +39,11 @@
 
 
 }
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [self introduction];
+//}
 
 - (void)passengerSetupAndSave
 {
@@ -83,5 +94,16 @@
 
 }
 
+//- (void)introduction
+//{
+//
+//    [UIView transitionWithView:self.mountainLogo duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+//        self.mountainLogo.image = [UIImage imageNamed:@"snowboarder"];
+//    } completion:^(BOOL finished) {
+//        nil;
+//    }];
+//
+//
+//}
 
 @end
