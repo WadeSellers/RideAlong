@@ -18,6 +18,7 @@
 		166F0BD81A09342500ABF976 /* CreateRideDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 166F0BD71A09342500ABF976 /* CreateRideDetailsVC.m */; };
 		1689E68C1A1466FE0089EF6B /* MyMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */; };
 		1689E68F1A1473B10089EF6B /* MyCustomPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689E68E1A1473B10089EF6B /* MyCustomPin.m */; };
+		168E80A61A7DF82700250FD5 /* UIButton+PrimaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 168E80A51A7DF82700250FD5 /* UIButton+PrimaryButton.m */; };
 		16C21B5F1A0AB14000EEF533 /* CreateChooseResortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B5E1A0AB14000EEF533 /* CreateChooseResortVC.m */; };
 		16C21B621A0AB18800EEF533 /* FindRideMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B611A0AB18800EEF533 /* FindRideMapVC.m */; };
 		16C21B651A0AC42400EEF533 /* Resort.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C21B641A0AC42400EEF533 /* Resort.m */; };
@@ -94,6 +95,8 @@
 		1689E68B1A1466FE0089EF6B /* MyMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKPointAnnotation.m; sourceTree = "<group>"; };
 		1689E68D1A1473B10089EF6B /* MyCustomPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomPin.h; sourceTree = "<group>"; };
 		1689E68E1A1473B10089EF6B /* MyCustomPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomPin.m; sourceTree = "<group>"; };
+		168E80A41A7DF82700250FD5 /* UIButton+PrimaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+PrimaryButton.h"; sourceTree = "<group>"; };
+		168E80A51A7DF82700250FD5 /* UIButton+PrimaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+PrimaryButton.m"; sourceTree = "<group>"; };
 		16C21B5D1A0AB14000EEF533 /* CreateChooseResortVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateChooseResortVC.h; sourceTree = "<group>"; };
 		16C21B5E1A0AB14000EEF533 /* CreateChooseResortVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateChooseResortVC.m; sourceTree = "<group>"; };
 		16C21B601A0AB18800EEF533 /* FindRideMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindRideMapVC.h; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 		166F0B991A08137200ABF976 = {
 			isa = PBXGroup;
 			children = (
+				168E80A41A7DF82700250FD5 /* UIButton+PrimaryButton.h */,
+				168E80A51A7DF82700250FD5 /* UIButton+PrimaryButton.m */,
 				16C21B631A0AC42400EEF533 /* Resort.h */,
 				16C21B641A0AC42400EEF533 /* Resort.m */,
 				166F0BCE1A0824A300ABF976 /* MapKit.framework */,
@@ -225,7 +230,7 @@
 		166F0BA41A08137200ABF976 /* RideAlong */ = {
 			isa = PBXGroup;
 			children = (
-				166F0BCB1A0822F100ABF976 /* Storyboard in Here */,
+				166F0BAF1A08137200ABF976 /* Main.storyboard */,
 				166F0BA91A08137200ABF976 /* AppDelegate.h */,
 				166F0BAA1A08137200ABF976 /* AppDelegate.m */,
 				16C21B981A0DFF4D00EEF533 /* FindOrCreateRideVC.h */,
@@ -302,30 +307,6 @@
 				166F0BC01A08137200ABF976 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		166F0BCB1A0822F100ABF976 /* Storyboard in Here */ = {
-			isa = PBXGroup;
-			children = (
-				166F0BCC1A08230400ABF976 /* Is anyone else in storyboard? */,
-			);
-			name = "Storyboard in Here";
-			sourceTree = "<group>";
-		};
-		166F0BCC1A08230400ABF976 /* Is anyone else in storyboard? */ = {
-			isa = PBXGroup;
-			children = (
-				166F0BCD1A08231C00ABF976 /* Grab Storyboard ball! */,
-			);
-			name = "Is anyone else in storyboard?";
-			sourceTree = "<group>";
-		};
-		166F0BCD1A08231C00ABF976 /* Grab Storyboard ball! */ = {
-			isa = PBXGroup;
-			children = (
-				166F0BAF1A08137200ABF976 /* Main.storyboard */,
-			);
-			name = "Grab Storyboard ball!";
 			sourceTree = "<group>";
 		};
 		BC7C112D1A1BEA8500AA4E19 /* Dates */ = {
@@ -538,6 +519,7 @@
 				1689E68F1A1473B10089EF6B /* MyCustomPin.m in Sources */,
 				16C611811A1A5C7300B881BA /* CustomResortTableViewCell.m in Sources */,
 				16C21B651A0AC42400EEF533 /* Resort.m in Sources */,
+				168E80A61A7DF82700250FD5 /* UIButton+PrimaryButton.m in Sources */,
 				1689E68C1A1466FE0089EF6B /* MyMKPointAnnotation.m in Sources */,
 				16C21B621A0AB18800EEF533 /* FindRideMapVC.m in Sources */,
 				16C611491A196BB100B881BA /* Comment.m in Sources */,

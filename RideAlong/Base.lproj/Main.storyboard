@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sjq-pT-I2N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -477,7 +477,7 @@
                                             <constraint firstAttribute="width" constant="264" id="Fa1-qT-8xJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
-                                        <state key="normal" title="Rides Near Me">
+                                        <state key="normal" title="Find A Ride">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -507,7 +507,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="rD2-Se-VIw"/>
                     <connections>
+                        <outlet property="createNewRide" destination="MoD-a4-O3L" id="Pfu-pi-ANt"/>
+                        <outlet property="findRideButton" destination="ygz-CG-AgX" id="FW4-a4-Tsy"/>
                         <outlet property="mountainLogo" destination="85E-Cb-AKs" id="guK-h5-h3V"/>
+                        <outlet property="myRideButton" destination="Rga-aJ-gCj" id="j63-ig-ZOa"/>
                         <outlet property="skiLiftLabel" destination="gb8-D9-KCZ" id="lxD-jH-2GV"/>
                         <outlet property="sloganLabel" destination="JZA-kB-KYo" id="bcn-6P-caz"/>
                     </connections>
